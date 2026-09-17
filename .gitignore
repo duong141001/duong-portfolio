@@ -1,8 +1,13 @@
-# Dependencies
+# Backups & Temporary Files
+*.bak
+*.tmp
+*~
+
+# OS Files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Node modules / Scratch
 node_modules/
-
-# Secrets — NEVER commit (contains real login credentials)
-.env
-
-# Keep committed so the docs are viewable straight from the repo:
-#   shots/, screens.json, gallery.html
+scratch/

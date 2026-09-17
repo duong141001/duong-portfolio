@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case Study | Duong Nguyen</title>
+  <meta name="description" content="In-depth product and engineering case study by Duong Nguyen.">
+
+  <!-- Google Fonts: Patrick Hand & Caveat for Vietnamese handwriting, Handjet, DM Mono, Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Handjet:wght@400..900&family=Inter:wght@300;400;500;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/handjet.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="t-creative-artsy t-authkit bg-[var(--ca-surface)] text-[var(--ca-ink)] antialiased selection:bg-[var(--ca-yellow)] selection:text-[var(--ca-ink)]">
+
+  <!-- ==========================================================================
+       SITE HEADER
+       ========================================================================== -->
+  <header class="sticky top-0 z-50 px-3 pt-3 sm:px-6">
+    <div class="mx-auto flex max-w-6xl items-center justify-between border-2 border-[var(--ca-ink)] bg-white px-3 shadow-[2.5px_2.5px_0_rgba(25,21,16,0.35)] rounded-full">
+      <div class="flex items-center gap-4">
+        <!-- Pink Smiley Vector Logo with Animated Blinking Eyes -->
+        <a aria-label="Home" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-white shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:rotate-12 hover-wiggle" style="background-color:var(--ca-magenta)" href="index.html">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-white" aria-hidden="true">
+            <g class="ca-blink">
+              <circle cx="8" cy="9" r="1.5"></circle>
+              <circle cx="16" cy="9" r="1.5"></circle>
+            </g>
+            <path d="M8 14Q12 18 16 14" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+        </a>
+
+        <!-- Pill Desktop Navigation -->
+        <nav class="hidden items-stretch md:flex">
+          <a class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]" href="index.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
+              <path d="M12 2l2.9 6.26 6.85.72-5.1 4.62 1.44 6.7L12 17.6l-6.09 3.7 1.44-6.7-5.1-4.62 6.85-.72z"></path>
+            </svg>
+            <span data-i18n="nav.home">Home</span>
+          </a>
+
+          <a class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]" href="about.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
+              <path d="M12 3a3.6 3.6 0 100 7.2A3.6 3.6 0 0012 3zM4.8 20a7.2 7.2 0 0114.4 0z"></path>
+            </svg>
+            <span data-i18n="nav.about">About</span>
+          </a>
+
+          <a aria-current="page" class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors bg-[var(--ca-yellow)]" href="case-studies.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
+              <path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"></path>
+            </svg>
+            <span data-i18n="nav.projects">Projects</span>
+          </a>
+
+          <a class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]" href="playground.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
+              <path d="M12 2l10 10-10 10L2 12z"></path>
+            </svg>
+            <span data-i18n="nav.playground">Playground</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Header Actions: Language Switcher, Back Link, Contact -->
+      <div class="flex items-center gap-2 py-2 sm:gap-3">
+        <!-- Interactive EN/VI Language Switcher -->
+        <div class="flex items-center rounded-full border-2 border-[var(--ca-ink)] bg-white p-1 text-xs font-bold ca-mono">
+          <button type="button" id="lang-en" data-lang="en" class="lang-btn rounded-full px-2.5 py-1 uppercase transition-colors bg-[var(--ca-yellow)] text-[var(--ca-ink)]">
+            EN
+          </button>
+          <button type="button" id="lang-vi" data-lang="vi" class="lang-btn rounded-full px-2.5 py-1 uppercase transition-colors text-[var(--ca-ink)]/60 hover:text-[var(--ca-ink)]">
+            VI
+          </button>
+        </div>
+
+        <!-- Back to Archive Pill -->
+        <a id="navBackLink" class="ca-mono inline-flex items-center gap-1.5 rounded-full border-2 border-[var(--ca-ink)] bg-[var(--ca-chrome)] px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[var(--ca-ink)] transition-transform hover:-translate-y-0.5" href="case-studies.html">
+          ← Projects
+        </a>
+
+        <!-- Pill Contact CTA -->
+        <a class="ca-mono hidden items-center gap-2 rounded-full border-2 border-[var(--ca-ink)] bg-white px-4 py-2 text-xs font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[2px_2px_0_var(--ca-ink)] transition-transform hover:-translate-y-0.5 sm:inline-flex" href="contact.html">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-3.5 w-3.5 text-[var(--ca-ink)]" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+          <span id="navCtaText">Contact</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN CASE STUDY CONTENT
+       ========================================================================== -->
+  <main class="px-4 pb-24 pt-8 sm:px-8 lg:px-20">
+    <div class="mx-auto max-w-5xl">
+
+      <!-- Case HUD Topbar -->
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-[var(--ca-ink)]/20 pb-4 ca-mono text-xs font-bold uppercase tracking-wider text-[var(--ca-gray)]">
+        <span id="hudChapter" class="text-[var(--ca-blue)]">// CHAPTER 01 // 08</span>
+        <span id="hudTitle" class="text-[var(--ca-ink)]">MISSION: ADHD BEHAVIORAL SUPPORT</span>
+        <div class="flex items-center gap-4">
+          <span id="hudLevel" class="rounded bg-black/10 px-2 py-0.5 text-[10px] text-[var(--ca-ink)]">LEVEL: 04 · LIVE</span>
+          <span id="hudProgress" class="text-[var(--ca-green)]">PROGRESS: 95%</span>
+        </div>
+      </div>
+
+      <!-- Case Hero Section -->
+      <div class="mt-8">
+        <p class="ca-mono text-xs font-bold uppercase tracking-[0.2em] text-[var(--ca-gray)]" id="case-kicker">
+          // MISSION BRIEFING
+        </p>
+
+        <h1 id="case-title" class="ca-display mt-3 text-5xl leading-[0.95] tracking-tight text-[var(--ca-ink)] sm:text-7xl lg:text-8xl ca-stagger-text" data-stagger-text="true" data-stagger="0.04">
+          Loading…
+        </h1>
+
+        <p id="case-summary" class="mt-5 max-w-3xl text-lg leading-relaxed text-[var(--ca-ink)]/80 sm:text-xl"></p>
+
+        <!-- Tags Row -->
+        <div id="case-tags" class="mt-6 flex flex-wrap gap-2"></div>
+      </div>
+
+      <!-- Facts Grid: 4 Stamp Cards with Washi Tape -->
+      <div class="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
+        <!-- Role -->
+        <div class="ca-pop relative -rotate-1" data-delay="0.05">
+          <span aria-hidden="true" class="ca-tape-strip absolute -left-3 -top-2 z-10 h-5 w-14 -rotate-[36deg] bg-white/70 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+          <div class="p-5 stamp-wavy-1 shadow-sm hover-lift" style="background-color:var(--ca-cyan)">
+            <p class="ca-mono text-xs font-bold uppercase tracking-widest text-[var(--ca-ink)]/70">Role</p>
+            <p class="mt-1 font-bold text-sm text-[var(--ca-ink)]">Product &amp; QA Lead</p>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="ca-pop relative rotate-1" data-delay="0.1">
+          <span aria-hidden="true" class="ca-tape-strip absolute -right-3 -top-2 z-10 h-5 w-14 rotate-[36deg] bg-white/70 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+          <div class="p-5 stamp-wavy-2 shadow-sm hover-lift" style="background-color:var(--ca-yellow-soft)">
+            <p class="ca-mono text-xs font-bold uppercase tracking-widest text-[var(--ca-ink)]/70">Timeline</p>
+            <p class="mt-1 font-bold text-sm text-[var(--ca-ink)]">Sprint Iterations</p>
+          </div>
+        </div>
+
+        <!-- Team -->
+        <div class="ca-pop relative -rotate-2" data-delay="0.15">
+          <span aria-hidden="true" class="ca-tape-strip absolute -left-3 -top-2 z-10 h-5 w-14 -rotate-[36deg] bg-white/70 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+          <div class="p-5 stamp-wavy-3 shadow-sm hover-lift" style="background-color:var(--ca-purple)">
+            <p class="ca-mono text-xs font-bold uppercase tracking-widest text-[var(--ca-ink)]/70">Team / Stack</p>
+            <p class="mt-1 font-bold text-sm text-[var(--ca-ink)]">Autonomous &amp; Cross-functional</p>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div class="ca-pop relative rotate-2" data-delay="0.2">
+          <span aria-hidden="true" class="ca-tape-strip absolute -right-3 -top-2 z-10 h-5 w-14 rotate-[36deg] bg-white/70 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+          <div class="p-5 stamp-wavy-1 shadow-sm hover-lift" style="background-color:var(--ca-mint)">
+            <p class="ca-mono text-xs font-bold uppercase tracking-widest text-[var(--ca-ink)]/70">Status</p>
+            <p class="mt-1 font-bold text-sm text-[var(--ca-ink)]">Shipped &amp; Live</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- System Flow Pipeline Canvas (Zero AI Slop Wireframe Box with Washi Tape) -->
+      <div class="ca-reveal relative mt-14" data-delay="0.1">
+        <span aria-hidden="true" class="ca-tape-strip absolute -left-4 -top-3 z-10 h-6 w-24 -rotate-[9deg] bg-white/70 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+        <span aria-hidden="true" class="ca-tape-strip absolute -right-4 -top-3 z-10 h-6 w-24 rotate-[9deg] bg-white/70 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+
+        <div class="border-3 border-white bg-white p-6 shadow-md rounded sm:p-10">
+          <div class="flex items-center justify-between border-b border-[var(--ca-tick)]/40 pb-3">
+            <span id="coverKicker" class="ca-mono text-xs font-bold uppercase tracking-wider text-[var(--ca-gray)]">// SYSTEM FLOW DIAGRAM</span>
+            <span class="ca-mono text-[10px] font-bold text-[var(--ca-green)] uppercase">PRODUCTION VALIDATED</span>
+          </div>
+
+          <!-- Flow Diagram Items rendered dynamically by case-study.js -->
+          <div id="coverDiagram" class="mt-8 flex flex-wrap items-center justify-center gap-3 ca-mono"></div>
+        </div>
+      </div>
+
+      <!-- Case Content Sections -->
+      <div class="mt-16 flex flex-col gap-12">
+
+        <!-- 01: Problem -->
+        <article class="ca-reveal ca-chapter-section ca-doodle-box relative border-2 border-[var(--ca-yellow)] p-6 sm:p-10" id="problem" data-delay="0.1">
+          <span class="ca-mono -rotate-2 inline-block bg-[var(--ca-yellow)] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--ca-ink)]" id="labelProblem">
+            MISSION BRIEF
+          </span>
+          <h2 id="problem-title" class="mt-4 text-2xl font-bold tracking-tight text-[var(--ca-ink)] sm:text-3xl"></h2>
+          <div id="problem-copy" class="mt-4 text-base leading-relaxed text-[var(--ca-ink)]/85 space-y-4"></div>
+        </article>
+
+        <!-- 02: Approach -->
+        <article class="ca-reveal ca-chapter-section ca-doodle-box relative border-2 border-[var(--ca-mint)] p-6 sm:p-10" id="approach" data-delay="0.15">
+          <span class="ca-mono rotate-1 inline-block bg-[var(--ca-green)] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white" id="labelApproach">
+            PRODUCT APPROACH
+          </span>
+          <h2 id="approach-title" class="mt-4 text-2xl font-bold tracking-tight text-[var(--ca-ink)] sm:text-3xl"></h2>
+          <div id="approach-copy" class="mt-4 text-base leading-relaxed text-[var(--ca-ink)]/85 space-y-4"></div>
+        </article>
+
+        <!-- 03: System -->
+        <article class="ca-reveal ca-chapter-section ca-doodle-box relative border-2 border-[var(--ca-blue)] p-6 sm:p-10" id="system" data-delay="0.2">
+          <span class="ca-mono -rotate-1 inline-block bg-[var(--ca-blue)] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white" id="labelSystem">
+            SYSTEM ARCHITECTURE
+          </span>
+          <h2 id="system-title" class="mt-4 text-2xl font-bold tracking-tight text-[var(--ca-ink)] sm:text-3xl"></h2>
+          <div id="system-copy" class="mt-4 text-base leading-relaxed text-[var(--ca-ink)]/85 space-y-4"></div>
+        </article>
+
+        <!-- 04: Learning -->
+        <article class="ca-reveal ca-chapter-section ca-doodle-box relative border-2 border-[var(--ca-magenta)] p-6 sm:p-10" id="learning" data-delay="0.25">
+          <span class="ca-mono rotate-2 inline-block bg-[var(--ca-magenta)] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white" id="labelLearning">
+            BUILD LOG &amp; OUTCOME
+          </span>
+          <h2 id="learning-title" class="mt-4 text-2xl font-bold tracking-tight text-[var(--ca-ink)] sm:text-3xl"></h2>
+          <div id="learning-copy" class="mt-4 text-base leading-relaxed text-[var(--ca-ink)]/85 space-y-4"></div>
+        </article>
+
+      </div>
+
+      <!-- Next / Prev Chapter Navigation Footer -->
+      <div class="mt-20 border-t-2 border-[var(--ca-ink)]/20 pt-8">
+        <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+          <a id="prevChapterBtn" href="#" class="ca-mono group flex items-center gap-3 rounded-lg border-2 border-[var(--ca-ink)] bg-white px-5 py-3 text-sm font-bold uppercase tracking-wider text-[var(--ca-ink)] shadow-[2.5px_2.5px_0_var(--ca-ink)] transition-transform hover:-translate-y-0.5">
+            <span>←</span>
+            <span id="prevChapterText">Previous Mission</span>
+          </a>
+
+          <a id="nextChapterBtn" href="#" class="ca-mono group flex items-center gap-3 rounded-lg border-2 border-[var(--ca-ink)] bg-[var(--ca-yellow)] px-5 py-3 text-sm font-bold uppercase tracking-wider text-[var(--ca-ink)] shadow-[2.5px_2.5px_0_var(--ca-ink)] transition-transform hover:-translate-y-0.5">
+            <span id="nextChapterText">Next Mission</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       SITE FOOTER
+       ========================================================================== -->
+  <footer class="ca-grid relative border-t-2 border-[var(--ca-ink)]">
+    <svg viewBox="0 0 1440 130" fill="none" preserveAspectRatio="none" class="h-16 w-full sm:h-24" aria-hidden="true">
+      <path d="M-10 120C420 10 1030 4 1450 80" stroke="var(--ca-tick)" stroke-width="1.5"></path>
+    </svg>
+    <div class="px-4 pb-10 pt-6 sm:px-8 lg:px-20">
+      <div class="flex flex-col justify-between gap-10 md:flex-row md:items-end">
+        <div>
+          <p class="ca-display text-6xl uppercase leading-none tracking-tight text-[var(--ca-ink)] sm:text-8xl">
+            Duong Nguyen
+          </p>
+          <p class="ca-mono mt-4 inline-flex items-center gap-2.5 text-sm font-bold uppercase tracking-[0.2em] text-[var(--ca-ink)]">
+            <span class="h-3 w-3 rounded-full bg-[var(--ca-blue)]"></span>
+            <span data-i18n="footer.role">Product, Agile, AI Builder</span>
+          </p>
+        </div>
+        <div class="flex flex-col items-start gap-5 md:items-end">
+          <nav class="flex flex-wrap gap-1 ca-mono">
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white" href="index.html" data-i18n="nav.home">Home</a>
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white" href="about.html" data-i18n="nav.about">About</a>
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors bg-[var(--ca-yellow)]" href="case-studies.html" data-i18n="nav.projects">Projects</a>
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white" href="playground.html" data-i18n="nav.playground">Playground</a>
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white" href="contact.html" data-i18n="nav.cta">Contact</a>
+          </nav>
+        </div>
+      </div>
+      <div class="mt-12 flex flex-col items-center justify-between gap-3 text-sm text-[var(--ca-ink)]/70 sm:flex-row">
+        <span>© 2026 Duong Nguyen · Built with craft &amp; discipline</span>
+        <span class="ca-mono text-xs uppercase font-bold tracking-wider" data-i18n="footer.loop">✦ BUILD, LEARN, SHIP, REPEAT</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="case-study.js"></script>
+</body>
+</html>

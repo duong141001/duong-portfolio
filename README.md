@@ -1,39 +1,22 @@
-# Kazuo (SMIT Work) — Tài liệu hướng dẫn sử dụng cho team
+# Dương Nguyễn — Product Builder & Agile Coordinator Portfolio
 
-Tài liệu hướng dẫn sử dụng công cụ quản lý dự án **Kazuo / SMIT Work**, kèm ảnh chụp từng màn hình và hướng dẫn thao tác + quy trình Scrum cho team.
+Portfolio website của Dương Nguyễn (Product, Agile, AI Builder & Điều Phối Dự Án).
+Giao diện thiết kế theo phong cách **AuthKit — Frosted Glass Cathedral at Midnight** (kính mờ trên nền midnight canvas, đường chỉ hairline viền kính và điểm nhấn tím Void Violet).
 
-## Xem tài liệu
+🔗 **Live URL:** [https://gwr1410.io.vn/](https://gwr1410.io.vn/)
 
-Mở file [`index.html`](index.html) bằng trình duyệt — trang tự chứa, không cần cài gì thêm.
+## Cấu trúc các trang
 
-Nội dung gồm:
-- Cách sử dụng nhanh
-- Hướng dẫn làm việc theo Scrum
-- 17 màn hình, mỗi màn kèm mô tả + các bước thao tác cụ thể
+- `index.html`: Trang chủ (Hero tên phát quang, hồ sơ năng lực, 4 thẻ thống kê số liệu, chạy marquee, hồ sơ 8 dự án với tab và preview sticky, 2 thẻ tư duy, form liên hệ).
+- `about.html`: Giới thiệu chi tiết (Điều hướng fixed bên trái, timeline 5 chặng đường sự nghiệp, câu chuyện chuyển giao từ Game QA sang Scrum/Product, ảnh polaroid).
+- `case-studies.html`: Kho dự án (Bộ lọc phân loại, thanh tìm kiếm, danh sách dự án hoàn chỉnh).
+- `case-study.html`: Trang chi tiết từng case study tải động qua query `?id=`.
+- `playground.html`: Phòng thử nghiệm & lab tương tác (Interactive Canvas với các thẻ kéo thả).
+- `contact.html`: Trang liên hệ tương tác 2 bước.
 
-## Cấu trúc
+## Tính năng kỹ thuật
 
-| File | Vai trò |
-|------|---------|
-| `index.html` | Trang tài liệu tự chứa (mở bằng trình duyệt) |
-| `shots/` | Ảnh chụp các màn hình |
-| `capture-screens.mjs` | Script Playwright tự đăng nhập và chụp màn hình |
-| `build-gallery.mjs` | Script dựng `index.html` từ ảnh + nội dung hướng dẫn |
-| `screens.json` | Metadata các màn đã chụp |
-
-## Chạy lại (cập nhật ảnh mới)
-
-Cần Node.js 20+.
-
-```bash
-npm install
-npx playwright install chromium
-
-# Tạo file .env từ mẫu, điền tài khoản đăng nhập Kazuo
-cp .env.example .env
-
-node capture-screens.mjs   # đăng nhập + chụp toàn bộ màn
-node build-gallery.mjs     # dựng lại index.html
-```
-
-> **Lưu ý bảo mật:** file `.env` chứa tài khoản đăng nhập, đã được `.gitignore` bỏ qua — không commit lên repo.
+- **Song ngữ VI / EN:** Hỗ trợ chuyển đổi ngôn ngữ tức thì, 100% nội dung đã được bản địa hoá.
+- **Tương tác thông minh:** Kính lúp (Hover Lens) khóa tâm con trỏ chuột, animation chữ stagger mượt mà, bộ đếm số count-up.
+- **Không phụ thuộc build step:** Thuần HTML, Tailwind CSS, JavaScript Vanilla, không cần Node.js runtime hay hosting trả phí.
+- **GitHub Pages Ready:** Tích hợp sẵn `CNAME` (`gwr1410.io.vn`) và `.nojekyll`.

@@ -1,0 +1,418 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Playground & Lab | Duong Nguyen</title>
+  <meta name="description" content="Playground, Mini Tools & AI Experiments by Duong Nguyen.">
+
+  <!-- Google Fonts: Patrick Hand & Caveat for Vietnamese handwriting, Handjet, DM Mono, Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Handjet:wght@400..900&family=Inter:wght@300;400;500;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/handjet.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="t-creative-artsy t-authkit bg-[var(--ca-surface)] text-[var(--ca-ink)] antialiased selection:bg-[var(--ca-yellow)] selection:text-[var(--ca-ink)]">
+
+  <!-- ==========================================================================
+       SITE HEADER
+       ========================================================================== -->
+  <header class="sticky top-0 z-50 px-3 pt-3 sm:px-6">
+    <div class="mx-auto flex max-w-6xl items-center justify-between border-2 border-[var(--ca-ink)] bg-white px-3 shadow-[2.5px_2.5px_0_rgba(25,21,16,0.35)] rounded-full">
+      <div class="flex items-center gap-4">
+        <!-- Pink Smiley Vector Logo with Animated Blinking Eyes -->
+        <a aria-label="Home" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-white shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:rotate-12 hover-wiggle" style="background-color:var(--ca-magenta)" href="index.html">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-white" aria-hidden="true">
+            <g class="ca-blink">
+              <circle cx="8" cy="9" r="1.5"></circle>
+              <circle cx="16" cy="9" r="1.5"></circle>
+            </g>
+            <path d="M8 14Q12 18 16 14" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+        </a>
+
+        <!-- Pill Desktop Navigation -->
+        <nav class="hidden items-stretch md:flex">
+          <a class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]" href="index.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
+              <path d="M12 2l2.9 6.26 6.85.72-5.1 4.62 1.44 6.7L12 17.6l-6.09 3.7 1.44-6.7-5.1-4.62 6.85-.72z"></path>
+            </svg>
+            <span data-i18n="nav.home">Home</span>
+          </a>
+
+          <a class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]" href="about.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
+              <path d="M12 3a3.6 3.6 0 100 7.2A3.6 3.6 0 0012 3zM4.8 20a7.2 7.2 0 0114.4 0z"></path>
+            </svg>
+            <span data-i18n="nav.about">About</span>
+          </a>
+
+          <a class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]" href="case-studies.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
+              <path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"></path>
+            </svg>
+            <span data-i18n="nav.projects">Projects</span>
+          </a>
+
+          <a aria-current="page" class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors bg-[var(--ca-yellow)]" href="playground.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
+              <path d="M12 2l10 10-10 10L2 12z"></path>
+            </svg>
+            <span data-i18n="nav.playground">Playground</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Header Actions: Language Switcher, Social, Contact -->
+      <div class="flex items-center gap-2 py-2 sm:gap-3">
+        <!-- Interactive EN/VI Language Switcher -->
+        <div class="flex items-center rounded-full border-2 border-[var(--ca-ink)] bg-white p-1 text-xs font-bold ca-mono">
+          <button type="button" id="lang-en" data-lang="en" class="lang-btn rounded-full px-2.5 py-1 uppercase transition-colors bg-[var(--ca-yellow)] text-[var(--ca-ink)]">
+            EN
+          </button>
+          <button type="button" id="lang-vi" data-lang="vi" class="lang-btn rounded-full px-2.5 py-1 uppercase transition-colors text-[var(--ca-ink)]/60 hover:text-[var(--ca-ink)]">
+            VI
+          </button>
+        </div>
+
+        <!-- Social Icons -->
+        <a aria-label="LinkedIn" class="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white text-[var(--ca-ink)] shadow-[1px_1px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5" style="background-color:var(--ca-yellow)" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"></path></svg>
+        </a>
+        <a aria-label="GitHub" class="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white text-white shadow-[1px_1px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5" style="background-color:var(--ca-magenta)" href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"></path></svg>
+        </a>
+        <a aria-label="Email" class="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white text-white shadow-[1px_1px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5" style="background-color:var(--ca-green)" href="mailto:duong.pm.qa@gmail.com">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+        </a>
+
+        <!-- Pill Contact CTA -->
+        <a class="ca-mono hidden items-center gap-2 rounded-full border-2 border-[var(--ca-ink)] bg-white px-4 py-2 text-xs font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[2px_2px_0_var(--ca-ink)] transition-transform hover:-translate-y-0.5 sm:inline-flex" href="contact.html">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-3.5 w-3.5 text-[var(--ca-ink)]" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+          <span data-i18n="nav.cta">Contact</span>
+        </a>
+
+        <!-- Mobile Nav Hamburger -->
+        <button id="mobileNavToggle" aria-label="Toggle Navigation" aria-expanded="false" class="flex h-10 w-10 items-center justify-center rounded-md border-2 border-[var(--ca-ink)] bg-white md:hidden">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="h-5 w-5 text-[var(--ca-ink)]"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Dropdown -->
+    <div id="mobileNavMenu" class="hidden mx-auto mt-2 max-w-6xl rounded-2xl border-2 border-[var(--ca-ink)] bg-white p-4 shadow-[4px_4px_0_var(--ca-ink)] md:hidden">
+      <nav class="flex flex-col gap-2 ca-mono text-sm font-bold uppercase tracking-wider">
+        <a class="p-2 hover:bg-[var(--ca-yellow)] rounded" href="index.html" data-i18n="nav.home">Home</a>
+        <a class="p-2 hover:bg-[var(--ca-yellow)] rounded" href="about.html" data-i18n="nav.about">About</a>
+        <a class="p-2 hover:bg-[var(--ca-yellow)] rounded" href="case-studies.html" data-i18n="nav.projects">Projects</a>
+        <a class="p-2 bg-[var(--ca-yellow)] rounded" href="playground.html" data-i18n="nav.playground">Playground</a>
+        <a class="p-2 hover:bg-[var(--ca-yellow)] rounded" href="contact.html" data-i18n="nav.cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN CONTENT: PLAYGROUND & LAB CANVAS
+       ========================================================================== -->
+  <main class="relative px-4 pb-24 pt-8 sm:px-8 lg:px-20">
+    <div class="mx-auto max-w-6xl">
+
+      <!-- Header Title -->
+      <div class="text-center mb-10">
+        <p class="ca-hand text-3xl text-[var(--ca-ink)] sm:text-4xl" data-i18n="playground.label">playground &amp; lab</p>
+        <span class="mt-2 inline-block">
+          <span class="ca-display text-6xl leading-[0.92] tracking-tight text-[var(--ca-ink)] sm:text-8xl xl:text-[10rem] ca-stagger-text" data-stagger-text="true" data-stagger="0.05" data-i18n="playground.title">
+            JUST FOR FUN
+          </span>
+        </span>
+        <p class="mt-3 text-base text-[var(--ca-ink)]/75 max-w-xl mx-auto" data-i18n="playground.desc">
+          Interactive prototypes, AI experiments, testing scripts, and tooling snippets built while exploring new paradigms.
+        </p>
+        <p class="mt-2 text-xs ca-mono font-bold uppercase tracking-wider text-[var(--ca-blue)] hidden md:block">
+          ✦ Interactive Studio Board: Drag any card to rearrange · Zoom in/out with controls below ✦
+        </p>
+      </div>
+
+      <!-- DESKTOP INTERACTIVE DRAGGABLE WORKBENCH (Creative Artsy Studio Board) -->
+      <div id="playgroundCanvas" class="playground-canvas relative hidden md:block w-full h-[720px] overflow-hidden border-2 border-[var(--ca-ink)] rounded-2xl bg-[#faf8f3] shadow-[6px_6px_0_var(--ca-ink)]">
+        <!-- Dot Grid Pattern -->
+        <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(var(--ca-ink) 1px, transparent 1px); background-size: 20px 20px;"></div>
+
+        <div id="playgroundBoard" class="relative w-full h-full transition-transform duration-200 ease-out" style="transform: scale(1); transform-origin: 50% 45%;">
+
+          <!-- Card 1: Hermes Agent Canvas -->
+          <div class="draggable-card absolute w-80 p-5 -rotate-2 border-2 border-[var(--ca-ink)] shadow-[4px_4px_0_var(--ca-ink)]" style="background-color:var(--ca-cyan); left: 6%; top: 8%;">
+            <span aria-hidden="true" class="ca-tape-strip absolute -left-3 -top-2.5 z-10 h-5 w-16 -rotate-[35deg] bg-white/70 shadow-sm"></span>
+            <span class="ca-mono text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]/70">LAB 01 // AGENTS</span>
+            <h3 class="mt-1 text-lg font-bold text-[var(--ca-ink)]">Hermes Agent Graph</h3>
+            <p class="mt-1 text-xs leading-relaxed text-[var(--ca-ink)]/80">
+              Visual multi-agent workflow board with step-by-step inspector, tool mutation history, and human-in-the-loop gates.
+            </p>
+            <div class="mt-3 border border-[var(--ca-ink)]/30 bg-white/70 p-2 rounded text-[10px] ca-mono">
+              <code>Node: Dispatcher → ToolChainer</code>
+            </div>
+            <div class="mt-2 flex gap-1">
+              <span class="ca-chamfer-tag text-[9px] bg-white font-bold">LANGGRAPH</span>
+              <span class="ca-chamfer-tag text-[9px] bg-white font-bold">MULTI-AGENT</span>
+            </div>
+          </div>
+
+          <!-- Card 2: ADHD Skill Tree -->
+          <div class="draggable-card absolute w-80 p-5 rotate-3 border-2 border-[var(--ca-ink)] shadow-[4px_4px_0_var(--ca-ink)]" style="background-color:var(--ca-yellow-soft); left: 38%; top: 4%;">
+            <span aria-hidden="true" class="ca-tape-strip absolute -right-3 -top-2.5 z-10 h-5 w-16 rotate-[35deg] bg-white/70 shadow-sm"></span>
+            <span class="ca-mono text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]/70">LAB 02 // BEHAVIORAL</span>
+            <h3 class="mt-1 text-lg font-bold text-[var(--ca-ink)]">Skill Tree Progression</h3>
+            <p class="mt-1 text-xs leading-relaxed text-[var(--ca-ink)]/80">
+              Micro-action habit tracker unlocking competencies for Task Initiation, Time Horizon, and Impulse Resilience.
+            </p>
+            <div class="mt-3 border border-[var(--ca-ink)]/30 bg-white/70 p-2 rounded text-[10px] ca-mono">
+              <code>XP: +25 [Focus Block] → LVL 3 Node</code>
+            </div>
+            <div class="mt-2 flex gap-1">
+              <span class="ca-chamfer-tag text-[9px] bg-white font-bold">PWA</span>
+              <span class="ca-chamfer-tag text-[9px] bg-white font-bold">OFFLINE FSM</span>
+            </div>
+          </div>
+
+          <!-- Card 3: QA Ready Gate Matrix -->
+          <div class="draggable-card absolute w-80 p-5 -rotate-3 border-2 border-[var(--ca-ink)] shadow-[4px_4px_0_var(--ca-ink)]" style="background-color:var(--ca-purple); left: 69%; top: 12%;">
+            <span aria-hidden="true" class="ca-tape-strip absolute -left-3 -top-2.5 z-10 h-5 w-16 -rotate-[35deg] bg-white/70 shadow-sm"></span>
+            <span class="ca-mono text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]/70">LAB 03 // QA GATES</span>
+            <h3 class="mt-1 text-lg font-bold text-[var(--ca-ink)]">10-Point Release Gate</h3>
+            <p class="mt-1 text-xs leading-relaxed text-[var(--ca-ink)]/80">
+              Interactive readiness checklist enforcing shift-left QA prior to sprint code freezes and production pushes.
+            </p>
+            <div class="mt-3 border border-[var(--ca-ink)]/30 bg-white/70 p-2 rounded text-[10px] ca-mono">
+              <code>[PASS] Smoke E2E · Hotfixes &lt; 0</code>
+            </div>
+            <div class="mt-2 flex gap-1">
+              <span class="ca-chamfer-tag text-[9px] bg-white font-bold">CI/CD</span>
+              <span class="ca-chamfer-tag text-[9px] bg-white font-bold">QUALITY GATE</span>
+            </div>
+          </div>
+
+          <!-- Card 4: F&B Anomaly Detection -->
+          <div class="draggable-card absolute w-80 p-5 rotate-2 border-2 border-[var(--ca-ink)] shadow-[4px_4px_0_var(--ca-ink)]" style="background-color:var(--ca-mint); left: 8%; top: 52%;">
+            <span aria-hidden="true" class="ca-tape-strip absolute -right-3 -top-2.5 z-10 h-5 w-16 rotate-[35deg] bg-white/70 shadow-sm"></span>
+            <span class="ca-mono text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]/70">LAB 04 // CV TELEMETRY</span>
+            <h3 class="mt-1 text-lg font-bold text-[var(--ca-ink)]">CCTV Anomaly Rules</h3>
+            <p class="mt-1 text-xs leading-relaxed text-[var(--ca-ink)]/80">
+              Real-time rule engine mapping queue depth and table vacancy latency to automated manager floor alerts.
+            </p>
+            <div class="mt-3 border border-[var(--ca-ink)]/30 bg-white/70 p-2 rounded text-[10px] ca-mono">
+              <code>Latency &gt; 180s → Table Clean Alert</code>
+            </div>
+            <div class="mt-2 flex gap-1">
+              <span class="ca-chamfer-tag text-[9px] bg-white font-bold">CV MODEL</span>
+              <span class="ca-chamfer-tag text-[9px] bg-white font-bold">OPERATIONS</span>
+            </div>
+          </div>
+
+          <!-- Card 5: Sprint Velocity Meter -->
+          <div class="draggable-card absolute w-80 p-5 -rotate-1 border-2 border-[var(--ca-ink)] shadow-[4px_4px_0_var(--ca-ink)]" style="background-color:var(--ca-pink-soft); left: 39%; top: 54%;">
+            <span aria-hidden="true" class="ca-tape-strip absolute -left-3 -top-2.5 z-10 h-5 w-16 -rotate-[35deg] bg-white/70 shadow-sm"></span>
+            <span class="ca-mono text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]/70">LAB 05 // AGILE SCRUM</span>
+            <h3 class="mt-1 text-lg font-bold text-[var(--ca-ink)]">Sprint Velocity &amp; CFD</h3>
+            <p class="mt-1 text-xs leading-relaxed text-[var(--ca-ink)]/80">
+              Cumulative Flow Diagram generator parsing Jira tickets to detect WIP bottlenecks and dependency drift early.
+            </p>
+            <div class="mt-3 border border-[var(--ca-ink)]/30 bg-white/70 p-2 rounded text-[10px] ca-mono">
+              <code>WIP Limit: 4 · Cycle Time: 1.8 Days</code>
+            </div>
+            <div class="mt-2 flex gap-1">
+              <span class="ca-chamfer-tag text-[9px] bg-white font-bold">BURNDOWN</span>
+              <span class="ca-chamfer-tag text-[9px] bg-white font-bold">CFD TELEMETRY</span>
+            </div>
+          </div>
+
+          <!-- Card 6: Affiliate Video Matrix -->
+          <div class="draggable-card absolute w-80 p-5 rotate-4 border-2 border-[var(--ca-ink)] shadow-[4px_4px_0_var(--ca-ink)]" style="background-color:var(--ca-yellow); left: 70%; top: 48%;">
+            <span aria-hidden="true" class="ca-tape-strip absolute -right-3 -top-2.5 z-10 h-5 w-16 rotate-[35deg] bg-white/70 shadow-sm"></span>
+            <span class="ca-mono text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]/70">LAB 06 // AUTOMATION</span>
+            <h3 class="mt-1 text-lg font-bold text-[var(--ca-ink)]">Hook Permutation Engine</h3>
+            <p class="mt-1 text-xs leading-relaxed text-[var(--ca-ink)]/80">
+              Script generator combining 50 hook openings with catalog value propositions for automated batch video testing.
+            </p>
+            <div class="mt-3 border border-[var(--ca-ink)]/30 bg-white/70 p-2 rounded text-[10px] ca-mono">
+              <code>Variants: 120 Rendered · Conv: +22%</code>
+            </div>
+            <div class="mt-2 flex gap-1">
+              <span class="ca-chamfer-tag text-[9px] bg-white font-bold">FFMPEG</span>
+              <span class="ca-chamfer-tag text-[9px] bg-white font-bold">GROWTH OPS</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Floating Zoom & Reset Toolbar -->
+        <div class="absolute bottom-6 right-6 z-40 flex flex-col gap-2">
+          <button id="zoomInBtn" aria-label="Zoom in" title="Zoom in" class="ca-mono flex h-11 w-11 items-center justify-center border-2 border-[var(--ca-ink)] bg-[var(--ca-surface)] text-xl font-bold text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white shadow-[2px_2px_0_var(--ca-ink)] active:translate-x-0.5 active:translate-y-0.5">+</button>
+          <button id="zoomOutBtn" aria-label="Zoom out" title="Zoom out" class="ca-mono flex h-11 w-11 items-center justify-center border-2 border-[var(--ca-ink)] bg-[var(--ca-surface)] text-xl font-bold text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white shadow-[2px_2px_0_var(--ca-ink)] active:translate-x-0.5 active:translate-y-0.5">−</button>
+          <button id="zoomResetBtn" aria-label="Reset layout" title="Reset layout" class="ca-mono flex h-11 w-11 items-center justify-center border-2 border-[var(--ca-ink)] bg-[var(--ca-yellow)] text-sm font-bold text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-magenta)] hover:text-white shadow-[2px_2px_0_var(--ca-ink)] active:translate-x-0.5 active:translate-y-0.5">↺</button>
+        </div>
+      </div>
+
+      <!-- MOBILE RESPONSIVE FALLBACK GRID -->
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:hidden">
+
+        <!-- Card 1: Hermes Agent Canvas -->
+        <div class="ca-reveal relative p-6 -rotate-1 border-2 border-[var(--ca-ink)] shadow-[4px_4px_0_var(--ca-ink)] hover-lift" style="background-color:var(--ca-cyan)" data-delay="0.1">
+          <span aria-hidden="true" class="ca-tape-strip absolute -left-3 -top-2.5 z-10 h-5 w-16 -rotate-[35deg] bg-white/70 shadow-sm"></span>
+          <span class="ca-mono text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]/70">LAB 01 // AGENTS</span>
+          <h3 class="mt-2 text-xl font-bold text-[var(--ca-ink)]">Hermes Agent Graph</h3>
+          <p class="mt-2 text-xs leading-relaxed text-[var(--ca-ink)]/80">
+            A visual multi-agent workflow board with step-by-step inspector, tool mutation history, and human-in-the-loop gates.
+          </p>
+          <div class="mt-4 border border-[var(--ca-ink)]/30 bg-white/70 p-2.5 rounded text-[11px] ca-mono">
+            <code>Node: Dispatcher → ToolChainer → MemoryCheck</code>
+          </div>
+          <div class="mt-3 flex gap-1">
+            <span class="ca-chamfer-tag text-[9px] bg-white font-bold">STATE GRAPH</span>
+            <span class="ca-chamfer-tag text-[9px] bg-white font-bold">LANGGRAPH</span>
+          </div>
+        </div>
+
+        <!-- Card 2: ADHD Skill Tree -->
+        <div class="ca-reveal relative p-6 rotate-2 border-2 border-[var(--ca-ink)] shadow-[4px_4px_0_var(--ca-ink)] hover-lift" style="background-color:var(--ca-yellow-soft)" data-delay="0.15">
+          <span aria-hidden="true" class="ca-tape-strip absolute -right-3 -top-2.5 z-10 h-5 w-16 rotate-[35deg] bg-white/70 shadow-sm"></span>
+          <span class="ca-mono text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]/70">LAB 02 // BEHAVIORAL</span>
+          <h3 class="mt-2 text-xl font-bold text-[var(--ca-ink)]">Skill Tree Progression</h3>
+          <p class="mt-2 text-xs leading-relaxed text-[var(--ca-ink)]/80">
+            Micro-action habit tracker that unlocks node competencies for Task Initiation, Time Horizon, and Impulse Resilience.
+          </p>
+          <div class="mt-4 border border-[var(--ca-ink)]/30 bg-white/70 p-2.5 rounded text-[11px] ca-mono">
+            <code>XP: +25 [Focus Block] → Unlocked Level 3 Node</code>
+          </div>
+          <div class="mt-3 flex gap-1">
+            <span class="ca-chamfer-tag text-[9px] bg-white font-bold">PWA</span>
+            <span class="ca-chamfer-tag text-[9px] bg-white font-bold">OFFLINE FSM</span>
+          </div>
+        </div>
+
+        <!-- Card 3: QA Ready Gate Matrix -->
+        <div class="ca-reveal relative p-6 -rotate-2 border-2 border-[var(--ca-ink)] shadow-[4px_4px_0_var(--ca-ink)] hover-lift" style="background-color:var(--ca-purple)" data-delay="0.2">
+          <span aria-hidden="true" class="ca-tape-strip absolute -left-3 -top-2.5 z-10 h-5 w-16 -rotate-[35deg] bg-white/70 shadow-sm"></span>
+          <span class="ca-mono text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]/70">LAB 03 // QA GATES</span>
+          <h3 class="mt-2 text-xl font-bold text-[var(--ca-ink)]">10-Point Release Gate</h3>
+          <p class="mt-2 text-xs leading-relaxed text-[var(--ca-ink)]/80">
+            Interactive readiness criteria checklist enforcing shift-left QA prior to sprint code freezes and production pushes.
+          </p>
+          <div class="mt-4 border border-[var(--ca-ink)]/30 bg-white/70 p-2.5 rounded text-[11px] ca-mono">
+            <code>[PASS] Smoke E2E · [PASS] Hotfix Regression &lt; 0</code>
+          </div>
+          <div class="mt-3 flex gap-1">
+            <span class="ca-chamfer-tag text-[9px] bg-white font-bold">CI/CD</span>
+            <span class="ca-chamfer-tag text-[9px] bg-white font-bold">QUALITY GATE</span>
+          </div>
+        </div>
+
+        <!-- Card 4: F&B Anomaly Detection -->
+        <div class="ca-reveal relative p-6 rotate-1 border-2 border-[var(--ca-ink)] shadow-[4px_4px_0_var(--ca-ink)] hover-lift" style="background-color:var(--ca-mint)" data-delay="0.25">
+          <span aria-hidden="true" class="ca-tape-strip absolute -right-3 -top-2.5 z-10 h-5 w-16 rotate-[35deg] bg-white/70 shadow-sm"></span>
+          <span class="ca-mono text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]/70">LAB 04 // CV TELEMETRY</span>
+          <h3 class="mt-2 text-xl font-bold text-[var(--ca-ink)]">CCTV Anomaly Rules</h3>
+          <p class="mt-2 text-xs leading-relaxed text-[var(--ca-ink)]/80">
+            Real-time rule engine mapping customer queue depth and table vacancy latency to automated manager floor dispatch.
+          </p>
+          <div class="mt-4 border border-[var(--ca-ink)]/30 bg-white/70 p-2.5 rounded text-[11px] ca-mono">
+            <code>Latency &gt; 180s → Trigger: Table Clean Alert</code>
+          </div>
+          <div class="mt-3 flex gap-1">
+            <span class="ca-chamfer-tag text-[9px] bg-white font-bold">CV MODEL</span>
+            <span class="ca-chamfer-tag text-[9px] bg-white font-bold">B2B SAAS</span>
+          </div>
+        </div>
+
+        <!-- Card 5: Sprint Velocity Meter -->
+        <div class="ca-reveal relative p-6 -rotate-1 border-2 border-[var(--ca-ink)] shadow-[4px_4px_0_var(--ca-ink)] hover-lift" style="background-color:var(--ca-pink-soft)" data-delay="0.3">
+          <span aria-hidden="true" class="ca-tape-strip absolute -left-3 -top-2.5 z-10 h-5 w-16 -rotate-[35deg] bg-white/70 shadow-sm"></span>
+          <span class="ca-mono text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]/70">LAB 05 // AGILE SCRUM</span>
+          <h3 class="mt-2 text-xl font-bold text-[var(--ca-ink)]">Sprint Velocity &amp; CFD</h3>
+          <p class="mt-2 text-xs leading-relaxed text-[var(--ca-ink)]/80">
+            Cumulative Flow Diagram generator parsing Jira export tickets to detect work-in-progress (WIP) bottlenecks early.
+          </p>
+          <div class="mt-4 border border-[var(--ca-ink)]/30 bg-white/70 p-2.5 rounded text-[11px] ca-mono">
+            <code>WIP Limit: 4 Tasks · Cycle Time: 1.8 Days</code>
+          </div>
+          <div class="mt-3 flex gap-1">
+            <span class="ca-chamfer-tag text-[9px] bg-white font-bold">BURNDOWN</span>
+            <span class="ca-chamfer-tag text-[9px] bg-white font-bold">CFD TELEMETRY</span>
+          </div>
+        </div>
+
+        <!-- Card 6: Affiliate Video Matrix -->
+        <div class="ca-reveal relative p-6 rotate-2 border-2 border-[var(--ca-ink)] shadow-[4px_4px_0_var(--ca-ink)] hover-lift" style="background-color:var(--ca-yellow)" data-delay="0.35">
+          <span aria-hidden="true" class="ca-tape-strip absolute -right-3 -top-2.5 z-10 h-5 w-16 rotate-[35deg] bg-white/70 shadow-sm"></span>
+          <span class="ca-mono text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]/70">LAB 06 // AUTOMATION</span>
+          <h3 class="mt-2 text-xl font-bold text-[var(--ca-ink)]">Hook Permutation Engine</h3>
+          <p class="mt-2 text-xs leading-relaxed text-[var(--ca-ink)]/80">
+            Script generator combining 50 hook openings with catalog value propositions for automated short-form video batch testing.
+          </p>
+          <div class="mt-4 border border-[var(--ca-ink)]/30 bg-white/70 p-2.5 rounded text-[11px] ca-mono">
+            <code>Variants: 120 Rendered · Conversion: +22%</code>
+          </div>
+          <div class="mt-3 flex gap-1">
+            <span class="ca-chamfer-tag text-[9px] bg-white font-bold">FFMPEG</span>
+            <span class="ca-chamfer-tag text-[9px] bg-white font-bold">GROWTH OPS</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Builder Motto Sticky Tape Canvas -->
+      <div class="mt-16 text-center">
+        <div class="inline-block relative max-w-2xl -rotate-1 border-2 border-[var(--ca-ink)] bg-white p-8 shadow-[4px_4px_0_var(--ca-ink)] hover-lift">
+          <span aria-hidden="true" class="ca-tape-strip absolute -left-4 -top-3 z-10 h-5 w-20 -rotate-[35deg] bg-[var(--ca-cyan)]/70 shadow-sm"></span>
+          <span aria-hidden="true" class="ca-tape-strip absolute -right-4 -top-3 z-10 h-5 w-20 rotate-[35deg] bg-[var(--ca-magenta)]/70 shadow-sm"></span>
+          <p class="ca-hand text-3xl sm:text-4xl text-[var(--ca-ink)]" data-i18n="playground.motto">
+            "Questions before code. Test every edge case. Ship with the team."
+          </p>
+          <p class="ca-mono mt-3 text-xs uppercase font-bold tracking-widest text-[var(--ca-gray)]">
+            — Duong Nguyen // Product &amp; Agile Discipline
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       SITE FOOTER
+       ========================================================================== -->
+  <footer class="ca-grid relative border-t-2 border-[var(--ca-ink)]">
+    <svg viewBox="0 0 1440 130" fill="none" preserveAspectRatio="none" class="h-16 w-full sm:h-24" aria-hidden="true">
+      <path d="M-10 120C420 10 1030 4 1450 80" stroke="var(--ca-tick)" stroke-width="1.5"></path>
+    </svg>
+    <div class="px-4 pb-10 pt-6 sm:px-8 lg:px-20">
+      <div class="flex flex-col justify-between gap-10 md:flex-row md:items-end">
+        <div>
+          <p class="ca-display text-6xl uppercase leading-none tracking-tight text-[var(--ca-ink)] sm:text-8xl">
+            Duong Nguyen
+          </p>
+          <p class="ca-mono mt-4 inline-flex items-center gap-2.5 text-sm font-bold uppercase tracking-[0.2em] text-[var(--ca-ink)]">
+            <span class="h-3 w-3 rounded-full bg-[var(--ca-blue)]"></span>
+            <span data-i18n="footer.role">Product, Agile, AI Builder</span>
+          </p>
+        </div>
+        <div class="flex flex-col items-start gap-5 md:items-end">
+          <nav class="flex flex-wrap gap-1 ca-mono">
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white" href="index.html" data-i18n="nav.home">Home</a>
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white" href="about.html" data-i18n="nav.about">About</a>
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white" href="case-studies.html" data-i18n="nav.projects">Projects</a>
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors bg-[var(--ca-yellow)]" href="playground.html" data-i18n="nav.playground">Playground</a>
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white" href="contact.html" data-i18n="nav.cta">Contact</a>
+          </nav>
+        </div>
+      </div>
+      <div class="mt-12 flex flex-col items-center justify-between gap-3 text-sm text-[var(--ca-ink)]/70 sm:flex-row">
+        <span>© 2026 Duong Nguyen · Built with craft &amp; discipline</span>
+        <span class="ca-mono text-xs uppercase font-bold tracking-wider" data-i18n="footer.loop">✦ BUILD, LEARN, SHIP, REPEAT</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

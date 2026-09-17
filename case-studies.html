@@ -1,0 +1,528 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects & Case Studies | Duong Nguyen</title>
+  <meta name="description" content="Featured Works & Case Studies by Duong Nguyen - Product Builder, Agile Coordinator & AI Builder.">
+
+  <!-- Google Fonts: Patrick Hand & Caveat for Vietnamese handwriting, Handjet, DM Mono, Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Handjet:wght@400..900&family=Inter:wght@300;400;500;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/handjet.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="t-creative-artsy t-authkit bg-[var(--ca-surface)] text-[var(--ca-ink)] antialiased selection:bg-[var(--ca-yellow)] selection:text-[var(--ca-ink)]">
+
+  <!-- ==========================================================================
+       SITE HEADER
+       ========================================================================== -->
+  <header class="sticky top-0 z-50 px-3 pt-3 sm:px-6">
+    <div class="mx-auto flex max-w-6xl items-center justify-between border-2 border-[var(--ca-ink)] bg-white px-3 shadow-[2.5px_2.5px_0_rgba(25,21,16,0.35)] rounded-full">
+      <div class="flex items-center gap-4">
+        <!-- Pink Smiley Vector Logo with Animated Blinking Eyes -->
+        <a aria-label="Home" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-white shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:rotate-12 hover-wiggle" style="background-color:var(--ca-magenta)" href="index.html">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-white" aria-hidden="true">
+            <g class="ca-blink">
+              <circle cx="8" cy="9" r="1.5"></circle>
+              <circle cx="16" cy="9" r="1.5"></circle>
+            </g>
+            <path d="M8 14Q12 18 16 14" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+        </a>
+
+        <!-- Pill Desktop Navigation -->
+        <nav class="hidden items-stretch md:flex">
+          <a class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]" href="index.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
+              <path d="M12 2l2.9 6.26 6.85.72-5.1 4.62 1.44 6.7L12 17.6l-6.09 3.7 1.44-6.7-5.1-4.62 6.85-.72z"></path>
+            </svg>
+            <span data-i18n="nav.home">Home</span>
+          </a>
+
+          <a class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]" href="about.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
+              <path d="M12 3a3.6 3.6 0 100 7.2A3.6 3.6 0 0012 3zM4.8 20a7.2 7.2 0 0114.4 0z"></path>
+            </svg>
+            <span data-i18n="nav.about">About</span>
+          </a>
+
+          <a aria-current="page" class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors bg-[var(--ca-yellow)]" href="case-studies.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
+              <path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"></path>
+            </svg>
+            <span data-i18n="nav.projects">Projects</span>
+          </a>
+
+          <a class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]" href="playground.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
+              <path d="M12 2l10 10-10 10L2 12z"></path>
+            </svg>
+            <span data-i18n="nav.playground">Playground</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Header Actions: Language Switcher, Social, Contact -->
+      <div class="flex items-center gap-2 py-2 sm:gap-3">
+        <!-- Interactive EN/VI Language Switcher -->
+        <div class="flex items-center rounded-full border-2 border-[var(--ca-ink)] bg-white p-1 text-xs font-bold ca-mono">
+          <button type="button" id="lang-en" data-lang="en" class="lang-btn rounded-full px-2.5 py-1 uppercase transition-colors bg-[var(--ca-yellow)] text-[var(--ca-ink)]">
+            EN
+          </button>
+          <button type="button" id="lang-vi" data-lang="vi" class="lang-btn rounded-full px-2.5 py-1 uppercase transition-colors text-[var(--ca-ink)]/60 hover:text-[var(--ca-ink)]">
+            VI
+          </button>
+        </div>
+
+        <!-- Social Icons -->
+        <a aria-label="LinkedIn" class="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white text-[var(--ca-ink)] shadow-[1px_1px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5" style="background-color:var(--ca-yellow)" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"></path></svg>
+        </a>
+        <a aria-label="GitHub" class="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white text-white shadow-[1px_1px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5" style="background-color:var(--ca-magenta)" href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"></path></svg>
+        </a>
+        <a aria-label="Email" class="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white text-white shadow-[1px_1px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5" style="background-color:var(--ca-green)" href="mailto:duong.pm.qa@gmail.com">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+        </a>
+
+        <!-- Pill Contact CTA -->
+        <a class="ca-mono hidden items-center gap-2 rounded-full border-2 border-[var(--ca-ink)] bg-white px-4 py-2 text-xs font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[2px_2px_0_var(--ca-ink)] transition-transform hover:-translate-y-0.5 sm:inline-flex" href="contact.html">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-3.5 w-3.5 text-[var(--ca-ink)]" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+          <span data-i18n="nav.cta">Contact</span>
+        </a>
+
+        <!-- Mobile Nav Hamburger -->
+        <button id="mobileNavToggle" aria-label="Toggle Navigation" aria-expanded="false" class="flex h-10 w-10 items-center justify-center rounded-md border-2 border-[var(--ca-ink)] bg-white md:hidden">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="h-5 w-5 text-[var(--ca-ink)]"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Dropdown -->
+    <div id="mobileNavMenu" class="hidden mx-auto mt-2 max-w-6xl rounded-2xl border-2 border-[var(--ca-ink)] bg-white p-4 shadow-[4px_4px_0_var(--ca-ink)] md:hidden">
+      <nav class="flex flex-col gap-2 ca-mono text-sm font-bold uppercase tracking-wider">
+        <a class="p-2 hover:bg-[var(--ca-yellow)] rounded" href="index.html" data-i18n="nav.home">Home</a>
+        <a class="p-2 hover:bg-[var(--ca-yellow)] rounded" href="about.html" data-i18n="nav.about">About</a>
+        <a class="p-2 bg-[var(--ca-yellow)] rounded" href="case-studies.html" data-i18n="nav.projects">Projects</a>
+        <a class="p-2 hover:bg-[var(--ca-yellow)] rounded" href="playground.html" data-i18n="nav.playground">Playground</a>
+        <a class="p-2 hover:bg-[var(--ca-yellow)] rounded" href="contact.html" data-i18n="nav.cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN CONTENT: FEATURED WORKS (2-COLUMN GRID OF ALL 8 PROJECTS)
+       ========================================================================== -->
+  <main class="px-4 pb-24 pt-10 sm:px-8 lg:px-20">
+    <div class="mx-auto max-w-6xl">
+      <!-- Title Header -->
+      <div class="mb-14">
+        <p class="ca-hand text-2xl text-[var(--ca-ink)] sm:text-3xl" data-i18n="case.label">explore my work!</p>
+        <span class="mt-3 inline-block">
+          <span class="ca-display text-6xl leading-[0.92] tracking-tight text-[var(--ca-ink)] sm:text-8xl xl:text-[10rem] ca-stagger-text" data-stagger-text="true" data-stagger="0.04">
+            FEATURED WORKS
+          </span>
+        </span>
+      </div>
+
+      <!-- ======================================================================
+           SECTION 1: FEATURED SHIPPED PRODUCTS (3 CARDS)
+           ====================================================================== -->
+      <section id="shipped-products" class="mb-20">
+        <!-- Section Header Banner -->
+        <div class="mb-8 flex flex-col items-start gap-2 border-b-2 border-[var(--ca-ink)]/20 pb-4">
+          <div class="flex items-center gap-2">
+            <span class="ca-mono inline-block -rotate-1 bg-[var(--ca-yellow)] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[var(--ca-ink)] stamp-wavy-1" data-i18n="case.sec1Badge">
+              3 Shipped Products
+            </span>
+          </div>
+          <h2 class="text-3xl font-bold tracking-tight text-[var(--ca-ink)] sm:text-4xl" data-i18n="case.sec1Title">
+            Featured Shipped Products
+          </h2>
+          <p class="text-sm text-[var(--ca-ink)]/75 sm:text-base max-w-2xl leading-relaxed" data-i18n="case.sec1Desc">
+            Production-tested applications with live user flows, deterministic rule engines, and measurable outcomes.
+          </p>
+        </div>
+
+        <!-- 3-Column Grid of Shipped Products -->
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+          <!-- 01: ADHD -->
+          <div class="ca-reveal group block" data-delay="0.1">
+            <a href="case-study.html?id=adhd" class="block">
+              <div class="flex">
+                <span class="ca-mono inline-flex items-center gap-2 py-3 pl-5 pr-8 text-xs font-bold uppercase tracking-wider text-white card-tab-first" style="background-color:var(--ca-blue)">
+                  <span class="h-2 w-2 rounded-full bg-white"></span>
+                  <span data-i18n="tab.p01">Project 01 // Live PWA</span>
+                </span>
+              </div>
+              <div class="border-2 border-[var(--ca-ink)] p-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-[5px_5px_0_var(--ca-ink)] bg-white">
+                <div class="relative overflow-hidden bg-[#faf9f5] border border-[var(--ca-tick)] aspect-[16/10] w-full p-4 flex flex-col justify-center items-center text-center">
+                  <span class="ca-mono text-[11px] font-bold uppercase tracking-wider text-[var(--ca-ink)]/70 mb-2">[ Project Blueprint Preview ]</span>
+                  <div class="w-full rounded border border-[var(--ca-tick)]/60 bg-white p-2 text-left ca-mono text-[10px]">
+                    <span class="text-[var(--ca-gray)]">FLOW:</span> Check-in → Capacity Rule → Action Engine → Skill XP
+                  </div>
+                  <span class="absolute right-3 top-3 ca-chamfer-tag bg-[var(--ca-blue)] text-white text-[10px] font-bold">LIVE PWA</span>
+                </div>
+                <div class="pt-4">
+                  <h3 class="text-xl font-bold tracking-tight text-[var(--ca-ink)] group-hover:text-[var(--ca-blue)] transition-colors sm:text-2xl" data-i18n="p1.title">
+                    ADHD Behavioral Support
+                  </h3>
+                  <p class="mt-2 text-xs leading-relaxed text-[var(--ca-ink)]/75 sm:text-sm line-clamp-3" data-i18n="p1.dossierSummary">
+                    A behavioral support system designed for executive dysfunction: eliminates decision paralysis and initiates micro-actions through Skill Tree progression.
+                  </p>
+                  <div class="mt-3 flex flex-wrap gap-1.5">
+                    <span class="ca-chamfer-tag text-[10px] bg-[#fbfaf6] border border-[var(--ca-tick)] font-bold">BEHAVIORAL</span>
+                    <span class="ca-chamfer-tag text-[10px] bg-[#fbfaf6] border border-[var(--ca-tick)] font-bold">RULE ENGINE</span>
+                    <span class="ca-chamfer-tag text-[10px] bg-[#fbfaf6] border border-[var(--ca-tick)] font-bold">OFFLINE PWA</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- 02: COSPLAY -->
+          <div class="ca-reveal group block" data-delay="0.15">
+            <a href="case-study.html?id=cosplay" class="block">
+              <div class="flex">
+                <span class="ca-mono inline-flex items-center gap-2 py-3 pl-5 pr-8 text-xs font-bold uppercase tracking-wider text-white card-tab-first" style="background-color:var(--ca-orange)">
+                  <span class="h-2 w-2 rounded-full bg-white"></span>
+                  <span data-i18n="tab.p02">Project 02 // Marketplace</span>
+                </span>
+              </div>
+              <div class="border-2 border-[var(--ca-ink)] p-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-[5px_5px_0_var(--ca-ink)] bg-white">
+                <div class="relative overflow-hidden bg-[#faf9f5] border border-[var(--ca-tick)] aspect-[16/10] w-full p-4 flex flex-col justify-center items-center text-center">
+                  <span class="ca-mono text-[11px] font-bold uppercase tracking-wider text-[var(--ca-ink)]/70 mb-2">[ Project Blueprint Preview ]</span>
+                  <div class="w-full rounded border border-[var(--ca-tick)]/60 bg-white p-2 text-left ca-mono text-[10px]">
+                    <span class="text-[var(--ca-gray)]">FLOW:</span> Item Verification → Escrow Hold → Return Audit → Payout
+                  </div>
+                  <span class="absolute right-3 top-3 ca-chamfer-tag bg-[var(--ca-orange)] text-white text-[10px] font-bold">MARKETPLACE</span>
+                </div>
+                <div class="pt-4">
+                  <h3 class="text-xl font-bold tracking-tight text-[var(--ca-ink)] group-hover:text-[var(--ca-orange)] transition-colors sm:text-2xl" data-i18n="p3.title">
+                    Cosplay Rental Marketplace
+                  </h3>
+                  <p class="mt-2 text-xs leading-relaxed text-[var(--ca-ink)]/75 sm:text-sm line-clamp-3" data-i18n="p3.dossierSummary">
+                    A multi-role rental marketplace solving trust, deposit disputes, and damage tracking for high-value costume rentals.
+                  </p>
+                  <div class="mt-3 flex flex-wrap gap-1.5">
+                    <span class="ca-chamfer-tag text-[10px] bg-[#fbfaf6] border border-[var(--ca-tick)] font-bold">MULTI-ROLE</span>
+                    <span class="ca-chamfer-tag text-[10px] bg-[#fbfaf6] border border-[var(--ca-tick)] font-bold">ESCROW</span>
+                    <span class="ca-chamfer-tag text-[10px] bg-[#fbfaf6] border border-[var(--ca-tick)] font-bold">AUDIT STATE</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- 03: AUCTION -->
+          <div class="ca-reveal group block" data-delay="0.2">
+            <a href="case-study.html?id=auction" class="block">
+              <div class="flex">
+                <span class="ca-mono inline-flex items-center gap-2 py-3 pl-5 pr-8 text-xs font-bold uppercase tracking-wider text-white card-tab-first" style="background-color:var(--ca-magenta)">
+                  <span class="h-2 w-2 rounded-full bg-white"></span>
+                  <span data-i18n="tab.p03">Project 03 // Realtime FinTech</span>
+                </span>
+              </div>
+              <div class="border-2 border-[var(--ca-ink)] p-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-[5px_5px_0_var(--ca-ink)] bg-white">
+                <div class="relative overflow-hidden bg-[#faf9f5] border border-[var(--ca-tick)] aspect-[16/10] w-full p-4 flex flex-col justify-center items-center text-center">
+                  <span class="ca-mono text-[11px] font-bold uppercase tracking-wider text-[var(--ca-ink)]/70 mb-2">[ Project Blueprint Preview ]</span>
+                  <div class="w-full rounded border border-[var(--ca-tick)]/60 bg-white p-2 text-left ca-mono text-[10px]">
+                    <span class="text-[var(--ca-gray)]">FLOW:</span> Concurrent Bid → WebSocket Lock → Optimistic UI → Settlement
+                  </div>
+                  <span class="absolute right-3 top-3 ca-chamfer-tag bg-[var(--ca-magenta)] text-white text-[10px] font-bold">CONCURRENCY</span>
+                </div>
+                <div class="pt-4">
+                  <h3 class="text-xl font-bold tracking-tight text-[var(--ca-ink)] group-hover:text-[var(--ca-magenta)] transition-colors sm:text-2xl" data-i18n="p4.title">
+                    Realtime Auction Platform QA & Spec
+                  </h3>
+                  <p class="mt-2 text-xs leading-relaxed text-[var(--ca-ink)]/75 sm:text-sm line-clamp-3" data-i18n="p4.dossierSummary">
+                    Full-lifecycle specification and concurrency QA for sub-second bidding under heavy latency and race conditions.
+                  </p>
+                  <div class="mt-3 flex flex-wrap gap-1.5">
+                    <span class="ca-chamfer-tag text-[10px] bg-[#fbfaf6] border border-[var(--ca-tick)] font-bold">RACE CONDITION</span>
+                    <span class="ca-chamfer-tag text-[10px] bg-[#fbfaf6] border border-[var(--ca-tick)] font-bold">WEBSOCKET</span>
+                    <span class="ca-chamfer-tag text-[10px] bg-[#fbfaf6] border border-[var(--ca-tick)] font-bold">STRESS TEST</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           SECTION 2: DELIVERY & QA MINDSET (2 CARDS)
+           ====================================================================== -->
+      <section id="operational-mindset" class="mb-20">
+        <!-- Section Header Banner -->
+        <div class="mb-8 flex flex-col items-start gap-2 border-b-2 border-[var(--ca-ink)]/20 pb-4">
+          <div class="flex items-center gap-2">
+            <span class="ca-mono inline-block rotate-1 bg-[var(--ca-mint)] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[var(--ca-ink)] stamp-wavy-2" data-i18n="case.sec2Badge">
+              2 Operational Mindsets
+            </span>
+          </div>
+          <h2 class="text-3xl font-bold tracking-tight text-[var(--ca-ink)] sm:text-4xl" data-i18n="case.sec2Title">
+            Delivery & QA Mindset
+          </h2>
+          <p class="text-sm text-[var(--ca-ink)]/75 sm:text-base max-w-2xl leading-relaxed" data-i18n="case.sec2Desc">
+            Translating messy standups into actionable delivery telemetry, and enforcing shift-left release gates with zero critical regressions.
+          </p>
+        </div>
+
+        <!-- 2-Column Grid of Mindset Systems -->
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+
+          <!-- 04: SCRUM TELEMETRY -->
+          <div class="ca-reveal group block" data-delay="0.1">
+            <a href="case-study.html?id=scrum" class="block">
+              <div class="flex">
+                <span class="ca-mono inline-flex items-center gap-2 py-3 pl-5 pr-8 text-xs font-bold uppercase tracking-wider text-[var(--ca-ink)] card-tab-first" style="background-color:var(--ca-mint)">
+                  <span class="h-2 w-2 rounded-full bg-[var(--ca-ink)]"></span>
+                  <span data-i18n="tab.m04">Mindset 04 // Delivery Telemetry</span>
+                </span>
+              </div>
+              <div class="border-2 border-[var(--ca-ink)] p-5 transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-[5px_5px_0_var(--ca-ink)] bg-white">
+                <div class="relative overflow-hidden bg-[#faf9f5] border border-[var(--ca-tick)] aspect-[16/9] w-full p-4 flex flex-col justify-center items-center text-center">
+                  <span class="ca-mono text-[11px] font-bold uppercase tracking-wider text-[var(--ca-ink)]/70 mb-2">[ Delivery Telemetry Pipeline ]</span>
+                  <div class="w-full rounded border border-[var(--ca-tick)]/60 bg-white p-2.5 text-left ca-mono text-[10px]">
+                    <span class="text-[var(--ca-gray)]">FLOW:</span> Daily Sync → AI Standup Extractor → Risk Detection → Delivery
+                  </div>
+                  <span class="absolute right-3 top-3 ca-chamfer-tag bg-[var(--ca-mint)] text-[var(--ca-ink)] text-[10px] font-bold border border-[var(--ca-ink)]">SCRUM MASTER</span>
+                </div>
+                <div class="pt-5">
+                  <h3 class="text-2xl font-bold tracking-tight text-[var(--ca-ink)] group-hover:text-[var(--ca-blue)] transition-colors sm:text-3xl" data-i18n="p5.title">
+                    Agile Delivery & Telemetry System
+                  </h3>
+                  <p class="mt-2 text-sm leading-relaxed text-[var(--ca-ink)]/75" data-i18n="p5.dossierSummary">
+                    A lightweight telemetry layer transforming messy daily standup text into structured sprint risk signals and actionable burndown insights.
+                  </p>
+                  <div class="mt-4 flex flex-wrap gap-1.5">
+                    <span class="ca-chamfer-tag text-[10px] bg-[#fbfaf6] border border-[var(--ca-tick)] font-bold">SCRUM MASTER</span>
+                    <span class="ca-chamfer-tag text-[10px] bg-[#fbfaf6] border border-[var(--ca-tick)] font-bold">AI TELEMETRY</span>
+                    <span class="ca-chamfer-tag text-[10px] bg-[#fbfaf6] border border-[var(--ca-tick)] font-bold">DELIVERY SPEED</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- 05: RELEASE GATES PIPELINE -->
+          <div class="ca-reveal group block" data-delay="0.15">
+            <a href="case-study.html?id=pipeline" class="block">
+              <div class="flex">
+                <span class="ca-mono inline-flex items-center gap-2 py-3 pl-5 pr-8 text-xs font-bold uppercase tracking-wider text-white card-tab-first" style="background-color:var(--ca-purple)">
+                  <span class="h-2 w-2 rounded-full bg-white"></span>
+                  <span data-i18n="tab.m05">Mindset 05 // Release Gates</span>
+                </span>
+              </div>
+              <div class="border-2 border-[var(--ca-ink)] p-5 transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-[5px_5px_0_var(--ca-ink)] bg-white">
+                <div class="relative overflow-hidden bg-[#faf9f5] border border-[var(--ca-tick)] aspect-[16/9] w-full p-4 flex flex-col justify-center items-center text-center">
+                  <span class="ca-mono text-[11px] font-bold uppercase tracking-wider text-[var(--ca-ink)]/70 mb-2">[ Quality Gate Architecture ]</span>
+                  <div class="w-full rounded border border-[var(--ca-tick)]/60 bg-white p-2.5 text-left ca-mono text-[10px]">
+                    <span class="text-[var(--ca-gray)]">FLOW:</span> Dev Hand-off → QA Ready Gate → Auto Smoke → Release Gate
+                  </div>
+                  <span class="absolute right-3 top-3 ca-chamfer-tag bg-[var(--ca-purple)] text-white text-[10px] font-bold">QA LEAD</span>
+                </div>
+                <div class="pt-5">
+                  <h3 class="text-2xl font-bold tracking-tight text-[var(--ca-ink)] group-hover:text-[var(--ca-purple)] transition-colors sm:text-3xl" data-i18n="p6.title">
+                    Pipeline QA → Release Workflow
+                  </h3>
+                  <p class="mt-2 text-sm leading-relaxed text-[var(--ca-ink)]/75" data-i18n="p6.dossierSummary">
+                    Eliminating end-of-sprint QA crunch by instituting QA Ready Gates, automated regression smokes, and clear release thresholds.
+                  </p>
+                  <div class="mt-4 flex flex-wrap gap-1.5">
+                    <span class="ca-chamfer-tag text-[10px] bg-[#fbfaf6] border border-[var(--ca-tick)] font-bold">PLAYWRIGHT</span>
+                    <span class="ca-chamfer-tag text-[10px] bg-[#fbfaf6] border border-[var(--ca-tick)] font-bold">CI/CD WORKFLOWS</span>
+                    <span class="ca-chamfer-tag text-[10px] bg-[#fbfaf6] border border-[var(--ca-tick)] font-bold">REGRESSION GATE</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           SECTION 3: EXPLORATORY LAB & IDEATION (3 CARDS)
+           ====================================================================== -->
+      <section id="exploratory-lab" class="mb-16">
+        <!-- Section Header Banner -->
+        <div class="mb-8 flex flex-col items-start gap-2 border-b-2 border-[var(--ca-ink)]/20 pb-4">
+          <div class="flex items-center gap-2">
+            <span class="ca-mono inline-block -rotate-1 bg-[var(--ca-cyan)] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[var(--ca-ink)] stamp-wavy-3" data-i18n="case.sec3Badge">
+              3 Exploratory Concepts
+            </span>
+          </div>
+          <h2 class="text-3xl font-bold tracking-tight text-[var(--ca-ink)] sm:text-4xl" data-i18n="case.sec3Title">
+            Exploratory Lab & Ideation
+          </h2>
+          <p class="text-sm text-[var(--ca-ink)]/75 sm:text-base max-w-2xl leading-relaxed" data-i18n="case.sec3Desc">
+            Forward-looking research prototypes: Computer Vision telemetry, Multi-Agent workspace, and automated growth engines.
+          </p>
+        </div>
+
+        <!-- 3-Column Grid of Ideation Concepts -->
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+          <!-- 06: FNB TELEMETRY -->
+          <div class="ca-reveal group block" data-delay="0.1">
+            <a href="case-study.html?id=fnb" class="block">
+              <div class="flex">
+                <span class="ca-mono inline-flex items-center gap-2 py-3 pl-5 pr-8 text-xs font-bold uppercase tracking-wider text-white card-tab-first" style="background-color:var(--ca-ink)">
+                  <span class="h-2 w-2 rounded-full bg-white"></span>
+                  <span data-i18n="tab.c06">Concept 06 // F&B Telemetry Lab</span>
+                </span>
+              </div>
+              <div class="border-2 border-[var(--ca-ink)] p-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-[5px_5px_0_var(--ca-ink)] bg-[#faf8f3]">
+                <div class="relative overflow-hidden bg-white border border-[var(--ca-tick)] aspect-[16/10] w-full p-4 flex flex-col justify-center items-center text-center">
+                  <span class="ca-mono text-[10px] font-bold uppercase tracking-wider text-[var(--ca-orange)] mb-2">[ Concept / Ideation ]</span>
+                  <div class="w-full rounded border border-[var(--ca-tick)]/60 bg-[#fbfaf6] p-2 text-left ca-mono text-[10px]">
+                    <span class="text-[var(--ca-gray)]">FLOW:</span> Camera Feed → CV Model → Event Stream → Floor Action
+                  </div>
+                  <span class="absolute right-3 top-3 ca-chamfer-tag bg-[var(--ca-ink)] text-white text-[10px] font-bold">B2B SAAS</span>
+                </div>
+                <div class="pt-4">
+                  <h3 class="text-xl font-bold tracking-tight text-[var(--ca-ink)] group-hover:text-[var(--ca-blue)] transition-colors sm:text-2xl" data-i18n="p2.title">
+                    AI Operations for Vietnamese F&B
+                  </h3>
+                  <p class="mt-2 text-xs leading-relaxed text-[var(--ca-ink)]/75 sm:text-sm line-clamp-3" data-i18n="p2.dossierSummary">
+                    Transforming surveillance cameras into structured operational telemetry: Event Detection → Anomaly Pipeline → Floor Action.
+                  </p>
+                  <div class="mt-3 flex flex-wrap gap-1.5">
+                    <span class="ca-chamfer-tag text-[10px] bg-white border border-[var(--ca-tick)] font-bold">COMPUTER VISION</span>
+                    <span class="ca-chamfer-tag text-[10px] bg-white border border-[var(--ca-tick)] font-bold">B2B SAAS</span>
+                    <span class="ca-chamfer-tag text-[10px] bg-white border border-[var(--ca-tick)] font-bold">TELEMETRY</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- 07: HERMES OS -->
+          <div class="ca-reveal group block" data-delay="0.15">
+            <a href="case-study.html?id=hermes" class="block">
+              <div class="flex">
+                <span class="ca-mono inline-flex items-center gap-2 py-3 pl-5 pr-8 text-xs font-bold uppercase tracking-wider text-white card-tab-first" style="background-color:var(--ca-orange)">
+                  <span class="h-2 w-2 rounded-full bg-white"></span>
+                  <span data-i18n="tab.c07">Concept 07 // Hermes Agentic OS</span>
+                </span>
+              </div>
+              <div class="border-2 border-[var(--ca-ink)] p-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-[5px_5px_0_var(--ca-ink)] bg-[#faf8f3]">
+                <div class="relative overflow-hidden bg-white border border-[var(--ca-tick)] aspect-[16/10] w-full p-4 flex flex-col justify-center items-center text-center">
+                  <span class="ca-mono text-[10px] font-bold uppercase tracking-wider text-[var(--ca-orange)] mb-2">[ Concept / Ideation ]</span>
+                  <div class="w-full rounded border border-[var(--ca-tick)]/60 bg-[#fbfaf6] p-2 text-left ca-mono text-[10px]">
+                    <span class="text-[var(--ca-gray)]">FLOW:</span> Intent Ingestion → Orchestrator → Agent Nodes → Audited Outcome
+                  </div>
+                  <span class="absolute right-3 top-3 ca-chamfer-tag bg-[var(--ca-orange)] text-white text-[10px] font-bold">AGENTS</span>
+                </div>
+                <div class="pt-4">
+                  <h3 class="text-xl font-bold tracking-tight text-[var(--ca-ink)] group-hover:text-[var(--ca-orange)] transition-colors sm:text-2xl" data-i18n="p7.title">
+                    Hermes Agentic OS
+                  </h3>
+                  <p class="mt-2 text-xs leading-relaxed text-[var(--ca-ink)]/75 sm:text-sm line-clamp-3" data-i18n="p7.dossierSummary">
+                    An experimental multi-agent workspace featuring visual orchestration boards, behavioral personas, and persistent memory graphs.
+                  </p>
+                  <div class="mt-3 flex flex-wrap gap-1.5">
+                    <span class="ca-chamfer-tag text-[10px] bg-white border border-[var(--ca-tick)] font-bold">MULTI-AGENT</span>
+                    <span class="ca-chamfer-tag text-[10px] bg-white border border-[var(--ca-tick)] font-bold">TOOL EXECUTION</span>
+                    <span class="ca-chamfer-tag text-[10px] bg-white border border-[var(--ca-tick)] font-bold">AGENTIC WORKFLOW</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- 08: AFFILIATE AUTOMATION -->
+          <div class="ca-reveal group block" data-delay="0.2">
+            <a href="case-study.html?id=affiliate" class="block">
+              <div class="flex">
+                <span class="ca-mono inline-flex items-center gap-2 py-3 pl-5 pr-8 text-xs font-bold uppercase tracking-wider text-white card-tab-first" style="background-color:var(--ca-magenta)">
+                  <span class="h-2 w-2 rounded-full bg-white"></span>
+                  <span data-i18n="tab.c08">Concept 08 // Content Automation</span>
+                </span>
+              </div>
+              <div class="border-2 border-[var(--ca-ink)] p-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-[5px_5px_0_var(--ca-ink)] bg-[#faf8f3]">
+                <div class="relative overflow-hidden bg-white border border-[var(--ca-tick)] aspect-[16/10] w-full p-4 flex flex-col justify-center items-center text-center">
+                  <span class="ca-mono text-[10px] font-bold uppercase tracking-wider text-[var(--ca-orange)] mb-2">[ Concept / Ideation ]</span>
+                  <div class="w-full rounded border border-[var(--ca-tick)]/60 bg-[#fbfaf6] p-2 text-left ca-mono text-[10px]">
+                    <span class="text-[var(--ca-gray)]">FLOW:</span> Product Catalog → Hook Matrix → Assembly → Conversion
+                  </div>
+                  <span class="absolute right-3 top-3 ca-chamfer-tag bg-[var(--ca-magenta)] text-white text-[10px] font-bold">GROWTH</span>
+                </div>
+                <div class="pt-4">
+                  <h3 class="text-xl font-bold tracking-tight text-[var(--ca-ink)] group-hover:text-[var(--ca-magenta)] transition-colors sm:text-2xl" data-i18n="p8.title">
+                    Growth Ops Affiliate Automation
+                  </h3>
+                  <p class="mt-2 text-xs leading-relaxed text-[var(--ca-ink)]/75 sm:text-sm line-clamp-3" data-i18n="p8.dossierSummary">
+                    End-to-end automated content factory connecting product telemetry to script hooks, video assembly, and conversion attribution.
+                  </p>
+                  <div class="mt-3 flex flex-wrap gap-1.5">
+                    <span class="ca-chamfer-tag text-[10px] bg-white border border-[var(--ca-tick)] font-bold">CONTENT ENGINE</span>
+                    <span class="ca-chamfer-tag text-[10px] bg-white border border-[var(--ca-tick)] font-bold">ATTRIBUTION</span>
+                    <span class="ca-chamfer-tag text-[10px] bg-white border border-[var(--ca-tick)] font-bold">AUTOMATION</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       SITE FOOTER
+       ========================================================================== -->
+  <footer class="ca-grid relative border-t-2 border-[var(--ca-ink)]">
+    <svg viewBox="0 0 1440 130" fill="none" preserveAspectRatio="none" class="h-16 w-full sm:h-24" aria-hidden="true">
+      <path d="M-10 120C420 10 1030 4 1450 80" stroke="var(--ca-tick)" stroke-width="1.5"></path>
+    </svg>
+    <div class="px-4 pb-10 pt-6 sm:px-8 lg:px-20">
+      <div class="flex flex-col justify-between gap-10 md:flex-row md:items-end">
+        <div>
+          <p class="ca-display text-6xl uppercase leading-none tracking-tight text-[var(--ca-ink)] sm:text-8xl">
+            Duong Nguyen
+          </p>
+          <p class="ca-mono mt-4 inline-flex items-center gap-2.5 text-sm font-bold uppercase tracking-[0.2em] text-[var(--ca-ink)]">
+            <span class="h-3 w-3 rounded-full bg-[var(--ca-blue)]"></span>
+            <span data-i18n="footer.role">Product, Agile, AI Builder</span>
+          </p>
+        </div>
+        <div class="flex flex-col items-start gap-5 md:items-end">
+          <nav class="flex flex-wrap gap-1 ca-mono">
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white" href="index.html" data-i18n="nav.home">Home</a>
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white" href="about.html" data-i18n="nav.about">About</a>
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors bg-[var(--ca-yellow)]" href="case-studies.html" data-i18n="nav.projects">Projects</a>
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white" href="playground.html" data-i18n="nav.playground">Playground</a>
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white" href="contact.html" data-i18n="nav.cta">Contact</a>
+          </nav>
+          <div class="flex gap-3">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white text-[var(--ca-ink)] shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5" style="background-color:var(--ca-yellow)">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"></path></svg>
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white text-white shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5" style="background-color:var(--ca-magenta)">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"></path></svg>
+            </a>
+            <a href="mailto:duong.pm.qa@gmail.com" aria-label="Email" class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white text-white shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5" style="background-color:var(--ca-green)">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-12 flex flex-col items-center justify-between gap-3 text-sm text-[var(--ca-ink)]/70 sm:flex-row">
+        <span>© 2026 Duong Nguyen · Built with craft &amp; discipline</span>
+        <span class="ca-mono text-xs uppercase font-bold tracking-wider" data-i18n="footer.loop">✦ BUILD, LEARN, SHIP, REPEAT</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

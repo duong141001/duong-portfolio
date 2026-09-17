@@ -1,0 +1,439 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About | Duong Nguyen</title>
+  <meta name="description" content="About Duong Nguyen - Product Builder, Agile Coordinator & AI Builder with Game QA discipline.">
+
+  <!-- Google Fonts: Patrick Hand & Caveat for Vietnamese handwriting, Handjet, DM Mono, Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Handjet:wght@400..900&family=Inter:wght@300;400;500;600;700;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/handjet.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="t-creative-artsy t-authkit bg-[var(--ca-surface)] text-[var(--ca-ink)] antialiased selection:bg-[var(--ca-yellow)] selection:text-[var(--ca-ink)]">
+
+  <!-- ==========================================================================
+       SITE HEADER
+       ========================================================================== -->
+  <header class="sticky top-0 z-50 px-3 pt-3 sm:px-6">
+    <div class="mx-auto flex max-w-6xl items-center justify-between border-2 border-[var(--ca-ink)] bg-white px-3 shadow-[2.5px_2.5px_0_rgba(25,21,16,0.35)] rounded-full">
+      <div class="flex items-center gap-4">
+        <!-- Pink Smiley Vector Logo with Animated Blinking Eyes -->
+        <a aria-label="Home" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-white shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:rotate-12 hover-wiggle" style="background-color:var(--ca-magenta)" href="index.html">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-white" aria-hidden="true">
+            <g class="ca-blink">
+              <circle cx="8" cy="9" r="1.5"></circle>
+              <circle cx="16" cy="9" r="1.5"></circle>
+            </g>
+            <path d="M8 14Q12 18 16 14" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+        </a>
+
+        <!-- Pill Desktop Navigation -->
+        <nav class="hidden items-stretch md:flex">
+          <a class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]" href="index.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
+              <path d="M12 2l2.9 6.26 6.85.72-5.1 4.62 1.44 6.7L12 17.6l-6.09 3.7 1.44-6.7-5.1-4.62 6.85-.72z"></path>
+            </svg>
+            <span data-i18n="nav.home">Home</span>
+          </a>
+
+          <a aria-current="page" class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors bg-[var(--ca-yellow)]" href="about.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
+              <path d="M12 3a3.6 3.6 0 100 7.2A3.6 3.6 0 0012 3zM4.8 20a7.2 7.2 0 0114.4 0z"></path>
+            </svg>
+            <span data-i18n="nav.about">About</span>
+          </a>
+
+          <a class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]" href="case-studies.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
+              <path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"></path>
+            </svg>
+            <span data-i18n="nav.projects">Projects</span>
+          </a>
+
+          <a class="ca-mono flex items-center justify-center gap-2.5 px-5 py-4 text-sm font-bold uppercase leading-none tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-chrome)]" href="playground.html">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke" class="overflow-visible [filter:drop-shadow(1px_1.5px_0_rgba(25,21,16,0.28))] h-5 w-5 shrink-0" aria-hidden="true">
+              <path d="M12 2l10 10-10 10L2 12z"></path>
+            </svg>
+            <span data-i18n="nav.playground">Playground</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Header Actions: Language Switcher, Social, Contact -->
+      <div class="flex items-center gap-2 py-2 sm:gap-3">
+        <!-- Interactive EN/VI Language Switcher -->
+        <div class="flex items-center rounded-full border-2 border-[var(--ca-ink)] bg-white p-1 text-xs font-bold ca-mono">
+          <button type="button" id="lang-en" data-lang="en" class="lang-btn rounded-full px-2.5 py-1 uppercase transition-colors bg-[var(--ca-yellow)] text-[var(--ca-ink)]">
+            EN
+          </button>
+          <button type="button" id="lang-vi" data-lang="vi" class="lang-btn rounded-full px-2.5 py-1 uppercase transition-colors text-[var(--ca-ink)]/60 hover:text-[var(--ca-ink)]">
+            VI
+          </button>
+        </div>
+
+        <!-- Social Icons -->
+        <a aria-label="LinkedIn" class="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white text-[var(--ca-ink)] shadow-[1px_1px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5" style="background-color:var(--ca-yellow)" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"></path></svg>
+        </a>
+        <a aria-label="GitHub" class="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white text-white shadow-[1px_1px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5" style="background-color:var(--ca-magenta)" href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"></path></svg>
+        </a>
+        <a aria-label="Email" class="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white text-white shadow-[1px_1px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5" style="background-color:var(--ca-green)" href="mailto:duong.pm.qa@gmail.com">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+        </a>
+
+        <!-- Pill Contact CTA -->
+        <a class="ca-mono hidden items-center gap-2 rounded-full border-2 border-[var(--ca-ink)] bg-white px-4 py-2 text-xs font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[2px_2px_0_var(--ca-ink)] transition-transform hover:-translate-y-0.5 sm:inline-flex" href="contact.html">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-3.5 w-3.5 text-[var(--ca-ink)]" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+          <span data-i18n="nav.cta">Contact</span>
+        </a>
+
+        <!-- Mobile Nav Hamburger -->
+        <button id="mobileNavToggle" aria-label="Toggle Navigation" aria-expanded="false" class="flex h-10 w-10 items-center justify-center rounded-md border-2 border-[var(--ca-ink)] bg-white md:hidden">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="h-5 w-5 text-[var(--ca-ink)]"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Dropdown -->
+    <div id="mobileNavMenu" class="hidden mx-auto mt-2 max-w-6xl rounded-2xl border-2 border-[var(--ca-ink)] bg-white p-4 shadow-[4px_4px_0_var(--ca-ink)] md:hidden">
+      <nav class="flex flex-col gap-2 ca-mono text-sm font-bold uppercase tracking-wider">
+        <a class="p-2 hover:bg-[var(--ca-yellow)] rounded" href="index.html" data-i18n="nav.home">Home</a>
+        <a class="p-2 bg-[var(--ca-yellow)] rounded" href="about.html" data-i18n="nav.about">About</a>
+        <a class="p-2 hover:bg-[var(--ca-yellow)] rounded" href="case-studies.html" data-i18n="nav.projects">Projects</a>
+        <a class="p-2 hover:bg-[var(--ca-yellow)] rounded" href="playground.html" data-i18n="nav.playground">Playground</a>
+        <a class="p-2 hover:bg-[var(--ca-yellow)] rounded" href="contact.html" data-i18n="nav.cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN CONTENT
+       ========================================================================== -->
+  <main class="relative px-4 pb-24 pt-8 sm:px-8 lg:px-20">
+
+    <!-- Fixed Floating Left Navigation on Desktop -->
+    <nav class="fixed left-0 top-1/3 z-40 hidden flex-col gap-3 lg:flex" aria-label="About sections">
+      <button data-target="bio" class="about-sidebar-tab ca-mono flex items-center gap-2 rounded-r-xl border-2 border-l-0 border-[var(--ca-ink)] py-3 pl-3 pr-5 text-[11px] font-bold uppercase tracking-widest shadow-[3px_3px_0_var(--ca-ink)] transition-transform duration-200 hover:translate-x-1 text-[var(--ca-ink)] bg-[var(--ca-yellow)]">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3.5" fill="white"></circle></svg>
+        <span data-i18n="about.tabBio">Main bio</span>
+      </button>
+      <button data-target="story" class="about-sidebar-tab ca-mono flex items-center gap-2 rounded-r-xl border-2 border-l-0 border-[var(--ca-ink)] py-3 pl-3 pr-5 text-[11px] font-bold uppercase tracking-widest shadow-[3px_3px_0_var(--ca-ink)] transition-transform duration-200 hover:translate-x-1 text-[var(--ca-ink)] bg-white">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true"><path d="M12 2l10 10-10 10L2 12z"></path></svg>
+        <span data-i18n="about.tabStory">Story</span>
+      </button>
+      <button data-target="work" class="about-sidebar-tab ca-mono flex items-center gap-2 rounded-r-xl border-2 border-l-0 border-[var(--ca-ink)] py-3 pl-3 pr-5 text-[11px] font-bold uppercase tracking-widest shadow-[3px_3px_0_var(--ca-ink)] transition-transform duration-200 hover:translate-x-1 text-[var(--ca-ink)] bg-white">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="h-3.5 w-3.5" aria-hidden="true"><path d="M12 2 15 9l7 3-7 3-3 7-3-7-7-3 7-3 3-7Z"></path></svg>
+        <span data-i18n="about.tabWork">Work</span>
+      </button>
+    </nav>
+
+    <div class="mx-auto max-w-4xl">
+      <!-- Title Header -->
+      <span class="mt-4 inline-block">
+        <span class="ca-display text-7xl leading-[0.9] tracking-tight text-[var(--ca-ink)] sm:text-9xl xl:text-[11rem] ca-stagger-text" data-stagger-text="true" data-stagger="0.06">
+          ABOUT
+        </span>
+      </span>
+
+      <!-- Mobile Sub-pills -->
+      <div class="mt-6 flex gap-2 lg:hidden">
+        <a href="#bio" class="ca-mono flex items-center gap-1.5 rounded-full bg-[var(--ca-chrome)] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-3 w-3" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3.5" fill="white"></circle></svg>
+          <span data-i18n="about.tabBio">Main bio</span>
+        </a>
+        <a href="#story" class="ca-mono flex items-center gap-1.5 rounded-full bg-[var(--ca-chrome)] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-3 w-3" aria-hidden="true"><path d="M12 2l10 10-10 10L2 12z"></path></svg>
+          <span data-i18n="about.tabStory">Story</span>
+        </a>
+        <a href="#work" class="ca-mono flex items-center gap-1.5 rounded-full bg-[var(--ca-chrome)] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[var(--ca-ink)]">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-3 w-3" aria-hidden="true"><path d="M12 2 15 9l7 3-7 3-3 7-3-7-7-3 7-3 3-7Z"></path></svg>
+          <span data-i18n="about.tabWork">Work</span>
+        </a>
+      </div>
+
+      <!-- ======================================================================
+           SECTION 01: MAIN BIO
+           ====================================================================== -->
+      <section id="bio" class="mt-14 scroll-mt-28 sm:mt-20">
+        <span class="ca-mono -rotate-2 inline-block bg-[var(--ca-yellow)] px-4 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] stamp-wavy-1 sm:text-base" data-i18n="about.tabBio">
+          Main bio
+        </span>
+
+        <div class="ca-doodle-box ca-reveal relative mt-6 border-2 border-[var(--ca-yellow)] p-6 sm:p-10" data-delay="0.1">
+          <div class="lg:pr-56">
+            <p class="ca-hand text-2xl font-medium leading-snug text-[var(--ca-ink)] sm:text-4xl" data-i18n="about.bioHand">
+              I am a Product Builder & Agile Coordinator who turns ideas into shippable products with Game QA discipline. ✨ I care about edge cases, release stability, and cross-functional delivery cadence. 🎯
+            </p>
+
+            <div class="mt-8 flex max-w-2xl flex-col gap-4 text-base leading-relaxed text-[var(--ca-ink)]/85">
+              <p data-i18n="about.bioP1">
+                I started in Game QA, where I developed an obsessive eye for edge cases, regression gates, and release stability. Testing complex game states taught me that a feature is never finished until it survives unexpected user behaviors and real-world network friction.
+              </p>
+              <p data-i18n="about.bioP2">
+                Moving into Scrum Master and Producer roles, I discovered that team coordination is fundamentally about eliminating blockers early. Today, I combine that execution rigor with a Founder mindset: proactively building AI-augmented workflows, crafting technical PRDs, and ensuring what gets built delivers measurable business value.
+              </p>
+            </div>
+
+            <!-- Sticky Tape Callouts -->
+            <div class="ca-reveal relative mt-8 max-w-xl -rotate-1 bg-[var(--ca-yellow-soft)] p-5 text-sm leading-relaxed text-[var(--ca-ink)] shadow-[3px_5px_14px_rgba(17,18,18,0.18)] sm:text-base" data-delay="0.15">
+              <span aria-hidden="true" class="ca-tape-strip absolute -left-4 -top-2 z-10 h-5 w-16 -rotate-[38deg] bg-white/70 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+              <span data-i18n="about.callout1">Right now I'm building AI-powered operational workflows and behavioral systems, bridging deterministic rule engines with modern LLM prompt chains.</span>
+            </div>
+
+            <div class="ca-reveal mt-8 max-w-md -rotate-2 bg-[var(--ca-yellow-soft)] p-4 text-sm leading-relaxed text-[var(--ca-ink)] shadow-[2px_3px_10px_rgba(17,18,18,0.14)] sm:ml-16 sm:text-base" data-delay="0.2">
+              <span data-i18n="about.callout2">When I'm not shipping products, I'm analyzing software architectures, playing board games, and exploring new AI agentic patterns.</span>
+            </div>
+          </div>
+
+          <!-- Polaroid Frame (Zero AI Slop Wireframe Placeholder) -->
+          <div class="mt-10 flex items-end justify-center gap-4 lg:absolute lg:right-4 lg:top-8 lg:mt-0 lg:block">
+            <div class="rotate-3 transition-transform duration-300 hover:rotate-0 ca-pop" data-delay="0.25">
+              <figure class="relative inline-block bg-white p-3 pb-2 shadow-[0_6px_18px_rgba(17,18,18,0.22)] border-2 border-[var(--ca-ink)] w-40 lg:w-48">
+                <span aria-hidden="true" class="ca-tape-strip absolute -left-4 -top-2 z-10 h-5 w-16 -rotate-[38deg] bg-[var(--ca-cyan)]/70 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+                <span aria-hidden="true" class="ca-tape-strip absolute -right-4 -top-2 z-10 h-5 w-16 rotate-[38deg] bg-[var(--ca-yellow-soft)]/70 shadow-[0_1px_3px_rgba(17,18,18,0.15)]"></span>
+                
+                <!-- Blank Wireframe Image Frame -->
+                <div class="aspect-[4/5] w-full border-2 border-dashed border-[var(--ca-tick)] bg-[#fbfaf6] flex flex-col items-center justify-center p-3 text-center">
+                  <svg class="h-8 w-8 text-[var(--ca-gray)]/50 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                  </svg>
+                  <span class="ca-mono text-[10px] uppercase font-bold text-[var(--ca-gray)] tracking-wider">[ Photo Slot ]</span>
+                </div>
+                <figcaption class="ca-hand mt-2 text-center text-lg leading-tight text-[var(--ca-ink)]/80">2026 // Hanoi</figcaption>
+              </figure>
+            </div>
+
+            <div class="relative mt-4 inline-block lg:mt-5 text-center w-full">
+              <span class="ca-mono inline-block rounded-full border-[3px] border-white px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] shadow-[0_4px_10px_rgba(25,21,16,0.25)]" style="background-color:var(--ca-yellow)">
+                DUONG
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           SECTION 02: STORY & PHILOSOPHY (INCLUDING DELIVERY MINDSETS)
+           ====================================================================== -->
+      <section id="story" class="mt-16 scroll-mt-28 sm:mt-24">
+        <span class="ca-mono inline-block rotate-2 bg-[var(--ca-magenta)] px-4 py-2 text-sm font-bold uppercase tracking-widest text-white stamp-wavy-2 sm:text-base" data-i18n="about.tabStory">
+          Story
+        </span>
+
+        <div class="ca-doodle-box relative mt-6 border-2 border-[var(--ca-magenta)] p-6 sm:p-10">
+          <div class="flex flex-col gap-12 lg:gap-16">
+
+            <!-- Principle 1: Cyan -->
+            <div class="ca-reveal flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-10" data-delay="0.1">
+              <div class="relative w-full max-w-xl p-6 pt-7 shadow-[2px_6px_18px_rgba(17,18,18,0.22)] sm:p-8 sm:pt-9 -rotate-1 hover-lift" style="background-color:var(--ca-cyan)">
+                <span aria-hidden="true" class="ca-tape-strip absolute z-10 bg-white/60 shadow-[0_1px_3px_rgba(17,18,18,0.15)] -left-5 -top-2 h-5 w-16 -rotate-[40deg]"></span>
+                <span aria-hidden="true" class="ca-tape-strip absolute z-10 bg-white/60 shadow-[0_1px_3px_rgba(17,18,18,0.15)] -right-4 bottom-8 h-5 w-14 rotate-[62deg]"></span>
+                <h3 class="text-2xl font-bold tracking-tight text-[var(--ca-ink)] sm:text-3xl" data-i18n="story.p1Title">
+                  1. Root Cause Over Quick Patches
+                </h3>
+                <p class="mt-3 text-sm leading-relaxed text-[var(--ca-ink)]/85 sm:text-base" data-i18n="story.p1Desc">
+                  In QA and system design, fixing the symptom without understanding the failure mode just defers the disaster. I probe constraints, uncover hidden assumptions, and architect solutions that hold under real stress.
+                </p>
+              </div>
+              <div class="flex items-center gap-3 self-center">
+                <svg viewBox="0 0 48 24" fill="none" stroke="var(--ca-ink)" stroke-width="1.8" stroke-linecap="round" class="h-6 w-12 shrink-0" aria-hidden="true"><path d="M2 6c12 10 26 14 40 12"></path><path d="M36 14l6 4-7 3"></path></svg>
+                <p class="ca-hand whitespace-nowrap text-2xl text-[var(--ca-ink)] sm:text-3xl" data-i18n="story.p1Hand">questions before pixels.</p>
+              </div>
+            </div>
+
+            <!-- Principle 2: Soft Yellow -->
+            <div class="ca-reveal flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-10" data-delay="0.15">
+              <div class="relative w-full max-w-xl p-6 pt-7 shadow-[2px_6px_18px_rgba(17,18,18,0.22)] sm:p-8 sm:pt-9 rotate-1 hover-lift" style="background-color:var(--ca-yellow-soft)">
+                <span aria-hidden="true" class="ca-tape-strip absolute z-10 bg-white/60 shadow-[0_1px_3px_rgba(17,18,18,0.15)] -right-5 -top-2 h-5 w-16 rotate-[40deg]"></span>
+                <span aria-hidden="true" class="ca-tape-strip absolute z-10 bg-white/60 shadow-[0_1px_3px_rgba(17,18,18,0.15)] -left-4 bottom-10 h-5 w-14 -rotate-[62deg]"></span>
+                <h3 class="text-2xl font-bold tracking-tight text-[var(--ca-ink)] sm:text-3xl" data-i18n="story.p2Title">
+                  2. Deterministic Core, AI Augmentation
+                </h3>
+                <p class="mt-3 text-sm leading-relaxed text-[var(--ca-ink)]/85 sm:text-base" data-i18n="story.p2Desc">
+                  Never rely on probabilistic chatbots for critical user state. I build on verifiable state machines, structured rules, and business metrics — then use AI where it genuinely accelerates discovery or synthesis.
+                </p>
+              </div>
+              <div class="flex items-center gap-3 self-center">
+                <svg viewBox="0 0 48 24" fill="none" stroke="var(--ca-ink)" stroke-width="1.8" stroke-linecap="round" class="h-6 w-12 shrink-0" aria-hidden="true"><path d="M2 6c12 10 26 14 40 12"></path><path d="M36 14l6 4-7 3"></path></svg>
+                <p class="ca-hand whitespace-nowrap text-2xl text-[var(--ca-ink)] sm:text-3xl" data-i18n="story.p2Hand">no fragile wrappers here!</p>
+              </div>
+            </div>
+
+            <!-- Principle 3: Purple -->
+            <div class="ca-reveal flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-10" data-delay="0.2">
+              <div class="relative w-full max-w-xl p-6 pt-7 shadow-[2px_6px_18px_rgba(17,18,18,0.22)] sm:p-8 sm:pt-9 -rotate-2 hover-lift" style="background-color:var(--ca-purple)">
+                <span aria-hidden="true" class="ca-tape-strip absolute z-10 bg-white/60 shadow-[0_1px_3px_rgba(17,18,18,0.15)] -left-4 top-1/2 h-5 w-14 -rotate-[78deg]"></span>
+                <span aria-hidden="true" class="ca-tape-strip absolute z-10 bg-white/60 shadow-[0_1px_3px_rgba(17,18,18,0.15)] -right-5 -top-2 h-5 w-16 rotate-[36deg]"></span>
+                <h3 class="text-2xl font-bold tracking-tight text-[var(--ca-ink)] sm:text-3xl" data-i18n="story.p3Title">
+                  3. Cadence, Clarity &amp; Coachability
+                </h3>
+                <p class="mt-3 text-sm leading-relaxed text-[var(--ca-ink)]/85 sm:text-base" data-i18n="story.p3Desc">
+                  Great software is delivered through psychological safety, precise tickets, predictable sprint rhythms, and continuous feedback. I listen actively, align cross-functional goals, and adapt fast.
+                </p>
+              </div>
+              <div class="flex items-center gap-3 self-center">
+                <svg viewBox="0 0 48 24" fill="none" stroke="var(--ca-ink)" stroke-width="1.8" stroke-linecap="round" class="h-6 w-12 shrink-0" aria-hidden="true"><path d="M2 6c12 10 26 14 40 12"></path><path d="M36 14l6 4-7 3"></path></svg>
+                <p class="ca-hand whitespace-nowrap text-2xl text-[var(--ca-ink)] sm:text-3xl" data-i18n="story.p3Hand">team wins, every sprint.</p>
+              </div>
+            </div>
+
+            <!-- Mindset 04: Scrum Delivery Telemetry (Mint) -->
+            <div class="ca-reveal flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-10" data-delay="0.25">
+              <div class="relative w-full max-w-xl p-6 pt-7 shadow-[2px_6px_18px_rgba(17,18,18,0.22)] sm:p-8 sm:pt-9 rotate-1 hover-lift" style="background-color:var(--ca-mint)">
+                <span aria-hidden="true" class="ca-tape-strip absolute z-10 bg-white/60 shadow-[0_1px_3px_rgba(17,18,18,0.15)] -right-4 -top-2 h-5 w-16 rotate-[30deg]"></span>
+                <span aria-hidden="true" class="ca-tape-strip absolute z-10 bg-white/60 shadow-[0_1px_3px_rgba(17,18,18,0.15)] -left-4 bottom-6 h-5 w-14 -rotate-[60deg]"></span>
+                <h3 class="text-2xl font-bold tracking-tight text-[var(--ca-ink)] sm:text-3xl" data-i18n="story.m1Title">
+                  4. Delivery Telemetry Over Passive Standups
+                </h3>
+                <p class="mt-3 text-sm leading-relaxed text-[var(--ca-ink)]/85 sm:text-base" data-i18n="story.m1Desc">
+                  Transforming daily standup updates into an actionable delivery dependency graph synced with Jira/Lark. Reclaiming 40% meeting overhead and detecting sprint bottlenecks 2 days earlier without micromanagement.
+                </p>
+              </div>
+              <div class="flex items-center gap-3 self-center">
+                <svg viewBox="0 0 48 24" fill="none" stroke="var(--ca-ink)" stroke-width="1.8" stroke-linecap="round" class="h-6 w-12 shrink-0" aria-hidden="true"><path d="M2 6c12 10 26 14 40 12"></path><path d="M36 14l6 4-7 3"></path></svg>
+                <p class="ca-hand whitespace-nowrap text-2xl text-[var(--ca-ink)] sm:text-3xl" data-i18n="story.m1Hand">telemetry beats interrogations.</p>
+              </div>
+            </div>
+
+            <!-- Mindset 05: QA Release Gate Pipeline (Pink Soft) -->
+            <div class="ca-reveal flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-10" data-delay="0.3">
+              <div class="relative w-full max-w-xl p-6 pt-7 shadow-[2px_6px_18px_rgba(17,18,18,0.22)] sm:p-8 sm:pt-9 -rotate-1 hover-lift" style="background-color:var(--ca-pink-soft)">
+                <span aria-hidden="true" class="ca-tape-strip absolute z-10 bg-white/60 shadow-[0_1px_3px_rgba(17,18,18,0.15)] -left-4 -top-2 h-5 w-14 -rotate-[35deg]"></span>
+                <span aria-hidden="true" class="ca-tape-strip absolute z-10 bg-white/60 shadow-[0_1px_3px_rgba(17,18,18,0.15)] -right-4 bottom-8 h-5 w-16 rotate-[45deg]"></span>
+                <h3 class="text-2xl font-bold tracking-tight text-[var(--ca-ink)] sm:text-3xl" data-i18n="story.m2Title">
+                  5. Shift-Left Quality Gates Over End-Sprint Crunch
+                </h3>
+                <p class="mt-3 text-sm leading-relaxed text-[var(--ca-ink)]/85 sm:text-base" data-i18n="story.m2Desc">
+                  Eliminating sprint-end QA crunch through test readiness gates, automated regression planning, and deterministic release criteria. Eliminates release overtime and reduces live hotfixes by over 60%.
+                </p>
+              </div>
+              <div class="flex items-center gap-3 self-center">
+                <svg viewBox="0 0 48 24" fill="none" stroke="var(--ca-ink)" stroke-width="1.8" stroke-linecap="round" class="h-6 w-12 shrink-0" aria-hidden="true"><path d="M2 6c12 10 26 14 40 12"></path><path d="M36 14l6 4-7 3"></path></svg>
+                <p class="ca-hand whitespace-nowrap text-2xl text-[var(--ca-ink)] sm:text-3xl" data-i18n="story.m2Hand">gates protect delivery flow.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           SECTION 03: WORK & CAREER JOURNEY
+           ====================================================================== -->
+      <section id="work" class="mt-16 scroll-mt-28 sm:mt-24">
+        <span class="ca-mono -rotate-2 inline-block bg-[var(--ca-blue)] px-4 py-2 text-sm font-bold uppercase tracking-widest text-white stamp-wavy-3 sm:text-base" data-i18n="about.tabWork">
+          Work
+        </span>
+
+        <div class="ca-doodle-box ca-reveal mt-6 flex flex-col gap-7 border-2 border-[var(--ca-blue)] p-6 sm:p-10" data-delay="0.1">
+          <!-- Step 1: Founder & AI Builder -->
+          <div class="ca-pop flex flex-col gap-1.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6" data-delay="0.15">
+            <div class="flex items-baseline gap-3 sm:gap-4">
+              <span class="h-3 w-3 shrink-0 translate-y-0.5 bg-[var(--ca-blue)]" aria-hidden="true"></span>
+              <div class="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-4">
+                <p class="text-lg font-bold text-[var(--ca-ink)]" data-i18n="career.step5">Founder &amp; AI Builder</p>
+                <p class="text-sm text-[var(--ca-ink)]/70">ADHD Support · Hermes Agentic OS · AI Automation</p>
+              </div>
+            </div>
+            <span class="ca-mono ml-6 inline-block bg-[var(--ca-blue)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white sm:ml-0">2025 to Now</span>
+          </div>
+
+          <!-- Step 2: AI Operations / Product Lead -->
+          <div class="ca-pop flex flex-col gap-1.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6" data-delay="0.2">
+            <div class="flex items-baseline gap-3 sm:gap-4">
+              <span class="h-3 w-3 shrink-0 translate-y-0.5 bg-[var(--ca-blue)]" aria-hidden="true"></span>
+              <div class="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-4">
+                <p class="text-lg font-bold text-[var(--ca-ink)]" data-i18n="career.step4">AI Operations &amp; Product Lead</p>
+                <p class="text-sm text-[var(--ca-ink)]/70">Vietnamese F&amp;B Telemetry · Realtime Auction</p>
+              </div>
+            </div>
+            <span class="ca-mono ml-6 inline-block bg-[var(--ca-blue)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white sm:ml-0">2024 to 2025</span>
+          </div>
+
+          <!-- Step 3: Scrum Master & Delivery Lead -->
+          <div class="ca-pop flex flex-col gap-1.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6" data-delay="0.25">
+            <div class="flex items-baseline gap-3 sm:gap-4">
+              <span class="h-3 w-3 shrink-0 translate-y-0.5 bg-[var(--ca-blue)]" aria-hidden="true"></span>
+              <div class="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-4">
+                <p class="text-lg font-bold text-[var(--ca-ink)]" data-i18n="career.step3">Scrum Master &amp; Delivery Lead</p>
+                <p class="text-sm text-[var(--ca-ink)]/70">Agile Delivery · Sprint Telemetry · Cross-functional Cadence</p>
+              </div>
+            </div>
+            <span class="ca-mono ml-6 inline-block bg-[var(--ca-blue)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white sm:ml-0">2023 to 2024</span>
+          </div>
+
+          <!-- Step 4: QA Lead & Release Gatekeeper -->
+          <div class="ca-pop flex flex-col gap-1.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6" data-delay="0.3">
+            <div class="flex items-baseline gap-3 sm:gap-4">
+              <span class="h-3 w-3 shrink-0 translate-y-0.5 bg-[var(--ca-blue)]" aria-hidden="true"></span>
+              <div class="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-4">
+                <p class="text-lg font-bold text-[var(--ca-ink)]" data-i18n="career.step1">QA Lead &amp; Pipeline Engineer</p>
+                <p class="text-sm text-[var(--ca-ink)]/70">Game Pipeline · Automated Smoke CI/CD · Regression Gates</p>
+              </div>
+            </div>
+            <span class="ca-mono ml-6 inline-block bg-[var(--ca-blue)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white sm:ml-0">2021 to 2023</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       SITE FOOTER
+       ========================================================================== -->
+  <footer class="ca-grid relative border-t-2 border-[var(--ca-ink)]">
+    <svg viewBox="0 0 1440 130" fill="none" preserveAspectRatio="none" class="h-16 w-full sm:h-24" aria-hidden="true">
+      <path d="M-10 120C420 10 1030 4 1450 80" stroke="var(--ca-tick)" stroke-width="1.5"></path>
+    </svg>
+    <div class="px-4 pb-10 pt-6 sm:px-8 lg:px-20">
+      <div class="flex flex-col justify-between gap-10 md:flex-row md:items-end">
+        <div>
+          <p class="ca-display text-6xl uppercase leading-none tracking-tight text-[var(--ca-ink)] sm:text-8xl">
+            Duong Nguyen
+          </p>
+          <p class="ca-mono mt-4 inline-flex items-center gap-2.5 text-sm font-bold uppercase tracking-[0.2em] text-[var(--ca-ink)]">
+            <span class="h-3 w-3 rounded-full bg-[var(--ca-blue)]"></span>
+            <span data-i18n="footer.role">Product, Agile, AI Builder</span>
+          </p>
+        </div>
+        <div class="flex flex-col items-start gap-5 md:items-end">
+          <nav class="flex flex-wrap gap-1 ca-mono">
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white" href="index.html" data-i18n="nav.home">Home</a>
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors bg-[var(--ca-yellow)]" href="about.html" data-i18n="nav.about">About</a>
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white" href="case-studies.html" data-i18n="nav.projects">Projects</a>
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white" href="playground.html" data-i18n="nav.playground">Playground</a>
+            <a class="px-3.5 py-2 text-sm font-bold uppercase tracking-widest text-[var(--ca-ink)] transition-colors hover:bg-[var(--ca-blue)] hover:text-white" href="contact.html" data-i18n="nav.cta">Contact</a>
+          </nav>
+          <div class="flex gap-3">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white text-[var(--ca-ink)] shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5" style="background-color:var(--ca-yellow)">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"></path></svg>
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white text-white shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5" style="background-color:var(--ca-magenta)">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"></path></svg>
+            </a>
+            <a href="mailto:duong.pm.qa@gmail.com" aria-label="Email" class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white text-white shadow-[1.5px_1.5px_0_rgba(25,21,16,0.25)] transition-transform duration-200 hover:-translate-y-0.5" style="background-color:var(--ca-green)">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-12 flex flex-col items-center justify-between gap-3 text-sm text-[var(--ca-ink)]/70 sm:flex-row">
+        <span>© 2026 Duong Nguyen · Built with craft &amp; discipline</span>
+        <span class="ca-mono text-xs uppercase font-bold tracking-wider" data-i18n="footer.loop">✦ BUILD, LEARN, SHIP, REPEAT</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
