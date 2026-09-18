@@ -6,21 +6,37 @@
 (function() {
   'use strict';
 
-  // --- Mobile Navigation Toggle ---
+  // --- Mobile Navigation Toggle (optimized for mobile: scroll lock, ESC, outside click) ---
   const mobileToggle = document.getElementById('mobileNavToggle');
   const mobileMenu = document.getElementById('mobileNavMenu');
-
-  mobileToggle?.addEventListener('click', () => {
+  function closeMobileNav() {
+    mobileMenu?.classList.add('hidden');
+    mobileToggle?.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+  }
+  function openMobileNav() {
+    mobileMenu?.classList.remove('hidden');
+    mobileToggle?.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('nav-open');
+  }
+  mobileToggle?.addEventListener('click', (e) => {
+    e.stopPropagation();
     const isHidden = mobileMenu.classList.contains('hidden');
-    mobileMenu.classList.toggle('hidden', !isHidden);
-    mobileToggle.setAttribute('aria-expanded', String(isHidden));
+    if (isHidden) openMobileNav(); else closeMobileNav();
   });
-
   mobileMenu?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
-      mobileToggle?.setAttribute('aria-expanded', 'false');
-    });
+    link.addEventListener('click', closeMobileNav);
+  });
+  document.addEventListener('click', (e) => {
+    if (!mobileMenu?.classList.contains('hidden') && !mobileMenu.contains(e.target) && e.target !== mobileToggle && !mobileToggle.contains(e.target)) {
+      closeMobileNav();
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !mobileMenu?.classList.contains('hidden')) closeMobileNav();
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) closeMobileNav();
   });
 
   // --- Bilingual Translation Engine (EN / VI) ---
