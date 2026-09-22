@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi">
+<html lang="vi" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,22 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23142b3b'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%2358d6c7' stroke-width='6'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23ffd166'/%3E%3C/svg%3E">
   <style>
-    :root {
-      color-scheme: light;
-      --ink: #142b3b;
-      --muted: #5b6b76;
-      --paper: #f5f8f7;
-      --card: #ffffff;
-      --line: #d9e3e1;
-      --teal: #087f73;
-      --teal-dark: #075e56;
-      --teal-soft: #e4f5f2;
-      --amber: #b66b00;
-      --amber-soft: #fff4d6;
-      --red: #a33b32;
-      --red-soft: #fff0ee;
-      --shadow: 0 16px 45px rgba(20, 43, 59, .08);
-    }
+    :root {color-scheme:light;--shadow:0 16px 45px rgba(20,43,59,.08)}
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -201,7 +186,7 @@
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
     /* Portfolio-aligned screening presentation. Questionnaire logic stays unchanged. */
-    :root{--ink:#183b36;--muted:#5c706b;--paper:#f5f3ed;--card:#fffefa;--line:#d6dfd7;--teal:#176e5b;--teal-dark:#11513f;--teal-soft:#eaf2e9;--shadow:0 8px 28px rgba(24,59,54,.035)}
+    :root{--shadow:0 8px 28px rgba(24,59,54,.035)}
     body{background:var(--paper);font-family:"Be Vietnam Pro","Segoe UI",sans-serif}
     html{scroll-padding-top:94px}
     :focus-visible{outline:3px solid #b16a21;outline-offset:4px}
@@ -306,6 +291,7 @@
     @media(max-width:850px){.result-grid{grid-template-columns:1fr}.radar-panel{max-width:480px;width:100%;justify-self:center}.indicator-table th,.indicator-table td{padding:10px 5px}}
     @media print{.result .actions,#saveBtn,#savedAt{display:none!important}.result{font-size:10pt;padding:12px}.result-grid{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:12px}.indicator-table{font-size:9pt}.indicator-table th,.indicator-table td{padding:6px}.result-extra{break-inside:avoid}#impactRadar{max-width:300px}.intro{display:none!important}}
   </style>
+  <link rel="stylesheet" href="assets/design-tokens.css">
 </head>
 <body>
   <a class="skip-link" href="#screeningForm">Đi tới câu hỏi</a>
