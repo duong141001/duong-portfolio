@@ -363,6 +363,13 @@
       }
     }
     if (caseSummary) caseSummary.textContent = data.summary;
+    const projectLink = document.getElementById('adhd-project-link');
+    if (projectLink) {
+      projectLink.hidden = currentCase !== cases.adhd;
+      document.getElementById('adhd-project-label').textContent = lang === 'vi'
+        ? 'Xem dự án ADHD Behavioral Support →'
+        : 'View ADHD Behavioral Support project →';
+    }
     if (caseTags) {
       caseTags.innerHTML = data.tags.map(t => `<span class="ca-chamfer-tag bg-white border border-[var(--ca-ink)] text-xs font-bold uppercase tracking-wider text-[var(--ca-ink)] shadow-[1px_1px_0_var(--ca-ink)]">${t}</span>`).join('');
     }

@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="vi" data-theme="system" data-lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Project ADHD Behavioral Support evidence-first plan with feature-flow diagrams">
+  <title>Project ADHD Behavioral Support — Evidence First Plan</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f2f0e9;
+      --surface: rgba(255,255,255,.78);
+      --surface-solid: #fffdf7;
+      --ink: #142b38;
+      --muted: #5e6e74;
+      --line: rgba(20,43,56,.16);
+      --teal: #117c72;
+      --teal-2: #65c8bb;
+      --teal-soft: #dff2ed;
+      --blue: #3c7bc2;
+      --blue-soft: #e2edf8;
+      --purple: #7755c7;
+      --purple-soft: #ece6fa;
+      --orange: #c76b2e;
+      --orange-soft: #f7e6d8;
+      --green: #338853;
+      --green-soft: #e1f3e6;
+      --red: #b64a43;
+      --red-soft: #f8e4e2;
+      --shadow: 0 26px 70px rgba(28,47,57,.12);
+      --radius: 24px;
+    }
+    html[data-theme="dark"] {
+      --bg: #071419;
+      --surface: rgba(13,31,38,.82);
+      --surface-solid: #0d1f26;
+      --ink: #e8f3f2;
+      --muted: #a8b9bb;
+      --line: rgba(216,241,238,.15);
+      --teal: #6bd8ca;
+      --teal-2: #8ce5d9;
+      --teal-soft: #113933;
+      --blue: #84b9ec;
+      --blue-soft: #142e47;
+      --purple: #bea9f7;
+      --purple-soft: #2b2344;
+      --orange: #f0a36e;
+      --orange-soft: #432a1d;
+      --green: #76d498;
+      --green-soft: #173a25;
+      --red: #f2958f;
+      --red-soft: #492421;
+      --shadow: 0 30px 80px rgba(0,0,0,.34);
+    }
+    @media (prefers-color-scheme: dark) {
+      html[data-theme="system"] {
+        --bg: #071419; --surface: rgba(13,31,38,.82); --surface-solid: #0d1f26;
+        --ink: #e8f3f2; --muted: #a8b9bb; --line: rgba(216,241,238,.15);
+        --teal: #6bd8ca; --teal-2: #8ce5d9; --teal-soft: #113933;
+        --blue: #84b9ec; --blue-soft: #142e47; --purple: #bea9f7; --purple-soft: #2b2344;
+        --orange: #f0a36e; --orange-soft: #432a1d; --green: #76d498; --green-soft: #173a25;
+        --red: #f2958f; --red-soft: #492421; --shadow: 0 30px 80px rgba(0,0,0,.34);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body { margin: 0; overflow-x: hidden; color: var(--ink); background:
+      radial-gradient(circle at 80% 5%, color-mix(in srgb, var(--teal) 17%, transparent), transparent 24rem),
+      radial-gradient(circle at 8% 58%, color-mix(in srgb, var(--purple) 10%, transparent), transparent 28rem), var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; }
+    a { color: inherit; }
+    button { font: inherit; }
+    .skip { position: fixed; left: 12px; top: -80px; z-index: 50; background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 10px; }
+    .skip:focus { top: 12px; }
+    .progress { position: fixed; inset: 0 0 auto; height: 3px; z-index: 30; background: transparent; }
+    .progress span { display: block; width: 0; height: 100%; background: linear-gradient(90deg,var(--teal),var(--blue),var(--purple)); }
+    header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--line); backdrop-filter: blur(18px); background: color-mix(in srgb, var(--bg) 82%, transparent); }
+    .nav { max-width: 1420px; margin: auto; min-height: 64px; padding: 10px 24px; display: flex; align-items: center; gap: 20px; }
+    .brand { display: flex; gap: 10px; align-items: center; font-weight: 900; letter-spacing: .05em; white-space: nowrap; text-decoration: none; }
+    .brand-mark { width: 31px; height: 31px; border: 2px solid var(--teal); border-radius: 10px; display: grid; place-items: center; color: var(--teal); }
+    nav { margin-left: auto; display: flex; gap: 18px; }
+    nav a { color: var(--muted); font-size: .88rem; text-decoration: none; }
+    nav a:hover, nav a:focus-visible { color: var(--ink); }
+    .controls { display: flex; align-items: center; gap: 8px; }
+    .seg { display: flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--surface); }
+    .seg button { border: 0; background: transparent; color: var(--muted); min-width: 33px; min-height: 32px; border-radius: 999px; cursor: pointer; }
+    .seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+    main { overflow: clip; }
+    section { position: relative; padding: clamp(72px,9vw,132px) 24px; scroll-margin-top: 65px; }
+    .wrap { width: min(1360px,100%); min-width: 0; margin: auto; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; color: var(--teal); font-size: .78rem; font-weight: 850; text-transform: uppercase; letter-spacing: .14em; }
+    .eyebrow::before { content: ""; width: 34px; height: 2px; background: currentColor; }
+    h1,h2,h3,p { margin-top: 0; }
+    h1,h2 { overflow-wrap: break-word; }
+    h1 { max-width: 12ch; margin: 18px 0 22px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(3.35rem,8.5vw,8.4rem); line-height: .9; letter-spacing: -.065em; }
+    h2 { max-width: 17ch; margin: 14px 0 20px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.25rem,5vw,5.4rem); line-height: .96; letter-spacing: -.045em; }
+    h3 { line-height: 1.15; }
+    .lede { max-width: 690px; color: var(--muted); font-size: clamp(1.03rem,1.8vw,1.35rem); }
+    .grid-2 { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(30px,6vw,84px); align-items: center; }
+    .hero { min-height: calc(100vh - 64px); display: grid; align-items: center; }
+    .hero::after { content: ""; position: absolute; width: 520px; aspect-ratio: 1; right: -180px; top: 10%; border: 1px solid var(--line); border-radius: 50%; box-shadow: 0 0 0 80px color-mix(in srgb,var(--teal) 4%,transparent), 0 0 0 160px color-mix(in srgb,var(--teal) 3%,transparent); pointer-events: none; }
+    .hero-copy { position: relative; z-index: 2; }
+    .hero-copy h1 em { color: var(--teal); font-style: normal; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 9px; margin: 28px 0 0; }
+    .tag { padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-size: .84rem; }
+    .loop { position: relative; min-height: 580px; display: grid; place-items: center; }
+    .orbit { position: absolute; width: min(510px,92%); aspect-ratio: 1; border: 1px solid var(--line); border-radius: 50%; animation: rotate 28s linear infinite; }
+    .orbit::before,.orbit::after { content: ""; position: absolute; inset: 14%; border: 1px dashed var(--line); border-radius: 50%; }
+    .orbit::after { inset: 29%; }
+    .core { position: relative; width: 170px; aspect-ratio: 1; display: grid; place-items: center; text-align: center; border-radius: 50%; padding: 22px; background: var(--ink); color: var(--bg); box-shadow: var(--shadow); font-weight: 850; z-index: 2; }
+    .orb { position: absolute; width: 116px; min-height: 72px; display: grid; place-items: center; text-align: center; padding: 12px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface-solid); box-shadow: var(--shadow); font-weight: 750; z-index: 3; }
+    .o1 { top: 7%; left: 18%; }.o2 { top: 18%; right: 5%; }.o3 { bottom: 18%; right: 7%; }.o4 { bottom: 6%; left: 23%; }.o5 { top: 38%; left: 0; }
+    .note { margin-top: 24px; padding: 16px 18px; border-left: 3px solid var(--orange); background: var(--orange-soft); border-radius: 0 14px 14px 0; color: var(--ink); font-size: .92rem; }
+    .evidence-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 40px; }
+    .card { position: relative; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: 0 12px 44px rgba(30,55,65,.06); }
+    .card strong.code { display: inline-block; margin-bottom: 22px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .75rem; letter-spacing: .08em; }
+    .card p { color: var(--muted); }
+    .card .stat { font-family: Georgia,serif; font-size: 3.4rem; line-height: 1; color: var(--teal); }
+    .source-card { background: var(--blue-soft); }.decision-card { background: var(--teal-soft); }.hyp-card { background: var(--orange-soft); }
+    .trace { display: flex; align-items: stretch; gap: 10px; margin-top: 26px; overflow-x: auto; padding-bottom: 8px; }
+    .trace .step { min-width: 170px; flex: 1; padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface-solid); }
+    .trace .arrow { align-self: center; color: var(--teal); font-size: 1.4rem; }
+    .surfaces { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 44px; }
+    .surface { min-height: 300px; display: flex; flex-direction: column; }
+    .surface .icon { width: 50px; height: 50px; display: grid; place-items: center; border-radius: 15px; margin-bottom: 34px; font-size: 1.35rem; }
+    .surface ul { margin: auto 0 0; padding-left: 18px; color: var(--muted); }
+    .surface li { margin: 6px 0; }
+    .surface.primary { border-color: color-mix(in srgb,var(--teal) 55%,var(--line)); transform: translateY(-10px); }
+    .surface.primary .icon { background: var(--teal-soft); color: var(--teal); }
+    .surface.public .icon { background: var(--blue-soft); color: var(--blue); }
+    .surface.clinical .icon { background: var(--purple-soft); color: var(--purple); }
+    .gate-label { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; color: var(--red); font-size: .84rem; font-weight: 750; }
+    .architecture { margin-top: 32px; display: grid; gap: 13px; }
+    .arch-surfaces { display: grid; grid-template-columns: repeat(3,1fr); gap: 13px; }
+    .arch-node { min-height: 112px; padding: 17px 18px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+    .arch-node b { display: block; margin-bottom: 6px; }
+    .arch-node small { color: var(--muted); }
+    .arch-node.user { border-color: color-mix(in srgb,var(--teal) 55%,var(--line)); }
+    .arch-node.public { border-color: color-mix(in srgb,var(--blue) 45%,var(--line)); }
+    .arch-node.clinician { border-color: color-mix(in srgb,var(--purple) 45%,var(--line)); }
+    .arch-link { display: flex; align-items: center; justify-content: center; gap: 12px; color: var(--muted); font: 750 .75rem ui-monospace,monospace; letter-spacing: .07em; text-transform: uppercase; }
+    .arch-link::before,.arch-link::after { content: ""; width: 84px; height: 1px; background: var(--line); }
+    .arch-core { padding: 20px; border: 1px solid color-mix(in srgb,var(--teal) 58%,var(--line)); border-radius: 23px; background: var(--teal-soft); }
+    .arch-core-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 14px; }
+    .arch-core-head h3,.arch-core-head p { margin: 0; }
+    .arch-core-head p { color: var(--muted); font-size: .82rem; }
+    .core-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 9px; }
+    .core-module { min-height: 90px; padding: 13px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface-solid); }
+    .core-module b { display: block; margin-bottom: 5px; font-size: .84rem; }
+    .core-module small { color: var(--muted); }
+    .arch-foundation { display: grid; grid-template-columns: repeat(4,1fr); gap: 9px; }
+    .foundation-pill { padding: 12px 10px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); text-align: center; font-size: .78rem; font-weight: 750; }
+    .flow-shell { min-width: 0; margin-top: 40px; padding: clamp(20px,3vw,34px); border: 1px solid var(--line); border-radius: 30px; background: var(--surface); box-shadow: var(--shadow); }
+    .flow-head { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 24px; }
+    .flow-head p { margin: 0; color: var(--muted); }
+    .timeline { display: grid; grid-template-columns: repeat(7,minmax(120px,1fr)); gap: 9px; max-width: 100%; overflow-x: auto; padding-bottom: 8px; }
+    .event { position: relative; min-height: 136px; padding: 15px; border-radius: 16px; border: 1px solid var(--line); background: var(--surface-solid); cursor: pointer; text-align: left; color: var(--ink); }
+    .event:not(:last-child)::after { content: "→"; position: absolute; right: -11px; top: 49%; z-index: 2; color: var(--teal); font-weight: 900; }
+    .event b { display: block; margin-bottom: 12px; color: var(--teal); font-size: .76rem; text-transform: uppercase; letter-spacing: .09em; }
+    .event small { color: var(--muted); }
+    .event[aria-pressed="true"] { outline: 3px solid color-mix(in srgb,var(--teal) 34%,transparent); border-color: var(--teal); }
+    .detail { display: grid; grid-template-columns: 170px 1fr; gap: 18px; margin-top: 18px; padding: 18px; border-radius: 16px; background: var(--teal-soft); }
+    .detail strong { color: var(--teal); }
+    .detail p { margin: 0; }
+    .mini-loop { margin-top: 28px; display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; }
+    .mini-loop div { padding: 13px; border-radius: 14px; background: var(--surface-solid); border: 1px solid var(--line); text-align: center; font-size: .86rem; }
+    .lanes { display: grid; gap: 14px; margin-top: 36px; }
+    .lane { display: grid; grid-template-columns: 190px 1fr 140px; align-items: center; gap: 18px; padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+    .lane-name { font-weight: 850; }.lane p { margin: 0; color: var(--muted); }.status { justify-self: end; padding: 7px 10px; border-radius: 999px; font-size: .76rem; font-weight: 800; }
+    .auto .status { background: var(--green-soft); color: var(--green); }.confirm .status { background: var(--orange-soft); color: var(--orange); }.expert .status { background: var(--purple-soft); color: var(--purple); }
+    .clinical-callout { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .clinical-callout .card:first-child { border-color: color-mix(in srgb,var(--orange) 45%,var(--line)); }
+    .clinical-callout .card:last-child { border-color: color-mix(in srgb,var(--purple) 45%,var(--line)); }
+    .road { margin-top: 42px; display: grid; grid-template-columns: repeat(6,1fr); gap: 12px; counter-reset: phase; }
+    .phase { position: relative; min-height: 260px; padding: 20px 17px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); counter-increment: phase; }
+    .phase::before { content: "0" counter(phase); display: block; margin-bottom: 30px; color: var(--teal); font: 800 .78rem ui-monospace,monospace; letter-spacing: .1em; }
+    .phase:not(:last-child)::after { content: ""; position: absolute; width: 12px; height: 12px; right: -13px; top: 48%; border-top: 2px solid var(--teal); border-right: 2px solid var(--teal); transform: rotate(45deg); }
+    .phase p { color: var(--muted); font-size: .86rem; }
+    .phase .gate { position: absolute; left: 17px; right: 17px; bottom: 16px; padding-top: 10px; border-top: 1px solid var(--line); color: var(--green); font-size: .73rem; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; }
+    .decision-band { margin-top: 26px; display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .decision-band div { padding: 18px; border-radius: 16px; text-align: center; font-weight: 850; }
+    .go { background: var(--green-soft); color: var(--green); }.revise { background: var(--orange-soft); color: var(--orange); }.stop { background: var(--red-soft); color: var(--red); }
+    .road-label { margin: 26px 0 10px; display: flex; align-items: center; gap: 10px; color: var(--muted); font: 800 .76rem ui-monospace,monospace; letter-spacing: .1em; text-transform: uppercase; }
+    .road-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+    .build-road { display: grid; grid-template-columns: repeat(6,1fr); gap: 9px; }
+    .build-step { position: relative; min-height: 122px; padding: 14px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+    .build-step b { display: block; margin-bottom: 7px; color: var(--blue); font-size: .8rem; }
+    .build-step span { font-size: .82rem; }
+    .build-step:not(:last-child)::after { content: "→"; position: absolute; right: -10px; top: 44%; color: var(--blue); font-weight: 900; z-index: 2; }
+    .gate-bridge { margin: 14px auto 0; width: min(760px,100%); padding: 11px 15px; border-radius: 999px; background: var(--purple-soft); color: var(--purple); text-align: center; font-size: .78rem; font-weight: 800; }
+    footer { padding: 40px 24px 70px; border-top: 1px solid var(--line); color: var(--muted); }
+    .refs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 30px; font-size: .84rem; }
+    .refs a { color: var(--teal); overflow-wrap: anywhere; }
+    [data-copy="en"] { display: none; }
+    html[data-lang="en"] [data-copy="vi"] { display: none; }
+    html[data-lang="en"] [data-copy="en"] { display: initial; }
+    @keyframes rotate { to { transform: rotate(360deg); } }
+    @media (max-width: 1080px) {
+      nav { display: none; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .hero { min-height: auto; }
+      .hero-copy { padding-top: 20px; }
+      .loop { min-height: 520px; }
+      .surface.primary { transform: none; }
+      .core-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 900px) {
+      .evidence-grid,.surfaces { grid-template-columns: 1fr 1fr; }
+      .road,.build-road { grid-template-columns: repeat(3,1fr); }
+      .phase:nth-child(3)::after,.build-step:nth-child(3)::after { display: none; }
+    }
+    @media (max-width: 700px) {
+      .nav { padding: 9px 14px; gap: 10px; }.brand span:last-child { display: none; }
+      section { padding: 70px 16px; }
+      h1 { max-width: 100%; font-size: clamp(2.8rem,15.5vw,4rem); }
+      h2 { max-width: 100%; font-size: clamp(2.25rem,12vw,3.2rem); }
+      .flow-head { flex-wrap: wrap; }
+      .loop { min-height: 470px; transform: scale(.9); margin-inline: -20px; }
+      .evidence-grid,.surfaces,.clinical-callout,.decision-band,.refs,.arch-surfaces,.arch-foundation { grid-template-columns: 1fr; }
+      .core-grid,.build-road { grid-template-columns: 1fr 1fr; }
+      .build-step::after { display: none; }
+      .arch-core-head { align-items: start; flex-direction: column; }
+      .trace { align-items: center; }.trace .step { min-width: 145px; }
+      .mini-loop { grid-template-columns: 1fr 1fr; }.mini-loop div:last-child { grid-column: 1/-1; }
+      .lane { grid-template-columns: 1fr; gap: 8px; }.status { justify-self: start; }
+      .road { grid-template-columns: 1fr; }.phase { min-height: 220px; }
+      .phase::after { display: none; }
+      .detail { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *,*::before,*::after { scroll-behavior: auto!important; animation-duration: .001ms!important; animation-iteration-count: 1!important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Bỏ qua điều hướng</a>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <header>
+    <div class="nav">
+      <a class="brand" href="#hero"><span class="brand-mark">A</span><span>PROJECT ADHD BEHAVIORAL SUPPORT</span></a>
+      <nav aria-label="Điều hướng chính">
+        <a href="#evidence">Evidence</a><a href="#system">System</a><a href="#flow">Flow</a><a href="#safety">Safety</a><a href="#roadmap">Roadmap</a>
+      </nav>
+      <div class="controls">
+        <div class="seg" aria-label="Ngôn ngữ">
+          <button type="button" data-lang-btn="vi" aria-pressed="true">VI</button><button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
+        </div>
+        <div class="seg" aria-label="Giao diện">
+          <button type="button" data-theme-btn="system" aria-pressed="true" title="Hệ thống">A</button><button type="button" data-theme-btn="light" aria-pressed="false" title="Sáng">L</button><button type="button" data-theme-btn="dark" aria-pressed="false" title="Tối">D</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="hero">
+      <div class="wrap grid-2">
+        <div class="hero-copy">
+          <div class="eyebrow"><span data-copy="vi">Kế hoạch dựa trên bằng chứng</span><span data-copy="en">Evidence-first product plan</span></div>
+          <h1><span data-copy="vi">Hiểu trước.<br><em>Xây sau.</em></span><span data-copy="en">Understand first.<br><em>Build later.</em></span></h1>
+          <p class="lede" data-copy="vi">Project ADHD Behavioral Support kiểm chứng liệu dữ liệu đời sống có thể tạo ra một Pattern Map hữu ích và một bước hỗ trợ an toàn — trước khi đầu tư vào toàn bộ app, screening web và clinician portal.</p>
+          <p class="lede" data-copy="en">Project ADHD Behavioral Support validates whether real-life data can produce a useful Pattern Map and one safe support step—before investing in the full app, screening web, and clinician portal.</p>
+          <div class="tag-row"><span class="tag">Function Timeline</span><span class="tag">Pattern Map</span><span class="tag">Human control</span><span class="tag">Clinician review</span></div>
+          <div class="note"><strong data-copy="vi">Không phải app chẩn đoán.</strong><strong data-copy="en">Not a diagnostic app.</strong> <span data-copy="vi">Task là sensor của chức năng, không phải thước đo giá trị con người.</span><span data-copy="en">Tasks are sensors of function, not measures of human worth.</span></div>
+        </div>
+        <div class="loop" aria-label="Vòng lặp sản phẩm">
+          <div class="orbit"></div><div class="core"><span data-copy="vi">Một bước nhỏ có thể thử</span><span data-copy="en">One testable small step</span></div>
+          <div class="orb o1"><span data-copy="vi">Khó khăn thật</span><span data-copy="en">Real friction</span></div>
+          <div class="orb o2"><span>Understand</span></div><div class="orb o3"><span>Support</span></div><div class="orb o4"><span>Learn</span></div><div class="orb o5"><span>Adapt</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="evidence">
+      <div class="wrap">
+        <div class="eyebrow"><span data-copy="vi">Bản đồ bằng chứng</span><span data-copy="en">Evidence map</span></div>
+        <h2><span data-copy="vi">Không trộn nguồn, quyết định và giả thuyết.</span><span data-copy="en">Do not mix sources, decisions, and hypotheses.</span></h2>
+        <p class="lede" data-copy="vi">Vault mới cho phép truy từ session tới claim, bằng chứng, bác sĩ rà soát và quyết định hiện hành.</p>
+        <p class="lede" data-copy="en">The new vault traces each session into claims, evidence, clinical review, and current decisions.</p>
+        <div class="evidence-grid">
+          <article class="card source-card"><strong class="code">SOURCE</strong><div class="stat">9</div><h3 data-copy="vi">Session đã đối chiếu</h3><h3 data-copy="en">Curated sessions</h3><p data-copy="vi">Lưu nguồn hình thành ý tưởng, không tự biến thành bằng chứng.</p><p data-copy="en">Preserve idea provenance without turning it into evidence.</p></article>
+          <article class="card decision-card"><strong class="code">DECISION</strong><div class="stat">14</div><h3 data-copy="vi">Quyết định có mã</h3><h3 data-copy="en">Coded decisions</h3><p data-copy="vi">Mỗi quyết định có nguồn, hệ quả và điều kiện xem lại.</p><p data-copy="en">Each decision has provenance, consequences, and review triggers.</p></article>
+          <article class="card hyp-card"><strong class="code">HYPOTHESIS</strong><div class="stat">8</div><h3 data-copy="vi">Giả thuyết cần thử</h3><h3 data-copy="en">Hypotheses to test</h3><p data-copy="vi">Mỗi giả thuyết có cách đo và điều kiện bác bỏ.</p><p data-copy="en">Every hypothesis has a measure and a rejection condition.</p></article>
+        </div>
+        <div class="trace" aria-label="Chuỗi truy vết"><div class="step"><b>01</b><br><span data-copy="vi">Session nguồn</span><span data-copy="en">Source session</span></div><span class="arrow">→</span><div class="step"><b>02</b><br><span data-copy="vi">Claim / giả thuyết</span><span data-copy="en">Claim / hypothesis</span></div><span class="arrow">→</span><div class="step"><b>03</b><br><span data-copy="vi">Bằng chứng</span><span data-copy="en">Evidence</span></div><span class="arrow">→</span><div class="step"><b>04</b><br><span data-copy="vi">Rà soát</span><span data-copy="en">Review</span></div><span class="arrow">→</span><div class="step"><b>05</b><br><span data-copy="vi">Quyết định</span><span data-copy="en">Decision</span></div></div>
+      </div>
+    </section>
+
+    <section id="system">
+      <div class="wrap">
+        <div class="eyebrow"><span data-copy="vi">Diagram hệ thống</span><span data-copy="en">System diagram</span></div>
+        <h2><span data-copy="vi">Ba bề mặt. Một lõi domain. AI chỉ là lớp tùy chọn.</span><span data-copy="en">Three surfaces. One domain core. AI stays optional.</span></h2>
+        <div class="architecture" aria-label="Kiến trúc hệ thống nhiều lớp">
+          <div class="arch-surfaces">
+            <article class="arch-node user"><b><span data-copy="vi">App người dùng</span><span data-copy="en">User app</span></b><small>Today · Check-in · Task Map · Skill Tree · Progress</small></article>
+            <article class="arch-node public"><b><span data-copy="vi">Web nghiên cứu / sàng lọc</span><span data-copy="en">Research / screening web</span></b><small>Neutral research · Anonymous screening · Versioned content</small></article>
+            <article class="arch-node clinician"><b><span data-copy="vi">Review chuyên gia</span><span data-copy="en">Clinician review</span></b><small>Pattern review · Missing evidence · Safety wording · Report</small></article>
+          </div>
+          <div class="arch-link"><span data-copy="vi">API và quy tắc dùng chung</span><span data-copy="en">Shared rules and interfaces</span></div>
+          <div class="arch-core">
+            <div class="arch-core-head"><div><h3>Deterministic Domain Core</h3><p data-copy="vi">Core journey hoạt động khi AI provider = none.</p><p data-copy="en">The core journey works when AI provider = none.</p></div><span class="tag">Rule-first</span></div>
+            <div class="core-grid">
+              <div class="core-module"><b>Versioned Content</b><small>Questionnaire · License · Wording · Consent</small></div>
+              <div class="core-module"><b>Function Engine</b><small>Timeline · Functional Profile · Pattern confidence</small></div>
+              <div class="core-module"><b>Action Engine</b><small>Task Map · Next Action · External Brain · Visual Time</small></div>
+              <div class="core-module"><b>Adaptation Engine</b><small>Skill states · Proposals · Reason · Approval · Undo</small></div>
+            </div>
+          </div>
+          <div class="arch-foundation">
+            <div class="foundation-pill">Local-first data</div><div class="foundation-pill">Consent + privacy</div><div class="foundation-pill">Safety + audit</div><div class="foundation-pill">AI adapter · optional</div>
+          </div>
+        </div>
+        <div class="gate-label">⊘ <span data-copy="vi">Chưa xây ba hệ thống đầy đủ trước khi vòng lặp cốt lõi được kiểm chứng.</span><span data-copy="en">Do not build three full systems before validating the core loop.</span></div>
+      </div>
+    </section>
+
+    <section id="flow">
+      <div class="wrap">
+        <div class="eyebrow"><span data-copy="vi">Flow tính năng</span><span data-copy="en">Feature flow</span></div>
+        <h2><span data-copy="vi">Từ một lần mắc kẹt tới một điều học được.</span><span data-copy="en">From one stuck moment to one useful learning.</span></h2>
+        <div class="flow-shell">
+          <div class="flow-head"><div><h3>Function Timeline</h3><p data-copy="vi">Chọn từng bước để xem vai trò.</p><p data-copy="en">Select a step to inspect its role.</p></div><span class="tag">30–60s hypothesis</span></div>
+          <div class="timeline" id="timeline">
+            <button class="event" aria-pressed="true" data-detail="context"><b>01</b><span>Context</span><br><small data-copy="vi">Ở đâu, lúc nào?</small><small data-copy="en">Where and when?</small></button>
+            <button class="event" aria-pressed="false" data-detail="state"><b>02</b><span>State</span><br><small data-copy="vi">Năng lượng, stress</small><small data-copy="en">Energy, stress</small></button>
+            <button class="event" aria-pressed="false" data-detail="task"><b>03</b><span>Task</span><br><small data-copy="vi">Rõ, lớn, chán?</small><small data-copy="en">Clear, large, dull?</small></button>
+            <button class="event" aria-pressed="false" data-detail="difficulty"><b>04</b><span>Difficulty</span><br><small data-copy="vi">Điểm nghẽn</small><small data-copy="en">Executive friction</small></button>
+            <button class="event" aria-pressed="false" data-detail="support"><b>05</b><span>Support</span><br><small data-copy="vi">Đã thử gì?</small><small data-copy="en">What was tried?</small></button>
+            <button class="event" aria-pressed="false" data-detail="response"><b>06</b><span>Response</span><br><small data-copy="vi">Điều gì xảy ra?</small><small data-copy="en">What happened?</small></button>
+            <button class="event" aria-pressed="false" data-detail="learning"><b>07</b><span>Learning</span><br><small data-copy="vi">Pattern nào?</small><small data-copy="en">Which pattern?</small></button>
+          </div>
+          <div class="detail" aria-live="polite"><strong id="detailTitle">Context</strong><p id="detailText">Viết báo cáo lúc 09:30, tại bàn làm việc, trước cuộc họp.</p></div>
+          <div class="mini-loop"><div data-copy="vi">Sự kiện 7–14 ngày</div><div data-copy="en">7–14 days of events</div><div>→ Pattern candidate</div><div data-copy="vi">→ Người dùng xác nhận</div><div data-copy="en">→ User confirms</div><div data-copy="vi">→ Bác sĩ rà soát</div><div data-copy="en">→ Clinician reviews</div><div data-copy="vi">→ Một điều chỉnh</div><div data-copy="en">→ One adjustment</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="safety">
+      <div class="wrap">
+        <div class="eyebrow"><span data-copy="vi">Quyền hạn và an toàn</span><span data-copy="en">Authority and safety</span></div>
+        <h2><span data-copy="vi">Máy hỗ trợ. Người dùng kiểm soát. Chuyên gia chịu trách nhiệm.</span><span data-copy="en">The system supports. Users control. Clinicians remain accountable.</span></h2>
+        <div class="lanes">
+          <div class="lane auto"><div class="lane-name" data-copy="vi">Tự động rủi ro thấp</div><div class="lane-name" data-copy="en">Low-risk automation</div><p data-copy="vi">Chia nhỏ việc, giảm nhắc, đổi timer, sắp lại thứ tự.</p><p data-copy="en">Split tasks, reduce reminders, adjust timers, reorder steps.</p><span class="status">AUTO + UNDO</span></div>
+          <div class="lane confirm"><div class="lane-name" data-copy="vi">Người dùng xác nhận</div><div class="lane-name" data-copy="en">User confirmation</div><p data-copy="vi">Đổi nhánh chính, tạm dừng mục tiêu, chia sẻ report.</p><p data-copy="en">Change a main branch, pause a goal, share a report.</p><span class="status">CONFIRM</span></div>
+          <div class="lane expert"><div class="lane-name" data-copy="vi">Chuyên gia quyết định</div><div class="lane-name" data-copy="en">Clinician decision</div><p data-copy="vi">Chẩn đoán, thuốc, mục tiêu điều trị và nhánh nguy cơ.</p><p data-copy="en">Diagnosis, medication, treatment goals, and risk pathways.</p><span class="status">HUMAN ONLY</span></div>
+        </div>
+        <div class="clinical-callout">
+          <article class="card"><strong class="code">CURRENT</strong><h3 data-copy="vi">Có bác sĩ hỗ trợ</h3><h3 data-copy="en">A doctor is supporting</h3><p data-copy="vi">Đây là lợi thế để review Function Timeline, confounders, wording và outcome.</p><p data-copy="en">This enables review of the Function Timeline, confounders, wording, and outcomes.</p></article>
+          <article class="card"><strong class="code">NOT YET</strong><h3 data-copy="vi">Chưa suy ra phê duyệt tổ chức</h3><h3 data-copy="en">No institutional approval implied</h3><p data-copy="vi">Chưa dùng tên Bạch Mai, chưa gắn clinical approved và chưa thu dữ liệu bệnh nhân.</p><p data-copy="en">Do not use the Bạch Mai name, claim clinical approval, or collect patient data yet.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="wrap">
+        <div class="eyebrow"><span data-copy="vi">Roadmap kiểm chứng</span><span data-copy="en">Validation roadmap</span></div>
+        <h2><span data-copy="vi">Chỉ xây thứ vượt qua cổng bằng chứng.</span><span data-copy="en">Build only what passes an evidence gate.</span></h2>
+        <div class="road-label"><span data-copy="vi">Tầng 1 · Kiểm chứng giá trị</span><span data-copy="en">Layer 1 · Value validation</span></div>
+        <div class="road">
+          <article class="phase"><h3 data-copy="vi">Vai trò lâm sàng</h3><h3 data-copy="en">Clinical role</h3><p data-copy="vi">Xác nhận phạm vi, quyền duyệt và ranh giới nghiên cứu.</p><p data-copy="en">Confirm scope, review authority, and research boundaries.</p><div class="gate">Role documented</div></article>
+          <article class="phase"><h3 data-copy="vi">Khám phá vấn đề</h3><h3 data-copy="en">Problem discovery</h3><p data-copy="vi">10–15 phỏng vấn theo hành vi, không hỏi feature wish list.</p><p data-copy="en">10–15 behavioral interviews, not feature wish lists.</p><div class="gate">Repeated problem</div></article>
+          <article class="phase"><h3>Concierge Timeline</h3><p data-copy="vi">Form nhẹ, tổng hợp Pattern Map thủ công.</p><p data-copy="en">Lightweight capture, manual Pattern Maps.</p><div class="gate">Useful + low burden</div></article>
+          <article class="phase"><h3>Clinician review</h3><p data-copy="vi">Kiểm tra overreach, thiếu dữ liệu và wording.</p><p data-copy="en">Check overreach, missing evidence, and wording.</p><div class="gate">Not misleading</div></article>
+          <article class="phase"><h3>Micro-intervention</h3><p data-copy="vi">Thử một hỗ trợ theo một pattern đã xác nhận.</p><p data-copy="en">Test one support against one confirmed pattern.</p><div class="gate">Functional benefit</div></article>
+          <article class="phase"><h3 data-copy="vi">Quyết định MVP</h3><h3 data-copy="en">MVP decision</h3><p data-copy="vi">Xây, chỉnh hoặc dừng dựa trên bằng chứng.</p><p data-copy="en">Build, revise, or stop based on evidence.</p><div class="gate">Go / revise / stop</div></article>
+        </div>
+        <div class="decision-band"><div class="go">GO · Build the validated loop</div><div class="revise">REVISE · Change the hypothesis</div><div class="stop">STOP · Avoid sunk-cost building</div></div>
+        <div class="gate-bridge"><span data-copy="vi">Chỉ khi GO + naming + privacy + safety + claim gate cùng đạt</span><span data-copy="en">Only after GO plus naming, privacy, safety, and claim gates</span></div>
+        <div class="road-label"><span data-copy="vi">Tầng 2 · Triển khai sau validation</span><span data-copy="en">Layer 2 · Post-validation implementation</span></div>
+        <div class="build-road">
+          <div class="build-step"><b>01 FOUNDATION</b><span>Clinical · privacy · content · license</span></div>
+          <div class="build-step"><b>02 DOMAIN</b><span data-copy="vi">Rule dùng chung + deterministic tests</span><span data-copy="en">Shared rules + deterministic tests</span></div>
+          <div class="build-step"><b>03 USER MVP</b><span>Offline-first · Today · Timeline</span></div>
+          <div class="build-step"><b>04 PUBLIC WEB</b><span>Anonymous screening · handoff</span></div>
+          <div class="build-step"><b>05 CLINICIAN</b><span>Consent sync · review · audit</span></div>
+          <div class="build-step"><b>06 PILOT</b><span data-copy="vi">Monitored release · go/no-go</span><span data-copy="en">Monitored release · go/no-go</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="eyebrow"><span data-copy="vi">Nguồn và giới hạn</span><span data-copy="en">Sources and limits</span></div>
+      <p data-copy="vi">Kế hoạch được truy xuất từ Obsidian vault của dự án. Đây là plan sản phẩm, không phải hướng dẫn chẩn đoán hoặc điều trị.</p>
+      <p data-copy="en">This plan is derived from the project Obsidian vault. It is a product plan, not diagnostic or treatment guidance.</p>
+      <div class="refs">
+        <a href="./">Project overview</a>
+        <a href="#roadmap">Validation roadmap</a>
+        <a href="https://www.nice.org.uk/guidance/ng87/chapter/recommendations">NICE NG87</a>
+        <a href="https://www.nimh.nih.gov/health/publications/adhd-what-you-need-to-know">NIMH ADHD in Adults</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const initialParams = new URLSearchParams(location.search);
+    const initialLanguage = initialParams.get('lang');
+    const initialTheme = initialParams.get('theme');
+    if (['vi','en'].includes(initialLanguage)) { root.dataset.lang = initialLanguage; root.lang = initialLanguage; }
+    if (['system','light','dark'].includes(initialTheme)) root.dataset.theme = initialTheme;
+    document.querySelectorAll('[data-lang-btn]').forEach(item => item.setAttribute('aria-pressed', String(item.dataset.langBtn === root.dataset.lang)));
+    document.querySelectorAll('[data-theme-btn]').forEach(item => item.setAttribute('aria-pressed', String(item.dataset.themeBtn === root.dataset.theme)));
+    document.querySelectorAll('[data-theme-btn]').forEach(button => button.addEventListener('click', () => {
+      root.dataset.theme = button.dataset.themeBtn;
+      document.querySelectorAll('[data-theme-btn]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    }));
+    document.querySelectorAll('[data-lang-btn]').forEach(button => button.addEventListener('click', () => {
+      root.dataset.lang = button.dataset.langBtn;
+      root.lang = button.dataset.langBtn;
+      document.querySelectorAll('[data-lang-btn]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    }));
+    const details = {
+      vi: {
+        context: ['Context','Viết báo cáo lúc 09:30, tại bàn làm việc, trước cuộc họp.'],
+        state: ['State','Năng lượng trung bình, stress cao và vừa chuyển từ một cuộc gọi.'],
+        task: ['Task characteristics','Mức hứng thú thấp, yêu cầu chưa rõ và chưa có bước đầu nhìn thấy được.'],
+        difficulty: ['Executive difficulty','Khó khởi động; người dùng biết mục tiêu nhưng không biết hành động đầu tiên.'],
+        support: ['Support used','Đổi mục tiêu thành “mở file và viết tiêu đề”, chạy timer 5 phút.'],
+        response: ['Response','Bắt đầu sau 8 phút; tiếp tục thêm 12 phút sau khi timer kết thúc.'],
+        learning: ['Learning','Task mơ hồ cộng stress cao làm giảm khả năng khởi động; bước nhìn thấy được có thể giúp.']
+      },
+      en: {
+        context: ['Context','Writing a report at 09:30, at the desk, before a meeting.'],
+        state: ['State','Medium energy, high stress, immediately after a call.'],
+        task: ['Task characteristics','Low interest, unclear requirements, and no visible first action.'],
+        difficulty: ['Executive difficulty','Initiation friction: the goal is known but the first action is not.'],
+        support: ['Support used','Change the goal to “open the file and write the title”; use a five-minute timer.'],
+        response: ['Response','Started after eight minutes and continued for twelve minutes after the timer.'],
+        learning: ['Learning','Ambiguity plus high stress may reduce initiation; a visible first action may help.']
+      }
+    };
+    const renderDetail = key => {
+      const copy = details[root.dataset.lang][key];
+      document.getElementById('detailTitle').textContent = copy[0];
+      document.getElementById('detailText').textContent = copy[1];
+    };
+    renderDetail(document.querySelector('.event[aria-pressed="true"]').dataset.detail);
+    document.querySelectorAll('.event').forEach(button => button.addEventListener('click', () => {
+      document.querySelectorAll('.event').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      renderDetail(button.dataset.detail);
+    }));
+    document.querySelectorAll('[data-lang-btn]').forEach(button => button.addEventListener('click', () => {
+      const active = document.querySelector('.event[aria-pressed="true"]');
+      renderDetail(active.dataset.detail);
+    }));
+    const progress = document.getElementById('progressBar');
+    const updateProgress = () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.width = (max > 0 ? scrollY / max * 100 : 0) + '%';
+    };
+    addEventListener('scroll', updateProgress, { passive: true }); updateProgress();
+    const jumpToSection = () => {
+      const captureId = new URLSearchParams(location.search).get('section');
+      const id = captureId || location.hash.slice(1);
+      const section = id && document.getElementById(id);
+      if (section && captureId) {
+        document.querySelectorAll('main > section').forEach(item => { if (item !== section) item.style.display = 'none'; });
+        section.style.minHeight = 'calc(100vh - 64px)';
+      }
+      if (section) section.scrollIntoView({ block: 'start' });
+    };
+    addEventListener('load', () => setTimeout(jumpToSection, 80));
+  </script>
+</body>
+</html>
