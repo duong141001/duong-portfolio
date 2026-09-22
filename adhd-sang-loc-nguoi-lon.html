@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Công cụ sàng lọc định hướng dấu hiệu ADHD ở người lớn, chạy offline và không thay thế chẩn đoán chuyên môn.">
+  <title>Sàng lọc ADHD người lớn — công cụ định hướng</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23142b3b'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%2358d6c7' stroke-width='6'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23ffd166'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #142b3b;
+      --muted: #5b6b76;
+      --paper: #f5f8f7;
+      --card: #ffffff;
+      --line: #d9e3e1;
+      --teal: #087f73;
+      --teal-dark: #075e56;
+      --teal-soft: #e4f5f2;
+      --amber: #b66b00;
+      --amber-soft: #fff4d6;
+      --red: #a33b32;
+      --red-soft: #fff0ee;
+      --shadow: 0 16px 45px rgba(20, 43, 59, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #edf6f4 0, var(--paper) 24rem);
+      color: var(--ink);
+      font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    a { color: var(--teal-dark); }
+    .shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 0 12px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -.02em; }
+    .mark { width: 28px; height: 28px; border: 7px solid var(--teal); border-radius: 50%; position: relative; }
+    .mark::after { content: ""; position: absolute; width: 6px; height: 6px; background: #e6a21a; border-radius: 50%; inset: 4px; }
+    .privacy { color: var(--muted); font-size: .9rem; }
+
+    .intro {
+      display: grid;
+      grid-template-columns: 1.4fr .8fr;
+      gap: 28px;
+      padding: 38px 0 28px;
+      align-items: end;
+    }
+    .eyebrow { margin: 0 0 8px; color: var(--teal-dark); font-weight: 800; text-transform: uppercase; font-size: .78rem; letter-spacing: .12em; }
+    h1 { font-size: clamp(2rem, 5vw, 4.15rem); line-height: 1.02; letter-spacing: -.055em; margin: 0 0 18px; max-width: 13ch; }
+    .lede { font-size: 1.08rem; color: var(--muted); max-width: 66ch; margin: 0; }
+    .notice { background: var(--ink); color: white; padding: 22px; border-radius: 18px; box-shadow: var(--shadow); }
+    .notice strong { color: #7ce2d6; display: block; margin-bottom: 5px; }
+    .notice p { margin: 0; font-size: .96rem; color: #e6eff2; }
+
+    .progress-wrap { position: sticky; top: 0; z-index: 5; background: rgba(245,248,247,.94); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(217,227,225,.8); }
+    .progress-row { display: flex; align-items: center; gap: 14px; padding: 12px 0; }
+    .progress-track { height: 8px; background: #dce7e4; border-radius: 999px; flex: 1; overflow: hidden; }
+    .progress-bar { height: 100%; width: 0; background: linear-gradient(90deg, var(--teal), #40b8aa); transition: width .25s ease; }
+    #progressText { min-width: 76px; color: var(--muted); font-size: .88rem; text-align: right; }
+
+    main { padding: 30px 0 70px; }
+    .section { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: clamp(20px, 4vw, 38px); margin: 0 0 22px; box-shadow: var(--shadow); }
+    .section-head { display: flex; justify-content: space-between; gap: 20px; align-items: start; margin-bottom: 22px; }
+    .step { flex: 0 0 auto; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--teal-soft); color: var(--teal-dark); font-weight: 900; }
+    h2 { margin: 0; font-size: clamp(1.4rem, 3vw, 2rem); letter-spacing: -.03em; line-height: 1.2; }
+    h3 { margin: 0 0 7px; font-size: 1.06rem; }
+    .hint { color: var(--muted); margin: 6px 0 0; }
+    .scale-legend { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 12px; background: #f4f8f7; border-radius: 14px; margin-bottom: 6px; color: var(--muted); font-size: .82rem; text-align: center; }
+    .question { border: 0; margin: 0; padding: 21px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+    .question:last-child { border-bottom: 0; }
+    .question legend { display: block; width: 100%; padding: 0 0 13px; font-weight: 680; line-height: 1.45; }
+    .q-number { color: var(--teal); margin-right: 7px; }
+    .choices { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+    .choice input { position: absolute; opacity: 0; pointer-events: none; }
+    .choice span { display: grid; place-items: center; min-height: 46px; padding: 8px 5px; border: 1px solid var(--line); border-radius: 12px; text-align: center; color: var(--muted); transition: .15s ease; }
+    .choice input:checked + span { background: var(--teal); border-color: var(--teal); color: white; font-weight: 750; box-shadow: 0 5px 14px rgba(8,127,115,.2); }
+    .choice input:focus-visible + span { outline: 3px solid #f0b64d; outline-offset: 2px; }
+    .choice:hover span { border-color: var(--teal); }
+
+    .context-grid, .confounders, .tips-grid, .evidence-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .context-card, .check-card { position: relative; }
+    .context-card input, .check-card input { position: absolute; opacity: 0; }
+    .context-card span, .check-card span { display: block; min-height: 100%; padding: 15px 16px 15px 46px; border: 1px solid var(--line); border-radius: 14px; color: var(--muted); }
+    .context-card span::before, .check-card span::before { content: ""; position: absolute; left: 16px; top: 18px; width: 17px; height: 17px; border: 2px solid #9dafb0; border-radius: 5px; }
+    .context-card input:checked + span, .check-card input:checked + span { background: var(--teal-soft); border-color: var(--teal); color: var(--ink); }
+    .context-card input:checked + span::before, .check-card input:checked + span::before { background: var(--teal); border-color: var(--teal); box-shadow: inset 0 0 0 3px var(--teal-soft); }
+    .context-card input:focus-visible + span, .check-card input:focus-visible + span { outline: 3px solid #f0b64d; outline-offset: 2px; }
+    .prompt { margin: 24px 0 12px; font-weight: 750; }
+    .yesno { display: flex; gap: 10px; flex-wrap: wrap; }
+    .yesno label input { position: absolute; opacity: 0; }
+    .yesno label span { display: inline-block; padding: 10px 17px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
+    .yesno label input:checked + span { color: white; background: var(--teal); border-color: var(--teal); }
+    .yesno label input:focus-visible + span { outline: 3px solid #f0b64d; outline-offset: 2px; }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 26px; }
+    .btn { border: 0; border-radius: 12px; padding: 12px 18px; font-weight: 800; }
+    .btn-primary { background: var(--teal); color: white; box-shadow: 0 7px 16px rgba(8,127,115,.2); }
+    .btn-primary:hover { background: var(--teal-dark); }
+    .btn-secondary { background: #edf3f2; color: var(--ink); }
+    .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+    .error { color: var(--red); font-weight: 700; margin-top: 12px; min-height: 1.5em; }
+
+    .result { display: none; scroll-margin-top: 70px; border: 2px solid var(--teal); }
+    .result.visible { display: block; animation: rise .3s ease both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+    .result-badge { display: inline-flex; padding: 7px 12px; border-radius: 999px; background: var(--teal-soft); color: var(--teal-dark); font-size: .85rem; font-weight: 850; margin-bottom: 12px; }
+    .result h2 { font-size: clamp(1.75rem, 4vw, 2.6rem); }
+    .result-summary { font-size: 1.08rem; color: var(--muted); max-width: 75ch; }
+    .meters { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+    .meter { background: #f4f8f7; padding: 17px; border-radius: 15px; }
+    .meter-top { display: flex; justify-content: space-between; gap: 12px; font-weight: 750; }
+    .meter-track { height: 9px; border-radius: 999px; background: #dce6e4; margin-top: 12px; overflow: hidden; }
+    .meter-fill { height: 100%; background: var(--teal); border-radius: inherit; }
+    .result-note { padding: 16px 18px; border-radius: 14px; background: var(--amber-soft); border-left: 5px solid #e8a629; }
+    .result-list { padding-left: 20px; }
+    .saved-at { color: var(--muted); font-size: .9rem; margin-left: auto; }
+
+    .tips { margin-top: 40px; }
+    .tip { padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
+    .tip-number { display: inline-grid; place-items: center; width: 30px; height: 30px; margin-bottom: 12px; border-radius: 9px; background: var(--ink); color: white; font-weight: 800; }
+    .tip p { margin: 0; color: var(--muted); }
+    .med-warning { margin-top: 16px; padding: 18px; background: var(--red-soft); border: 1px solid #f1c7c2; border-radius: 15px; }
+    .plan-section { scroll-margin-top: 72px; }
+    .reading-width { max-width: 72ch; }
+    .research-note { margin: 22px 0; padding: 18px; background: var(--teal-soft); border-left: 5px solid var(--teal); border-radius: 14px; }
+    .research-note p { margin: 6px 0 0; }
+    .evidence-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 22px 0 30px; }
+    .evidence-card { padding: 17px; border: 1px solid var(--line); border-radius: 15px; background: #f8fbfa; }
+    .evidence-card strong { display: block; margin-bottom: 7px; }
+    .evidence-card p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .routine-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 22px 0; }
+    .routine-block { padding: 19px; border: 1px solid var(--line); border-radius: 16px; }
+    .routine-time { display: inline-block; color: var(--teal-dark); font-size: .8rem; font-weight: 850; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 7px; }
+    .routine-block ul, .week-body ul { margin: 8px 0 0; padding-left: 20px; }
+    .routine-block li, .week-body li { margin-bottom: 6px; }
+    .core-checks { display: grid; gap: 9px; margin: 18px 0; }
+    .core-check { position: relative; display: block; }
+    .core-check input { position: absolute; opacity: 0; }
+    .core-check span { display: block; min-height: 48px; padding: 11px 14px 11px 46px; border: 1px solid var(--line); border-radius: 12px; }
+    .core-check span::before { content: ""; position: absolute; left: 16px; top: 14px; width: 18px; height: 18px; border: 2px solid #91a5a4; border-radius: 5px; }
+    .core-check input:checked + span { background: var(--teal-soft); border-color: var(--teal); text-decoration: line-through; text-decoration-color: #6f8884; }
+    .core-check input:checked + span::before { background: var(--teal); border-color: var(--teal); box-shadow: inset 0 0 0 3px var(--teal-soft); }
+    .core-check input:focus-visible + span { outline: 3px solid #f0b64d; outline-offset: 2px; }
+    .minimum { padding: 17px 18px; background: var(--amber-soft); border: 1px solid #efd38d; border-radius: 15px; }
+    .minimum p { margin: 5px 0 0; }
+    .metrics { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 18px; }
+    .metric-chip { padding: 11px; background: #f4f8f7; border-radius: 11px; color: var(--muted); font-size: .87rem; text-align: center; }
+    .roadmap { display: grid; gap: 10px; margin-top: 24px; }
+    .roadmap details { border: 1px solid var(--line); border-radius: 15px; background: var(--card); overflow: clip; }
+    .roadmap summary { display: flex; align-items: center; gap: 13px; min-height: 60px; padding: 13px 18px; cursor: pointer; list-style: none; }
+    .roadmap summary::-webkit-details-marker { display: none; }
+    .roadmap summary::after { content: "+"; margin-left: auto; color: var(--teal); font-size: 1.45rem; font-weight: 500; }
+    .roadmap details[open] summary::after { content: "−"; }
+    .roadmap summary:focus-visible { outline: 3px solid #f0b64d; outline-offset: -3px; }
+    .roadmap summary h3 { margin: 0; line-height: 1.35; }
+    .week-no { flex: 0 0 auto; display: grid; place-items: center; min-width: 42px; height: 34px; padding: 0 8px; border-radius: 9px; background: var(--teal-soft); color: var(--teal-dark); font-size: .8rem; font-weight: 900; }
+    .week-body { padding: 0 20px 20px 75px; color: var(--muted); }
+    .week-body strong { color: var(--ink); }
+    .week-body p { margin: 4px 0 8px; }
+    .next-step { margin-top: 18px; }
+    .next-step a { display: inline-block; padding: 10px 14px; border-radius: 11px; background: var(--teal-soft); font-weight: 800; text-decoration: none; }
+    .citation { font-size: .88em; white-space: nowrap; }
+    .small-note { color: var(--muted); font-size: .9rem; }
+    .sources { color: var(--muted); font-size: .9rem; }
+    .sources li { margin-bottom: 8px; }
+    footer { padding: 28px 0 42px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+
+    @media (max-width: 760px) {
+      .intro { grid-template-columns: 1fr; padding-top: 25px; }
+      .privacy { display: none; }
+      .choices { grid-template-columns: repeat(2, 1fr); }
+      .scale-legend { display: none; }
+      .context-grid, .confounders, .tips-grid, .meters, .evidence-grid, .routine-grid { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .week-body { padding-left: 20px; }
+      .section { border-radius: 17px; }
+      .saved-at { width: 100%; margin-left: 0; }
+    }
+    @media print {
+      body { background: white; }
+      .topbar, .progress-wrap, form, .self-management, footer, #printBtn, #saveBtn { display: none !important; }
+      .intro { display: block; padding: 0 0 20px; }
+      .notice { color: black; background: #f1f1f1; box-shadow: none; }
+      .notice strong, .notice p { color: black; }
+      .result.visible { display: block !important; border: 1px solid #999; box-shadow: none; }
+      .shell { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+    /* Portfolio-aligned screening presentation. Questionnaire logic stays unchanged. */
+    :root{--ink:#183b36;--muted:#5c706b;--paper:#f5f3ed;--card:#fffefa;--line:#d6dfd7;--teal:#176e5b;--teal-dark:#11513f;--teal-soft:#eaf2e9;--shadow:0 8px 28px rgba(24,59,54,.035)}
+    body{background:var(--paper);font-family:"Be Vietnam Pro","Segoe UI",sans-serif}
+    html{scroll-padding-top:94px}
+    :focus-visible{outline:3px solid #b16a21;outline-offset:4px}
+    .skip-link{position:absolute;top:-80px;left:16px;z-index:20;background:var(--ink);color:white;padding:14px}
+    .skip-link:focus{top:12px}
+    .shell{width:min(1240px,calc(100% - 64px))}
+    .topbar{padding:26px 0;border-bottom:1px solid var(--line)}
+    .brand{font-size:.86rem;letter-spacing:-.025em;text-decoration:none;color:var(--ink)}
+    .return-link{font-size:.82rem;text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:30px;min-height:44px;display:inline-flex;align-items:center}
+    .return-link:hover{background:var(--teal-soft)}
+    .intro{grid-template-columns:1.35fr .75fr;gap:64px;padding:64px 0 48px;align-items:center}
+    .eyebrow{font-size:.7rem;letter-spacing:.13em;font-weight:700;margin-bottom:18px}
+    h1{font-size:clamp(2.4rem,4.5vw,4.2rem);line-height:1.18;letter-spacing:-.045em;max-width:17ch;font-weight:600}
+    h1 em{font-style:normal;color:var(--teal)}
+    .lede{font-size:1rem;line-height:1.8;max-width:55ch}
+    .intro-facts{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}
+    .intro-facts span{font-size:.76rem;padding:7px 12px;border:1px solid var(--line);border-radius:30px;background:var(--card)}
+    .start-link{display:inline-flex;align-items:center;gap:24px;min-height:50px;background:var(--teal);color:white;text-decoration:none;padding:12px 22px;border-radius:12px;font-weight:600}
+    .start-link:hover{background:var(--teal-dark)}
+    .notice{background:#e7eee3;color:var(--ink);border:1px solid #ccd8c8;padding:30px;border-radius:24px;box-shadow:none;position:relative}
+    .notice::before{content:"i";display:grid;place-items:center;width:42px;height:42px;border:1px solid #9fb69e;border-radius:50%;font-size:1.35rem;font-weight:500;margin-bottom:28px}
+    .notice strong{color:var(--ink);font-size:1.15rem;line-height:1.5;margin-bottom:10px}
+    .notice p{color:#41564b;font-size:.9rem;line-height:1.8}
+    .progress-wrap{background:rgba(245,243,237,.97);border-block:1px solid var(--line)}
+    .progress-row{padding:17px 0;gap:24px}
+    .progress-label{font-size:.76rem;font-weight:600;white-space:nowrap}
+    .progress-track{height:6px;background:#dce3d8}
+    .progress-bar{background:var(--teal)}
+    #progressText{font-size:.76rem;min-width:145px}
+    main.shell{display:grid;grid-template-columns:220px minmax(0,1fr);gap:0 40px;padding-top:36px}
+    main.shell>form,main.shell>.section,main.shell>.self-management{grid-column:2;min-width:0}
+    .form-nav{grid-column:1;grid-row:1 / span 4;align-self:start;position:sticky;top:94px;padding:10px 0}
+    .form-nav h2{font-size:.72rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+    .form-nav a{display:flex;gap:12px;align-items:center;text-decoration:none;min-height:52px;border-radius:12px;padding:10px;margin-bottom:5px;font-size:.82rem;color:var(--ink)}
+    .form-nav a:hover,.form-nav a:focus-visible{background:var(--teal-soft)}
+    .form-nav a span{color:var(--teal);font-size:.72rem;font-weight:700}
+    .nav-note{border-top:1px solid var(--line);padding-top:20px;margin:24px 10px 0;color:var(--muted);font-size:.8rem;line-height:1.8}
+    .section{padding:clamp(22px,3.2vw,42px);border-radius:24px;margin-bottom:28px;scroll-margin-top:94px}
+    .section-head{padding-bottom:24px;border-bottom:1px solid var(--line);margin-bottom:8px;gap:12px}
+    h2{font-size:clamp(1.3rem,2.3vw,1.8rem);line-height:1.35;font-weight:600;letter-spacing:-.025em}
+    .hint{font-size:.88rem;line-height:1.75;max-width:56ch}
+    .step{width:44px;height:44px;border-radius:50%;font-size:.83rem;font-weight:700}
+    .scale-legend{display:none}
+    .question{padding:27px 0 29px;margin-top:18px}
+    .question legend{font-weight:500;font-size:1rem;line-height:1.8;padding:0;float:left;margin-bottom:18px}
+    .question legend+.choices{clear:both}
+    .q-number{font-size:.8rem;display:inline-block;min-width:27px;font-weight:700}
+    .choice{position:relative;cursor:pointer}
+    .choice span{min-height:58px;background:var(--paper);border-color:transparent;border-radius:12px;font-size:.82rem;padding:12px 8px;line-height:1.5}
+    .choice input:checked+span{background:var(--teal);border-color:var(--teal);font-weight:600;box-shadow:0 0 0 2px var(--card),0 0 0 3px var(--teal)}
+    .context-card,.check-card,.yesno label,.core-check{cursor:pointer}
+    .context-card span,.check-card span{background:var(--paper);line-height:1.65;font-size:.9rem}
+    .prompt{font-weight:600;line-height:1.7}
+    .btn{min-height:50px;font-weight:600;padding:13px 22px}
+    .result{border:2px solid var(--teal)}
+    .meters .meter{background:var(--teal-soft)}
+    .result-summary{line-height:1.8}
+    .evidence-grid{grid-template-columns:1fr}
+    .evidence-card{background:var(--paper)}
+    .sources{box-shadow:none;background:transparent}
+    .sources a{overflow-wrap:anywhere}
+    @media(max-width:980px){.shell{width:calc(100% - 40px)}.intro{gap:28px}main.shell{grid-template-columns:1fr}.form-nav{position:static;grid-column:1;grid-row:auto;margin-bottom:24px}.form-nav h2,.nav-note{display:none}.form-nav nav{display:flex;flex-wrap:wrap;gap:6px}.form-nav a{margin:0;background:var(--card);border:1px solid var(--line);min-height:44px}.form-nav a span{display:none}main.shell>form,main.shell>.section,main.shell>.self-management{grid-column:1}}
+    @media(max-width:760px){.shell{width:calc(100% - 28px)}.topbar{gap:12px;padding:18px 0}.brand{font-size:.72rem;max-width:190px}.mark{flex-shrink:0}.return-link{font-size:.74rem;white-space:nowrap;padding:8px 10px}.intro{grid-template-columns:1fr;padding:36px 0 28px;gap:24px}h1{font-size:clamp(2.1rem,8vw,3.1rem)}.notice{padding:22px}.notice::before{display:none}.progress-label{display:none}.progress-row{gap:14px}#progressText{min-width:136px}.section{border-radius:18px;padding:22px 18px}.question legend{font-size:.94rem}.choice span{min-height:56px}.actions{align-items:stretch}.actions .btn{width:100%}.form-nav a{font-size:.73rem;padding:8px 10px}.intro-facts{gap:6px}.intro-facts span{font-size:.71rem}.routine-grid{grid-template-columns:1fr}}
+    @media print{main.shell{display:block}.form-nav,.start-link,.intro-facts,.skip-link{display:none!important}.section{box-shadow:none}.notice::before{display:none}}
+    [hidden]{display:none!important}
+    main.shell.wizard-layout{display:block;max-width:860px}
+    .wizard-layout .form-nav{display:none}
+    .wizard-layout:not(.has-result) .self-management,.wizard-layout:not(.has-result) .sources{display:none}
+    .wizard-step-label{color:var(--teal);font-size:.8rem;font-weight:600;margin:0 0 12px}
+    .wizard-help{color:var(--muted);font-size:.86rem;margin:8px 0 24px}
+    .wizard-layout .error:empty{display:none}
+    #questionStage .question{margin:0;border:0;padding:8px 0 24px}
+    #questionStage legend{font-size:clamp(1.2rem,3vw,1.65rem);line-height:1.6;font-weight:500;margin-bottom:26px}
+    #questionStage .q-number{display:none}
+    #questionStage .choices{grid-template-columns:1fr;gap:12px}
+    #questionStage .choice span{text-align:left;justify-items:start;padding:16px 20px;font-size:1rem}
+    #questionStage .yesno{clear:both;display:grid;gap:12px}
+    #questionStage .yesno label span{display:block;border-radius:12px;min-height:54px}
+    #questionStage .context-grid,#questionStage .confounders{clear:both}
+    .wizard-controls{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:24px}
+    .wizard-controls .btn{min-width:120px}
+    .wizard-controls .btn:disabled{opacity:.45;cursor:default}
+    .wizard-reset{margin-top:20px;box-shadow:none}
+    @media(max-width:520px){.wizard-controls .btn{min-width:0;flex:1;padding:12px}.wizard-controls{gap:8px}}
+    body[data-screen="result"] .intro,body[data-screen="result"] .progress-wrap,body[data-screen="result"] #screeningForm{display:none}
+    body[data-screen="result"] main.shell{max-width:1240px}
+    .result-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,1fr);gap:28px;align-items:start;margin-top:26px}
+    .result-indicators{min-width:0}
+    .radar-panel{margin:0;background:var(--teal-soft);padding:20px 14px;border-radius:18px}
+    .indicator-table{width:100%;border-collapse:collapse;margin-bottom:24px;font-size:.84rem;table-layout:fixed}
+    .indicator-table caption{text-align:left;font-size:1rem;font-weight:700;margin-bottom:12px}
+    .indicator-table th,.indicator-table td{text-align:left;padding:12px 8px;border-bottom:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere}
+    .indicator-table thead th{background:var(--teal-soft);font-size:.75rem}
+    .indicator-table th:first-child{width:38%}
+    .indicator-table tbody th{font-weight:500}
+    .indicator-table td:nth-child(2),.indicator-table td:nth-child(3){font-variant-numeric:tabular-nums;font-weight:600}
+    #impactRadar{display:block;width:100%;max-width:480px;margin:auto;overflow:visible}
+    .chart-key{font-size:.76rem;color:var(--muted);line-height:1.8}
+    .next-action{background:var(--teal-soft);padding:20px;border-radius:16px;margin:24px 0}
+    .next-action p{margin:8px 0 0}
+    .result-extra{margin-top:22px;border-top:1px solid var(--line);padding-top:16px}
+    @media(max-width:850px){.result-grid{grid-template-columns:1fr}.radar-panel{max-width:480px;width:100%;justify-self:center}.indicator-table th,.indicator-table td{padding:10px 5px}}
+    @media print{.result .actions,#saveBtn,#savedAt{display:none!important}.result{font-size:10pt;padding:12px}.result-grid{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:12px}.indicator-table{font-size:9pt}.indicator-table th,.indicator-table td{padding:6px}.result-extra{break-inside:avoid}#impactRadar{max-width:300px}.intro{display:none!important}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#screeningForm">Đi tới câu hỏi</a>
+  <header class="shell">
+    <div class="topbar">
+      <a class="brand" href="adhd-portfolio.html"><span class="mark" aria-hidden="true"></span> ADHD Behavioral Support</a>
+      <a class="return-link" href="adhd-portfolio.html">← Về dự án</a>
+    </div>
+    <div class="intro">
+      <div>
+        <p class="eyebrow">Một khoảng dừng để hiểu mình hơn</p>
+        <h1>Nhìn lại sự tập trung.<br><em>Hiểu bước tiếp theo.</em></h1>
+        <p class="lede">Trả lời theo trải nghiệm của bạn trong <strong>6 tháng gần đây</strong>. Kết quả giúp bạn nhìn lại dấu hiệu và mức ảnh hưởng để quyết định bước tiếp theo.</p>
+        <div class="intro-facts"><span>Sàng lọc ADHD người lớn</span><span>Khoảng 8–10 phút</span><span>5 phần câu hỏi</span></div>
+        <a class="start-link" href="#screeningForm">Bắt đầu trả lời <span aria-hidden="true">↓</span></a>
+      </div>
+      <aside class="notice" aria-label="Lưu ý quan trọng">
+        <strong>Đây không phải chẩn đoán.</strong>
+        <p>Công cụ tự xây dựng này chỉ dùng để sàng lọc định hướng, không phải thang đo chuẩn hóa và không thay thế bác sĩ, nhà tâm lý lâm sàng hay đánh giá toàn diện.</p>
+      </aside>
+    </div>
+  </header>
+
+  <div class="progress-wrap">
+    <div class="shell progress-row" aria-label="Tiến độ trả lời">
+      <span class="progress-label">TỪNG BƯỚC MỘT</span>
+      <div class="progress-track"><div class="progress-bar" id="progressBar" role="progressbar" aria-label="Tiến độ bài sàng lọc" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+      <span id="progressText">Bài sàng lọc · 0% xong</span>
+    </div>
+  </div>
+
+  <main class="shell">
+    <aside class="form-nav" aria-label="Các phần của bài sàng lọc">
+      <h2>Nội dung bài làm</h2>
+      <nav>
+        <a href="#attentionTitle"><span>01</span>Mất tập trung</a>
+        <a href="#impulseTitle"><span>02</span>Tăng động &amp; bốc đồng</a>
+        <a href="#functionTitle"><span>03</span>Ảnh hưởng cuộc sống</a>
+        <a href="#contextTitle"><span>04</span>Thời điểm &amp; bối cảnh</a>
+        <a href="#confoundTitle"><span>05</span>Yếu tố khác</a>
+      </nav>
+      <p class="nav-note">Trả lời theo trải nghiệm thực tế. Bạn có thể quay lại đổi lựa chọn trước khi xem kết quả.</p>
+      <p class="nav-note">Câu trả lời được xử lý trên thiết bị. Font được tải từ Google Fonts; khi mất mạng, trang dùng font hệ thống.</p>
+    </aside>
+    <form id="screeningForm" novalidate>
+      <section class="section" aria-labelledby="attentionTitle">
+        <div class="section-head"><div><h2 id="attentionTitle">Mất tập trung</h2><p class="hint">Trong 6 tháng gần đây, điều này xảy ra thường xuyên đến mức nào?</p></div><span class="step">01</span></div>
+        <div class="scale-legend" aria-hidden="true"><span>Không bao giờ</span><span>Đôi khi</span><span>Thường xuyên</span><span>Rất thường xuyên</span></div>
+        <div id="attentionQuestions"></div>
+      </section>
+
+      <section class="section" aria-labelledby="impulseTitle">
+        <div class="section-head"><div><h2 id="impulseTitle">Tăng động &amp; bốc đồng</h2><p class="hint">Ở người lớn, tăng động có thể biểu hiện thành bồn chồn bên trong hơn là chạy nhảy.</p></div><span class="step">02</span></div>
+        <div class="scale-legend" aria-hidden="true"><span>Không bao giờ</span><span>Đôi khi</span><span>Thường xuyên</span><span>Rất thường xuyên</span></div>
+        <div id="impulseQuestions"></div>
+      </section>
+
+      <section class="section" aria-labelledby="functionTitle">
+        <div class="section-head"><div><h2 id="functionTitle">Ảnh hưởng đến cuộc sống</h2><p class="hint">Đánh giá mức các khó khăn trên làm giảm chất lượng hoặc hiệu quả hoạt động của bạn.</p></div><span class="step">03</span></div>
+        <div class="scale-legend" aria-hidden="true"><span>Không ảnh hưởng</span><span>Nhẹ</span><span>Vừa</span><span>Nặng</span></div>
+        <div id="functionQuestions"></div>
+      </section>
+
+      <section class="section" aria-labelledby="contextTitle">
+        <div class="section-head"><div><h2 id="contextTitle">Thời điểm &amp; bối cảnh</h2><p class="hint">Hai yếu tố này rất quan trọng khi chuyên gia đánh giá ADHD.</p></div><span class="step">04</span></div>
+        <p class="prompt">Bạn có nhớ một số dấu hiệu tương tự đã xuất hiện trước 12 tuổi không?</p>
+        <div class="yesno" role="radiogroup" aria-label="Dấu hiệu trước 12 tuổi">
+          <label><input type="radio" name="childhood" value="yes" required><span>Có / khá chắc</span></label>
+          <label><input type="radio" name="childhood" value="unsure"><span>Không chắc</span></label>
+          <label><input type="radio" name="childhood" value="no"><span>Không</span></label>
+        </div>
+        <p class="prompt">Các dấu hiệu xuất hiện rõ ở những bối cảnh nào? Chọn tất cả phù hợp.</p>
+        <div class="context-grid" id="contextGrid">
+          <label class="context-card"><input type="checkbox" name="context" value="Công việc / học tập"><span><strong>Công việc / học tập</strong><br>Deadline, cuộc họp, học hoặc làm việc sâu</span></label>
+          <label class="context-card"><input type="checkbox" name="context" value="Ở nhà"><span><strong>Ở nhà</strong><br>Việc nhà, hóa đơn, đồ đạc, lịch cá nhân</span></label>
+          <label class="context-card"><input type="checkbox" name="context" value="Quan hệ xã hội"><span><strong>Quan hệ xã hội</strong><br>Trò chuyện, hẹn gặp, giữ cam kết</span></label>
+          <label class="context-card"><input type="checkbox" name="context" value="Hoạt động khác"><span><strong>Hoạt động khác</strong><br>Lái xe, sở thích, sinh hoạt cộng đồng</span></label>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="confoundTitle">
+        <div class="section-head"><div><h2 id="confoundTitle">Điều gì khác có thể ảnh hưởng?</h2><p class="hint">Những yếu tố này có thể tạo ra hoặc làm nặng các triệu chứng giống ADHD. Chọn những điều đáng kể trong 6 tháng gần đây.</p></div><span class="step">05</span></div>
+        <div class="confounders" id="confounders">
+          <label class="check-card"><input type="checkbox" name="confounder" value="Thiếu ngủ hoặc lịch ngủ thất thường"><span>Thiếu ngủ hoặc lịch ngủ thất thường</span></label>
+          <label class="check-card"><input type="checkbox" name="confounder" value="Lo âu kéo dài"><span>Lo âu kéo dài</span></label>
+          <label class="check-card"><input type="checkbox" name="confounder" value="Buồn chán, mất hứng thú hoặc trầm cảm"><span>Buồn chán, mất hứng thú hoặc trầm cảm</span></label>
+          <label class="check-card"><input type="checkbox" name="confounder" value="Stress hoặc biến cố lớn"><span>Stress hoặc biến cố lớn</span></label>
+          <label class="check-card"><input type="checkbox" name="confounder" value="Dùng nhiều caffeine, nicotine hoặc chất kích thích"><span>Dùng nhiều caffeine, nicotine hoặc chất kích thích</span></label>
+          <label class="check-card"><input type="checkbox" name="confounder" value="Thuốc hoặc thay đổi thuốc gần đây"><span>Thuốc hoặc thay đổi thuốc gần đây</span></label>
+          <label class="check-card"><input type="checkbox" name="confounder" value="Rượu hoặc chất khác"><span>Rượu hoặc chất khác</span></label>
+          <label class="check-card"><input type="checkbox" name="confounder" value="Vấn đề sức khỏe thể chất"><span>Vấn đề sức khỏe thể chất</span></label>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Xem kết quả định hướng →</button>
+          <button class="btn btn-outline" type="button" id="resetBtn">Làm lại bài sàng lọc</button>
+        </div>
+        <div class="error" id="formError" role="alert"></div>
+      </section>
+    </form>
+
+    <section class="section result" id="result" aria-labelledby="resultTitle">
+      <span class="result-badge">Nhận định sàng lọc sơ bộ</span>
+      <h2 id="resultTitle" tabindex="-1"></h2>
+      <p class="result-summary" id="resultSummary"></p>
+      <div class="result-grid">
+        <div class="result-indicators">
+          <table class="indicator-table"><caption>Bảng chỉ số tổng hợp</caption>
+            <thead><tr><th scope="col">Chỉ số</th><th scope="col">Điểm</th><th scope="col">% thang điểm</th><th scope="col">Diễn giải</th></tr></thead>
+            <tbody id="summaryIndicators"></tbody>
+          </table>
+          <table class="indicator-table"><caption>Ảnh hưởng trong 6 lĩnh vực</caption>
+            <thead><tr><th scope="col">Lĩnh vực</th><th scope="col">Điểm</th><th scope="col">% thang điểm</th><th scope="col">Mức ảnh hưởng</th></tr></thead>
+            <tbody id="impactValues"></tbody>
+          </table>
+          <p class="chart-key">% = điểm đã chọn / điểm tối đa × 100, làm tròn. Không phải xác suất mắc ADHD.</p>
+        </div>
+      <aside class="radar-panel" aria-label="Biểu đồ tổng quan">
+        <h3>Góc nhìn tổng quan</h3>
+        <p class="small-note">Càng xa tâm, mức ảnh hưởng bạn tự báo cáo càng cao. Đây không phải % mắc ADHD.</p>
+        <svg id="impactRadar" viewBox="0 0 480 390" role="img" aria-labelledby="radarTitle radarDesc"></svg>
+        <p class="chart-key">Không ảnh hưởng: 0% · Nhẹ: 33% · Vừa: 67% · Nặng: 100%</p>
+      </aside>
+      </div>
+      <div class="next-action"><h3>Một bước tiếp theo</h3><p id="nextAction"></p></div>
+      <p class="small-note">Bộ câu hỏi tự xây dựng, chưa chuẩn hóa. Kết quả không xác nhận hoặc loại trừ ADHD.</p>
+      <div class="actions">
+        <button class="btn btn-primary" type="button" id="printBtn">In / lưu bản tổng kết PDF</button>
+        <button class="btn btn-outline" type="button" id="editAnswers">Sửa câu trả lời</button>
+      </div>
+      <div class="result-extra"><h3>Bối cảnh cần lưu ý</h3>
+        <ul class="result-list" id="resultDetails"></ul>
+        <button class="btn btn-outline" type="button" id="saveBtn">Lưu kết quả trên thiết bị</button>
+        <span class="saved-at" id="savedAt" role="status"></span>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell">Kết quả được xử lý ngay trong trình duyệt. Trang không gửi hoặc thu thập dữ liệu. Cập nhật nội dung: 09/2026.</div></footer>
+
+  <script>
+    const attentionItems = [
+      "Bỏ sót chi tiết hoặc mắc lỗi do bất cẩn khi làm việc, học tập hay xử lý giấy tờ?",
+      "Khó duy trì chú ý trong cuộc họp, khi đọc, trò chuyện hoặc làm việc kéo dài?",
+      "Có vẻ không lắng nghe dù người khác đang nói trực tiếp với bạn?",
+      "Bắt đầu nhưng khó làm theo đến cùng hoặc thường bỏ dở công việc?",
+      "Khó sắp xếp thứ tự, thời gian, vật dụng hoặc deadline?",
+      "Né tránh hoặc trì hoãn việc cần tập trung trí óc lâu?",
+      "Hay làm mất hoặc mất thời gian tìm chìa khóa, điện thoại, tài liệu hay vật dụng cần thiết?",
+      "Dễ bị âm thanh, thông báo, suy nghĩ khác hoặc hoạt động xung quanh kéo chú ý đi?",
+      "Hay quên lịch hẹn, hóa đơn, việc nhà hoặc việc đã hứa?"
+    ];
+    const impulseItems = [
+      "Bồn chồn, rung chân, gõ tay hoặc khó giữ cơ thể yên?",
+      "Khó ngồi yên khi hoàn cảnh mong đợi bạn ngồi lâu?",
+      "Cảm thấy bứt rứt bên trong hoặc luôn cần phải làm gì đó?",
+      "Khó thư giãn hoặc thực hiện hoạt động giải trí một cách yên tĩnh?",
+      "Thường hoạt động liên tục như thể khó 'tắt máy' hoặc chậm lại?",
+      "Nói nhiều hơn dự định hoặc khó dừng khi đang nói?",
+      "Trả lời, nói chen hoặc hành động trước khi người khác kết thúc?",
+      "Khó chờ đến lượt, xếp hàng hoặc chịu được trì hoãn?",
+      "Ngắt lời, xen vào việc của người khác hoặc quyết định bốc đồng gây hậu quả?"
+    ];
+    const functionItems = [
+      "Công việc hoặc học tập (hiệu suất, deadline, sai sót)",
+      "Quản lý nhà cửa, tiền bạc và việc hành chính",
+      "Quan hệ với gia đình, bạn bè hoặc đồng nghiệp",
+      "Chăm sóc bản thân, sức khỏe và thói quen hằng ngày",
+      "Lái xe, an toàn hoặc kiểm soát hành vi bốc đồng",
+      "Cảm nhận về bản thân, căng thẳng và kiệt sức do phải bù trừ"
+    ];
+    const symptomLabels = ["Không bao giờ", "Đôi khi", "Thường xuyên", "Rất thường xuyên"];
+    const functionLabels = ["Không ảnh hưởng", "Nhẹ", "Vừa", "Nặng"];
+    const form = document.getElementById("screeningForm");
+
+    function renderQuestions(targetId, items, prefix, labels) {
+      document.getElementById(targetId).innerHTML = items.map((item, i) => `
+        <fieldset class="question">
+          <legend><span class="q-number">${String(i + 1).padStart(2, "0")}</span>${item}</legend>
+          <div class="choices">${labels.map((label, score) => `
+            <label class="choice"><input type="radio" name="${prefix}${i}" value="${score}" required><span>${label}</span></label>
+          `).join("")}</div>
+        </fieldset>`).join("");
+    }
+
+    renderQuestions("attentionQuestions", attentionItems, "a", symptomLabels);
+    renderQuestions("impulseQuestions", impulseItems, "h", symptomLabels);
+    renderQuestions("functionQuestions", functionItems, "f", functionLabels);
+
+    const requiredGroups = [...attentionItems.map((_, i) => `a${i}`), ...impulseItems.map((_, i) => `h${i}`), ...functionItems.map((_, i) => `f${i}`), "childhood"];
+
+    // Move existing inputs into a single-question flow; preserve names and values for scoring.
+    const originalSections = [...form.children];
+    const steps = [];
+    const addSteps = (containerId, title, hint) => {
+      document.querySelectorAll(`#${containerId} .question`).forEach(node => {
+        steps.push({ node, title, hint, name: node.querySelector('input').name });
+      });
+    };
+    addSteps('attentionQuestions', 'Mất tập trung', 'Trong 6 tháng gần đây, điều này xảy ra thường xuyên đến mức nào?');
+    addSteps('impulseQuestions', 'Tăng động & bốc đồng', 'Trong 6 tháng gần đây, điều này xảy ra thường xuyên đến mức nào?');
+    addSteps('functionQuestions', 'Ảnh hưởng đến cuộc sống', 'Các khó khăn trên ảnh hưởng đến phần này của cuộc sống ở mức nào?');
+    const wrapQuestion = (inputContainer, title, name, hint, optional = false) => {
+      const node = document.createElement('fieldset');
+      node.className = 'question';
+      const legend = document.createElement('legend');
+      legend.textContent = title;
+      node.append(legend, inputContainer);
+      steps.push({ node, title: 'Thời điểm & bối cảnh', name, hint, optional });
+    };
+    const childhood = form.querySelector('.yesno');
+    wrapQuestion(childhood, childhood.previousElementSibling.textContent, 'childhood', 'Chọn câu trả lời phù hợp nhất. Không chắc cũng là một câu trả lời.');
+    const contexts = document.getElementById('contextGrid');
+    wrapQuestion(contexts, contexts.previousElementSibling.textContent, 'context', 'Có thể chọn nhiều bối cảnh. Chọn ít nhất một để tiếp tục.');
+    wrapQuestion(document.getElementById('confounders'), document.getElementById('confoundTitle').textContent, 'confounder', 'Chọn những yếu tố đáng kể trong 6 tháng gần đây. Có thể bỏ qua nếu không có mục phù hợp.', true);
+    steps[steps.length - 1].title = 'Yếu tố khác';
+    const wizard = document.createElement('section');
+    wizard.className = 'section';
+    wizard.setAttribute('aria-label', 'Trả lời từng câu hỏi');
+    wizard.innerHTML = `<p class="wizard-step-label" id="stepLabel" aria-live="polite"></p>
+      <h2 id="stepTitle"></h2><p class="wizard-help" id="stepHelp"></p>
+      <div id="questionStage"></div><p class="small-note">Chọn xong, bấm Tiếp tục. Bạn có thể quay lại để sửa câu trả lời.</p><div id="wizardError" class="error" role="alert"></div>
+      <div class="wizard-controls"><button class="btn btn-outline" type="button" id="previousQuestion">← Quay lại</button>
+      <button class="btn btn-primary" type="submit" id="nextQuestion">Tiếp tục →</button></div>`;
+    form.prepend(wizard);
+    const stage = document.getElementById('questionStage');
+    steps.forEach(step => {
+      step.node.hidden = true;
+      step.node.querySelector('legend').tabIndex = -1;
+      stage.append(step.node);
+    });
+    wizard.append(document.getElementById('formError'));
+    const resetButton = document.getElementById('resetBtn');
+    resetButton.classList.add('wizard-reset');
+    form.append(resetButton);
+    originalSections.forEach(section => section.hidden = true);
+    const main = form.closest('main');
+    main.classList.add('wizard-layout');
+    let currentStep = 0;
+    function showStep(index, focus = true) {
+      currentStep = index;
+      steps.forEach((step, i) => step.node.hidden = i !== index);
+      document.getElementById('stepLabel').textContent = `Câu ${index + 1} / ${steps.length}`;
+      document.getElementById('stepTitle').textContent = steps[index].title;
+      document.getElementById('stepHelp').textContent = steps[index].hint;
+      document.getElementById('previousQuestion').disabled = index === 0;
+      document.getElementById('nextQuestion').textContent = index === steps.length - 1 ? 'Xem kết quả →' : 'Tiếp tục →';
+      document.getElementById('wizardError').textContent = '';
+      if (focus) steps[index].node.querySelector('legend').focus();
+    }
+    document.getElementById('previousQuestion').addEventListener('click', () => {
+      if (currentStep > 0) showStep(currentStep - 1);
+    });
+    form.addEventListener('change', () => {
+      document.getElementById('wizardError').textContent = '';
+      document.getElementById('result').classList.remove('visible');
+      main.classList.remove('has-result');
+    });
+    showStep(0, false);
+
+    function updateProgress() {
+      const answered = requiredGroups.filter(name => form.querySelector(`input[name="${name}"]:checked`)).length;
+      const contextsDone = form.querySelectorAll('input[name="context"]:checked').length > 0 ? 1 : 0;
+      const total = requiredGroups.length + 1;
+      const percent = Math.round(((answered + contextsDone) / total) * 100);
+      document.getElementById("progressBar").style.width = `${percent}%`;
+      document.getElementById("progressBar").setAttribute("aria-valuenow", String(percent));
+      document.getElementById("progressText").textContent = `Bài sàng lọc · ${percent}% xong`;
+    }
+
+    form.addEventListener("change", updateProgress);
+
+    function sumGroup(prefix, count) {
+      return Array.from({ length: count }, (_, i) => Number(form.querySelector(`input[name="${prefix}${i}"]:checked`).value)).reduce((a, b) => a + b, 0);
+    }
+
+    function countFrequent(prefix, count) {
+      return Array.from({ length: count }, (_, i) => Number(form.querySelector(`input[name="${prefix}${i}"]:checked`).value) >= 2).filter(Boolean).length;
+    }
+
+    function level(value, medium, high, words) {
+      return value >= high ? words[2] : value >= medium ? words[1] : words[0];
+    }
+
+    const impactLabels = ['Công việc / học tập', 'Nhà cửa / tài chính', 'Quan hệ', 'Chăm sóc bản thân', 'An toàn / bốc đồng', 'Căng thẳng / kiệt sức'];
+    function impactPercent(score) { return Math.round(score / 3 * 100); }
+    function radarPoint(index, ratio) {
+      const angle = -Math.PI / 2 + index * Math.PI / 3;
+      return [240 + Math.cos(angle) * 130 * ratio, 190 + Math.sin(angle) * 130 * ratio];
+    }
+    function renderRadar(scores) {
+      const percentages = scores.map(impactPercent);
+      const ring = ratio => scores.map((_, i) => radarPoint(i, ratio).join(',')).join(' ');
+      let svg = '<title id="radarTitle">Mức ảnh hưởng tự báo cáo trong sáu lĩnh vực</title><desc id="radarDesc">Từ 0% không ảnh hưởng đến 100% nặng. Không phải xác suất ADHD. Giá trị cụ thể được liệt kê bên dưới.</desc>';
+      [1/3, 2/3, 1].forEach(ratio => {
+        svg += `<polygon points="${ring(ratio)}" fill="none" stroke="#bbcbbf" stroke-width="1"/>`;
+      });
+      scores.forEach((score, i) => {
+        const [x,y] = radarPoint(i, 1);
+        svg += `<path d="M240 190 L${x} ${y}" stroke="#bbcbbf"/>`;
+        const [lx,ly] = radarPoint(i, 1.32);
+        svg += `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" fill="#183b36" font-size="15" font-weight="600">${i+1} · ${percentages[i]}%</text>`;
+      });
+      svg += `<polygon points="${scores.map((score,i) => radarPoint(i, score / 3).join(',')).join(' ')}" fill="#176e5b" fill-opacity=".17" stroke="#176e5b" stroke-width="2.5"/>`;
+      scores.forEach((score,i) => {
+        const [x,y] = radarPoint(i, score / 3);
+        svg += `<circle cx="${x}" cy="${y}" r="4" fill="#176e5b"/>`;
+      });
+      svg += '<text x="249" y="187" fill="#5c706b" font-size="11">0</text>';
+      document.getElementById('impactRadar').innerHTML = svg;
+      document.getElementById('impactValues').innerHTML = impactLabels.map((label,i) => `<tr><th scope="row">${i+1}. ${label}</th><td>${scores[i]}/3</td><td>${percentages[i]}%</td><td>${functionLabels[scores[i]]}</td></tr>`).join('');
+      return percentages;
+    }
+    function showResultScreen() {
+      document.body.dataset.screen = 'result';
+      document.getElementById('result').classList.add('visible');
+      document.getElementById('resultTitle').focus();
+      window.scrollTo({top:0, behavior:'instant'});
+    }
+    document.getElementById('editAnswers').addEventListener('click', () => {
+      document.body.dataset.screen = 'questions';
+      document.getElementById('result').classList.remove('visible');
+      showStep(0);
+    });
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      const step = steps[currentStep];
+      if (!step.optional && !step.node.querySelector('input:checked')) {
+        document.getElementById('wizardError').textContent = 'Chọn một câu trả lời để tiếp tục.';
+        step.node.querySelector('input').focus();
+        return;
+      }
+      if (currentStep < steps.length - 1) {
+        showStep(currentStep + 1);
+        return;
+      }
+      const missing = requiredGroups.filter(name => !form.querySelector(`input[name="${name}"]:checked`));
+      const contexts = [...form.querySelectorAll('input[name="context"]:checked')].map(input => input.value);
+      const error = document.getElementById("formError");
+      if (missing.length || contexts.length === 0) {
+        error.textContent = `Vui lòng trả lời đủ câu hỏi và chọn ít nhất 1 bối cảnh. Còn thiếu ${missing.length + (contexts.length === 0 ? 1 : 0)} mục.`;
+        const firstMissing = missing.length ? form.querySelector(`input[name="${missing[0]}"]`) : form.querySelector('input[name="context"]');
+        const missingStep = steps.findIndex(item => item.node.contains(firstMissing));
+        if (missingStep >= 0) showStep(missingStep);
+        firstMissing?.focus();
+        firstMissing?.closest(".section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+      error.textContent = "";
+      const attention = sumGroup("a", attentionItems.length);
+      const impulse = sumGroup("h", impulseItems.length);
+      const symptoms = attention + impulse;
+      const frequentAttention = countFrequent("a", attentionItems.length);
+      const frequentImpulse = countFrequent("h", impulseItems.length);
+      const functional = sumGroup("f", functionItems.length);
+      const affectedDomains = Array.from({ length: functionItems.length }, (_, i) => Number(form.querySelector(`input[name="f${i}"]:checked`).value) >= 2).filter(Boolean).length;
+      const childhood = form.querySelector('input[name="childhood"]:checked').value;
+      const confounders = [...form.querySelectorAll('input[name="confounder"]:checked')].map(input => input.value);
+      const symptomBand = level(symptoms, 18, 30, ["Ít", "Vừa", "Nhiều"]);
+      const functionBand = level(functional, 6, 12, ["Ít", "Đáng kể", "Cao"]);
+      const indicators = [
+        ['Mất tập trung', attention, 27, `${frequentAttention}/9 mục thường xuyên`],
+        ['Tăng động / bốc đồng', impulse, 27, `${frequentImpulse}/9 mục thường xuyên`],
+        ['Tổng dấu hiệu', symptoms, 54, symptomBand],
+        ['Tổng ảnh hưởng', functional, 18, functionBand]
+      ];
+      document.getElementById('summaryIndicators').innerHTML = indicators.map(([label, score, max, description]) => `<tr><th scope="row">${label}</th><td>${score}/${max}</td><td>${Math.round(score/max*100)}%</td><td>${description}</td></tr>`).join('');
+
+      let outcome = "Ít dấu hiệu";
+      if ((symptoms >= 30 && functional >= 6) || functional >= 12 || (affectedDomains >= 2 && symptoms >= 24)) {
+        outcome = "Nên đi đánh giá chuyên môn sớm";
+      } else if (symptoms >= 18 || functional >= 6 || affectedDomains >= 1) {
+        outcome = "Nên theo dõi";
+      }
+
+      const contextNote = contexts.length >= 2
+        ? `Dấu hiệu được ghi nhận ở ${contexts.length} bối cảnh, phù hợp với một yếu tố mà chuyên gia sẽ xem xét.`
+        : "Bạn chỉ chọn 1 bối cảnh; biểu hiện ở ít nhất 2 bối cảnh là một yếu tố quan trọng khi đánh giá ADHD.";
+      const childhoodNote = childhood === "yes"
+        ? "Bạn nhớ có dấu hiệu trước 12 tuổi; chuyên gia có thể hỏi thêm học bạ hoặc người thân nếu phù hợp."
+        : childhood === "unsure"
+          ? "Bạn không chắc về dấu hiệu trước 12 tuổi; điều này khá thường gặp và cần được khai thác kỹ khi đánh giá."
+          : "Bạn không nhớ dấu hiệu trước 12 tuổi; khởi phát từ thời thơ ấu là tiêu chí quan trọng, nên cần cân nhắc kỹ nguyên nhân khác.";
+      const confounderNote = confounders.length
+        ? `Bạn chọn ${confounders.length} yếu tố có thể gây nhiễu. Hãy nêu chúng khi trao đổi với chuyên gia.`
+        : "Bạn không chọn yếu tố gây nhiễu nào trong danh sách; điều này không loại trừ các nguyên nhân khác.";
+
+      document.getElementById("resultTitle").textContent = outcome;
+      const impactScores = functionItems.map((_,i) => Number(form.querySelector(`input[name="f${i}"]:checked`).value));
+      const impactPercentages = renderRadar(impactScores);
+      const maximum = Math.max(...impactScores);
+      const highest = impactLabels.filter((_,i) => impactScores[i] === maximum);
+      document.getElementById('resultSummary').textContent = maximum === 0
+        ? 'Bạn chưa ghi nhận ảnh hưởng trong 6 lĩnh vực được hỏi.'
+        : highest.length === 6
+          ? 'Bạn ghi nhận cùng một mức ảnh hưởng ở cả 6 lĩnh vực.'
+          : `Ảnh hưởng nổi bật: ${highest.slice(0,2).join(' và ')}${highest.length > 2 ? `, cùng ${highest.length-2} lĩnh vực khác` : ''}.`;
+      document.getElementById('nextAction').textContent = outcome === 'Nên đi đánh giá chuyên môn sớm'
+        ? 'Mang bản tổng kết này đến trao đổi với chuyên gia để được đánh giá đầy đủ.'
+        : outcome === 'Nên theo dõi'
+          ? 'Ghi lại một tình huống gây khó khăn để trao đổi với chuyên gia nếu ảnh hưởng kéo dài.'
+          : 'Nếu bạn vẫn thấy khó khăn rõ hoặc lo ngại về an toàn, hãy trao đổi với chuyên gia dù điểm thấp.';
+      document.getElementById("resultDetails").innerHTML = `
+        <li>${contextNote} Đã chọn: ${contexts.join(', ')}.</li><li>${childhoodNote}</li><li>${confounderNote}${confounders.length ? ` Đã chọn: ${confounders.join(', ')}.` : ''}</li>`;
+      const result = document.getElementById("result");
+      result.dataset.summary = JSON.stringify({ outcome, symptoms, symptomBand, functional, functionBand, impactScores, impactPercentages, impactLabels, contexts, childhood, confounders, date: new Date().toISOString() });
+      result.classList.add("visible");
+      main.classList.add('has-result');
+      document.getElementById("savedAt").textContent = "";
+      showResultScreen();
+    });
+
+    document.getElementById("saveBtn").addEventListener("click", () => {
+      const result = document.getElementById("result");
+      if (!result.dataset.summary) return;
+      localStorage.setItem("adultAdhdScreeningResult", result.dataset.summary);
+      document.getElementById("savedAt").textContent = `Đã lưu lúc ${new Date().toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" })}`;
+    });
+    document.getElementById("printBtn").addEventListener("click", () => window.print());
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      if (!confirm("Xóa toàn bộ câu trả lời và làm lại bài sàng lọc?")) return;
+      form.reset();
+      document.body.dataset.screen = 'questions';
+      document.getElementById("result").classList.remove("visible");
+      document.getElementById("formError").textContent = "";
+      main.classList.remove('has-result');
+      delete document.getElementById('result').dataset.summary;
+      showStep(0);
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    updateProgress();
+  </script>
+</body>
+</html>
+
